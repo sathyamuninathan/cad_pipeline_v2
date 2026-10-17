@@ -1,0 +1,347 @@
+{
+  "schema_version": "0.1",
+  "part_id": "Lagerschaft",
+  "drawing_file": "Lagerschaft.pdf",
+  "units": "mm",
+  "drawing_scale": "1:1",
+  "coordinate_system": {
+    "origin": "axis of the central Ø70 bore, bottom face",
+    "x": "along the line through the two lug holes (left to right in top view)",
+    "y": "perpendicular, up in top view",
+    "z": "height, bottom face at z=0"
+  },
+  "base_body": {
+    "type": "extruded_profile",
+    "profile": {
+      "segments": [
+        {
+          "type": "arc",
+          "center": [
+            75,
+            0
+          ],
+          "radius": 15,
+          "from": [
+            81,
+            -13.748
+          ],
+          "to": [
+            81,
+            13.748
+          ],
+          "clockwise": false
+        },
+        {
+          "type": "line",
+          "from": [
+            81,
+            13.748
+          ],
+          "to": [
+            18,
+            41.243
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            0,
+            0
+          ],
+          "radius": 45,
+          "from": [
+            18,
+            41.243
+          ],
+          "to": [
+            -18,
+            41.243
+          ],
+          "clockwise": false
+        },
+        {
+          "type": "line",
+          "from": [
+            -18,
+            41.243
+          ],
+          "to": [
+            -81,
+            13.748
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            -75,
+            0
+          ],
+          "radius": 15,
+          "from": [
+            -81,
+            13.748
+          ],
+          "to": [
+            -81,
+            -13.748
+          ],
+          "clockwise": false
+        },
+        {
+          "type": "line",
+          "from": [
+            -81,
+            -13.748
+          ],
+          "to": [
+            -18,
+            -41.243
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            0,
+            0
+          ],
+          "radius": 45,
+          "from": [
+            -18,
+            -41.243
+          ],
+          "to": [
+            18,
+            -41.243
+          ],
+          "clockwise": false
+        },
+        {
+          "type": "line",
+          "from": [
+            18,
+            -41.243
+          ],
+          "to": [
+            81,
+            -13.748
+          ]
+        }
+      ]
+    },
+    "extrude_height": 10
+  },
+  "dimensions": [
+    {
+      "id": "hole_pitch",
+      "value": 150,
+      "source": "top view, '150'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "web_height",
+      "value": 10,
+      "source": "section A-A, '10'",
+      "confidence": 0.95,
+      "status": "read"
+    },
+    {
+      "id": "lug_boss_height",
+      "value": 20,
+      "source": "section A-A, '20'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "central_boss_height",
+      "value": 30,
+      "source": "section A-A, '30'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "lug_boss_diameter",
+      "value": 30,
+      "source": "top view, 'Ø30'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "central_boss_diameter",
+      "value": 90,
+      "source": "top view, 'Ø90'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "tangent_points",
+      "value": [
+        81,
+        13.748,
+        18,
+        41.243
+      ],
+      "source": "top view, outline tangent to Ø30 and Ø90",
+      "confidence": 0.9,
+      "status": "derived",
+      "evidence": "external tangent of R15 at x=±75 and R45 at origin: sin = (45-15)/75 = 0.4; points C + r*(±0.4, 0.9165)",
+      "depends_on": [
+        "hole_pitch",
+        "lug_boss_diameter",
+        "central_boss_diameter"
+      ]
+    },
+    {
+      "id": "fillet_radius",
+      "value": 2,
+      "source": "section A-A, 'R2'",
+      "confidence": 0.9,
+      "status": "read"
+    },
+    {
+      "id": "draft_angle",
+      "value": 2,
+      "source": "section A-A, 'Draft Angle 2°'",
+      "confidence": 0.9,
+      "status": "read"
+    }
+  ],
+  "features": [
+    {
+      "id": "lug_boss_left",
+      "type": "extrusion",
+      "mode": "add",
+      "plane": "XY",
+      "offset": 10,
+      "distance": 10,
+      "profile": {
+        "circle": {
+          "center": [
+            -75,
+            0
+          ],
+          "radius": 15
+        }
+      }
+    },
+    {
+      "id": "lug_boss_right",
+      "type": "extrusion",
+      "mode": "add",
+      "plane": "XY",
+      "offset": 10,
+      "distance": 10,
+      "profile": {
+        "circle": {
+          "center": [
+            75,
+            0
+          ],
+          "radius": 15
+        }
+      }
+    },
+    {
+      "id": "central_boss",
+      "type": "extrusion",
+      "mode": "add",
+      "plane": "XY",
+      "offset": 10,
+      "distance": 20,
+      "profile": {
+        "circle": {
+          "center": [
+            0,
+            0
+          ],
+          "radius": 45
+        }
+      }
+    },
+    {
+      "id": "central_bore",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 70,
+        "source": "top view, 'Ø70'",
+        "confidence": 1.0,
+        "status": "read"
+      },
+      "position": {
+        "value": [
+          0,
+          0
+        ],
+        "source": "top view, centre lines",
+        "confidence": 1.0,
+        "status": "derived",
+        "evidence": "concentric with Ø90 boss (origin)"
+      }
+    },
+    {
+      "id": "lug_hole_left",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 20,
+        "source": "top view, 'Ø20'",
+        "confidence": 1.0,
+        "status": "read"
+      },
+      "position": {
+        "value": [
+          -75,
+          0
+        ],
+        "source": "top view, '150'",
+        "confidence": 1.0,
+        "status": "derived",
+        "evidence": "x = -150 / 2, symmetric about central bore axis"
+      }
+    },
+    {
+      "id": "lug_hole_right",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 20,
+        "source": "top view, 'Ø20'",
+        "confidence": 1.0,
+        "status": "read"
+      },
+      "position": {
+        "value": [
+          75,
+          0
+        ],
+        "source": "top view, '150'",
+        "confidence": 1.0,
+        "status": "derived",
+        "evidence": "x = 150 / 2, symmetric about central bore axis"
+      }
+    }
+  ],
+  "review_flags": [
+    {
+      "field": "draft_angle",
+      "severity": "warning",
+      "reason": "2° draft on the outer walls (lug bosses, central boss, plate outline) not modelled; walls are vertical at the nominal top-view diameters (Ø30, Ø90). Bottom outline of the real part is up to ~1 mm larger per side."
+    },
+    {
+      "field": "fillet_radius",
+      "severity": "warning",
+      "reason": "R2 fillets between the 10 mm web and the bosses (seen in section A-A and as thin circles in top view) are not modelled; supported features cannot place a fillet only on the web side of an outline boss."
+    },
+    {
+      "field": "web_height",
+      "severity": "info",
+      "reason": "the '10' dimension is read as web top height above the bottom face; the web outline is assumed tangent to the Ø30 and Ø90 circles (implicit tangency, no separate dimension)."
+    },
+    {
+      "field": "central_bore",
+      "severity": "info",
+      "reason": "Ø70 bore and Ø20 holes assumed straight through at one diameter, as shown in section A-A."
+    }
+  ]
+}

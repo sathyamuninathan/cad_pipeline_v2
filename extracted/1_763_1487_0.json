@@ -1,0 +1,650 @@
+{
+  "schema_version": "0.1",
+  "part_id": "1_763_1487_0",
+  "drawing_file": "1 763 1487 0.pdf",
+  "units": "mm",
+  "drawing_scale": "not stated (no title block; isometric labelled 1:1, details 5:1)",
+  "general_tolerance": null,
+  "coordinate_system": {
+    "origin": "centre of the left end face of the Ø6 pin, on the shaft axis",
+    "x": "horizontal, perpendicular to the axis (towards the viewer of the front view)",
+    "y": "up in the front view (side of the keyway and of the upper collar slot)",
+    "z": "shaft axis, from the Ø6 pin end (z=0) to the threaded M10x0,75 end (z=87.5)"
+  },
+  "base_body": {
+    "type": "revolved_profile",
+    "profile": {
+      "segments": [
+        {
+          "type": "line",
+          "from": [
+            1.989,
+            0
+          ],
+          "to": [
+            2.711,
+            0
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            2.711,
+            0
+          ],
+          "to": [
+            3,
+            0.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            3,
+            0.5
+          ],
+          "to": [
+            3,
+            10
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            3,
+            10
+          ],
+          "to": [
+            5.866,
+            10
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            5.866,
+            10
+          ],
+          "to": [
+            6,
+            10.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            6,
+            10.5
+          ],
+          "to": [
+            6,
+            17.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            6,
+            17.5
+          ],
+          "to": [
+            8.5,
+            17.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            8.5,
+            17.5
+          ],
+          "to": [
+            8.5,
+            49
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            8.5,
+            49
+          ],
+          "to": [
+            7.442,
+            55
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            7.442,
+            55
+          ],
+          "to": [
+            5,
+            55
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            5,
+            55
+          ],
+          "to": [
+            5,
+            87
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            5,
+            87
+          ],
+          "to": [
+            4.5,
+            87.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            4.5,
+            87.5
+          ],
+          "to": [
+            0,
+            87.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            0,
+            87.5
+          ],
+          "to": [
+            0,
+            12.751
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            0,
+            12.751
+          ],
+          "to": [
+            1.25,
+            12
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            1.25,
+            12
+          ],
+          "to": [
+            1.25,
+            2
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            1.25,
+            2
+          ],
+          "to": [
+            1.7,
+            2
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            1.7,
+            2
+          ],
+          "to": [
+            1.7,
+            0.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            1.7,
+            0.5
+          ],
+          "to": [
+            1.989,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "dimensions": [
+    {
+      "id": "overall_length",
+      "value": 87.5,
+      "tolerance": "+0/-0.2",
+      "source": "front view, '87,5 -0,2'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "length_to_collar_shoulder",
+      "value": 17.5,
+      "source": "front view, '(17,5)' reference dimension",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "length_shoulder_to_end",
+      "value": 70,
+      "tolerance": "+0/-0.1",
+      "source": "front view, '70 -0,1'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "length_d17_incl_taper",
+      "value": 37.5,
+      "tolerance": "+0.1/0",
+      "source": "front view, '37,5 +0,1'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "collar_length",
+      "value": 7.5,
+      "tolerance": "+0/-0.1",
+      "source": "front view, '7,5 -0,1'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "pin_length",
+      "value": 10,
+      "status": "derived",
+      "source": "front view, 17,5 - 7,5",
+      "confidence": 0.95,
+      "evidence": "17.5 - 7.5 = 10"
+    },
+    {
+      "id": "pin_diameter",
+      "value": 6,
+      "tolerance": "h10",
+      "source": "front view, 'Ø6 h10 (E)'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "collar_diameter",
+      "value": 12,
+      "tolerance": "h10",
+      "source": "top view, 'Ø12 h10 (E)'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "body_diameter",
+      "value": 17,
+      "tolerance": "+0/-0.2",
+      "source": "front view, 'Ø17 -0,2'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "end_diameter",
+      "value": 10,
+      "tolerance": "h10",
+      "source": "front view, 'Ø10 h10 (E)'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "taper_length",
+      "value": 6,
+      "source": "front view, '6 x 10°'",
+      "confidence": 0.9,
+      "status": "read"
+    },
+    {
+      "id": "taper_angle_deg",
+      "value": 10,
+      "source": "front view, '6 x 10°'",
+      "confidence": 0.8,
+      "status": "read",
+      "review_flag": "10° interpreted as angle to the axis (half angle); confirm"
+    },
+    {
+      "id": "taper_end_radius",
+      "value": 7.442,
+      "status": "derived",
+      "confidence": 0.8,
+      "source": "front view, '6 x 10°'",
+      "evidence": "8.5 - 6 * tan(10°) = 7.442",
+      "depends_on": [
+        "taper_angle_deg"
+      ]
+    },
+    {
+      "id": "pin_end_chamfer",
+      "value": [
+        0.5,
+        0.289
+      ],
+      "source": "front view, '0,5 x 30°'",
+      "confidence": 0.75,
+      "status": "derived",
+      "evidence": "axial 0.5, radial 0.5 * tan(30°) = 0.289",
+      "review_flag": "chamfer orientation (30° to the axis vs. to the face) interpreted; confirm"
+    },
+    {
+      "id": "collar_chamfer",
+      "value": [
+        0.5,
+        0.134
+      ],
+      "source": "top view, '0,5 x 15°'",
+      "confidence": 0.75,
+      "status": "derived",
+      "evidence": "axial 0.5, radial 0.5 * tan(15°) = 0.134",
+      "review_flag": "chamfer orientation (15° to the axis) interpreted; confirm"
+    },
+    {
+      "id": "end_chamfer",
+      "value": 0.5,
+      "source": "front view, '0,5 x 45°'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "thread_m10",
+      "value": "M10x0.75",
+      "source": "front view, 'M 10 x 0,75', length '6', 'Außenø 9,95-0,1'",
+      "confidence": 0.95,
+      "status": "read"
+    },
+    {
+      "id": "thread_m10_length",
+      "value": 6,
+      "source": "front view, '6'",
+      "confidence": 0.9,
+      "status": "read"
+    },
+    {
+      "id": "m3_thread_depth",
+      "value": 9,
+      "source": "Einzelheit W (5:1), '9'",
+      "confidence": 0.9,
+      "status": "read"
+    },
+    {
+      "id": "m3_drill_depth",
+      "value": 12,
+      "source": "Einzelheit W (5:1), '12'",
+      "confidence": 0.8,
+      "status": "read"
+    },
+    {
+      "id": "m3_tap_drill",
+      "value": 2.5,
+      "status": "derived",
+      "source": "ISO 261 table",
+      "confidence": 0.95,
+      "evidence": "ISO 261/2306 coarse thread M3: pitch 0.5, tap drill 2.5 mm"
+    },
+    {
+      "id": "m3_drill_tip",
+      "value": 12.751,
+      "status": "derived",
+      "source": "Einzelheit W",
+      "confidence": 0.8,
+      "evidence": "118° drill point: 12 + 1.25 / tan(59°) = 12.751"
+    },
+    {
+      "id": "recess_diameter",
+      "value": 3.4,
+      "source": "Einzelheit W, 'Ø3,4'",
+      "confidence": 0.9,
+      "status": "read"
+    },
+    {
+      "id": "recess_depth",
+      "value": 2,
+      "source": "Einzelheit W, '2'",
+      "confidence": 0.85,
+      "status": "read"
+    },
+    {
+      "id": "recess_countersink",
+      "value": [
+        0.5,
+        60
+      ],
+      "source": "Einzelheit W, '0,5' and '60°'",
+      "confidence": 0.7,
+      "status": "read",
+      "review_flag": "60° countersink at the bore mouth, 0.5 deep, interpreted from detail W; mouth Ø = 3.4 + 2*0.5*tan30 = 3.98"
+    },
+    {
+      "id": "collar_slot_width",
+      "value": 4,
+      "tolerance": "H10",
+      "source": "end view, '4 H10 (E)' (2x)",
+      "confidence": 0.95,
+      "status": "read"
+    },
+    {
+      "id": "collar_slot_bottom_distance",
+      "value": 6.1,
+      "tolerance": "+0/-0.05",
+      "source": "end view, '6,1 -0,05'",
+      "confidence": 0.9,
+      "status": "read"
+    },
+    {
+      "id": "collar_slot_length",
+      "value": 6,
+      "source": "top view, '6' from the collar face",
+      "confidence": 0.85,
+      "status": "read"
+    },
+    {
+      "id": "keyway_length",
+      "value": 16,
+      "tolerance": "+0.2/0",
+      "source": "front view, '16 +0,2'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "keyway_end_distance",
+      "value": 5.8,
+      "tolerance": "+0.1/0",
+      "source": "front view, '5,8 +0,1'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "keyway_width",
+      "value": 3,
+      "tolerance": "H10",
+      "source": "Schnitt A-A, '3 H10 (E)'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "keyway_depth",
+      "value": 1.8,
+      "tolerance": "+0.1/0",
+      "source": "Schnitt A-A, '1,8 +0,1'",
+      "confidence": 0.95,
+      "status": "read"
+    }
+  ],
+  "features": [
+    {
+      "id": "collar_slot_top",
+      "type": "extrusion",
+      "mode": "cut",
+      "plane": "XZ",
+      "offset": 3.05,
+      "distance": 4,
+      "profile": {
+        "slot": {
+          "center_1": [
+            0,
+            8
+          ],
+          "center_2": [
+            0,
+            14
+          ],
+          "width": 4
+        }
+      }
+    },
+    {
+      "id": "collar_slot_bottom",
+      "type": "extrusion",
+      "mode": "cut",
+      "plane": "XZ",
+      "offset": -3.05,
+      "distance": -4,
+      "profile": {
+        "slot": {
+          "center_1": [
+            0,
+            8
+          ],
+          "center_2": [
+            0,
+            14
+          ],
+          "width": 4
+        }
+      }
+    },
+    {
+      "id": "keyway_d10",
+      "type": "keyway",
+      "location": "shaft",
+      "form": "A",
+      "shaft_diameter": {
+        "value": 10,
+        "tolerance": "h10",
+        "source": "front view, 'Ø10 h10 (E)'",
+        "confidence": 1.0,
+        "status": "read"
+      },
+      "length": {
+        "value": 16,
+        "tolerance": "+0.2/0",
+        "source": "front view, '16 +0,2'",
+        "confidence": 1.0,
+        "status": "read"
+      },
+      "z_start": {
+        "value": 65.7,
+        "status": "derived",
+        "source": "front view, '87,5', '16', '5,8'",
+        "confidence": 0.95,
+        "evidence": "87.5 - 5.8 - 16 = 65.7"
+      },
+      "width": {
+        "value": 3,
+        "tolerance": "H10",
+        "source": "Schnitt A-A, '3 H10 (E)'",
+        "confidence": 1.0,
+        "status": "read"
+      },
+      "depth": {
+        "value": 1.8,
+        "tolerance": "+0.1/0",
+        "source": "Schnitt A-A, '1,8 +0,1'",
+        "confidence": 0.95,
+        "status": "read"
+      },
+      "angle_deg": 90,
+      "axis_position": [
+        0,
+        0
+      ]
+    }
+  ],
+  "review_flags": [
+    {
+      "field": "general_tolerance",
+      "severity": "info",
+      "reason": "No title block on the sheet: general tolerance, material, scale and projection symbol not given. First-angle projection (method 1) assumed; consistent with the end view and the top view."
+    },
+    {
+      "field": "taper_angle_deg",
+      "severity": "info",
+      "reason": "'6 x 10°' interpreted as a 6 mm long cone at 10° to the axis (Ø17 -> Ø14.88).",
+      "assumed_value": 10
+    },
+    {
+      "field": "pin_end_chamfer",
+      "severity": "info",
+      "reason": "'0,5 x 30°' modelled as 0.5 axial x 0.289 radial (30° to the axis)."
+    },
+    {
+      "field": "collar_chamfer",
+      "severity": "info",
+      "reason": "'0,5 x 15°' modelled as 0.5 axial x 0.134 radial (15° to the axis)."
+    },
+    {
+      "field": "recess_countersink",
+      "severity": "info",
+      "reason": "Detail W read as: 60° countersink 0.5 deep, Ø3.4 recess to depth 2, M3 thread depth 9, tap drill Ø2.5 to depth 12 with 118° point. The small 45° at the recess/edge in detail W is not modelled."
+    },
+    {
+      "field": "thread_m10",
+      "severity": "info",
+      "reason": "External thread M10x0,75 (6 long, outer Ø 9,95-0,1) modelled at the nominal Ø10; thread not modelled."
+    },
+    {
+      "field": "m3_thread_depth",
+      "severity": "info",
+      "reason": "Internal M3 thread modelled as the Ø2.5 tap-drill bore; thread depth 9 recorded only."
+    },
+    {
+      "field": "collar_slots",
+      "severity": "info",
+      "reason": "Two flats/slots in the Ø12 collar (4 H10 wide, bottoms 6,1 -0,05 apart, open at the collar face, round end R2 at z=16) modelled as cuts from top and bottom; slot length '6' read from the top view. Symmetry 0,1 CZ A-B recorded only."
+    },
+    {
+      "field": "undercuts",
+      "severity": "info",
+      "reason": "Details X and Y: small relief grooves (0.1 deep, R0.3, 15°) at the shoulders z=10, z=17.5 and z=55 are not modelled."
+    },
+    {
+      "field": "center_hole",
+      "severity": "info",
+      "reason": "Centre hole DIN 332 - A 2,0 x 4,25 at the M10 end face not modelled."
+    },
+    {
+      "field": "surface_and_edges",
+      "severity": "info",
+      "reason": "Surface texture: general Ra 6,3, Ra 1,6 on fits; edges ISO 13715 +0,4 / -0,1..-0,3; 'Beschriftungsfeld nicht konvex' marking area on Ø17."
+    },
+    {
+      "field": "geometric_tolerances",
+      "severity": "info",
+      "reason": "GD&T: circular run-out 0,1 A-B and flatness 0,1 on both Ø17 faces (datum C), run-out 0,1 A-B on Ø6, coaxiality Ø0,1 A-B on Ø12 (datum A) and Ø10 (datum B), coaxiality Ø0,1 B on M10 thread, symmetry 0,1 A-B on keyway and 0,1 CZ A-B on collar slots (datum D)."
+    },
+    {
+      "field": "fits",
+      "severity": "info",
+      "reason": "Fits from the drawing table: 3 H10 (3.000-3.040), 4 H10 (4.000-4.048), Ø6 h10 (5.952-6.000), Ø10 h10 (9.942-10.000), Ø12 h10 (11.930-12.000); envelope requirement (E) on all."
+    }
+  ]
+}

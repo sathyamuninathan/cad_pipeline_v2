@@ -1,0 +1,45 @@
+{
+  "standard": "ISO 2768-1",
+  "title": "General tolerances for linear and angular dimensions without individual tolerance (Allgemeintoleranzen)",
+  "units": "mm",
+  "notes": [
+    "Title block entry such as 'ISO 2768-mK' = part 1 class m (medium) for lengths and angles, part 2 class K for form and position.",
+    "Classes: f fine, m medium, c coarse, v very coarse. A dash means no value is defined for that range.",
+    "Applies to every dimension on the drawing that has no tolerance of its own.",
+    "Part 2 (H, K, L: straightness, flatness, perpendicularity, symmetry, run-out) is recorded but not tabulated here."
+  ],
+  "verify_against": "Tabellenbuch Metall, 'Allgemeintoleranzen'",
+  "classes": ["f", "m", "c", "v"],
+  "linear": {
+    "columns": ["over", "upto", "f", "m", "c", "v"],
+    "rows": [
+      [0.5, 3, 0.05, 0.1, 0.2, null],
+      [3, 6, 0.05, 0.1, 0.3, 0.5],
+      [6, 30, 0.1, 0.2, 0.5, 1.0],
+      [30, 120, 0.15, 0.3, 0.8, 1.5],
+      [120, 400, 0.2, 0.5, 1.2, 2.5],
+      [400, 1000, 0.3, 0.8, 2.0, 4.0],
+      [1000, 2000, 0.5, 1.2, 3.0, 6.0],
+      [2000, 4000, null, 2.0, 4.0, 8.0]
+    ]
+  },
+  "radius_chamfer": {
+    "columns": ["over", "upto", "f", "m", "c", "v"],
+    "rows": [
+      [0.5, 3, 0.2, 0.2, 0.4, 0.4],
+      [3, 6, 0.5, 0.5, 1.0, 1.0],
+      [6, null, 1.0, 1.0, 2.0, 2.0]
+    ]
+  },
+  "angular_deg": {
+    "comment": "Length is the shorter leg of the angle, in mm. Values in decimal degrees (0.5 = 30').",
+    "columns": ["over", "upto", "f", "m", "c", "v"],
+    "rows": [
+      [0, 10, 1.0, 1.0, 1.5, 3.0],
+      [10, 50, 0.5, 0.5, 1.0, 2.0],
+      [50, 120, 0.333, 0.333, 0.5, 1.0],
+      [120, 400, 0.167, 0.167, 0.25, 0.5],
+      [400, null, 0.083, 0.083, 0.167, 0.333]
+    ]
+  }
+}

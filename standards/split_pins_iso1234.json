@@ -1,0 +1,27 @@
+{
+  "standard": "ISO 1234 (DIN 94)",
+  "title": "Split pins (Splinte)",
+  "units": "mm",
+  "notes": [
+    "Callout: 'Splint ISO 1234 - 5 x 40' = nominal size 5 (the hole it fits), length 40 measured from under the eye to the end of the shorter leg.",
+    "The nominal size is the hole diameter; the pin wire itself is thinner (d max).",
+    "Wire cross-section is two half-rounds; the eye is formed from the same wire. a = leg length difference allowance, b = extended leg overhang, c = eye outer width."
+  ],
+  "verify_against": "Tabellenbuch Metall, 'Splinte'",
+  "columns": ["nominal", "d_max", "c_max_eye", "b_approx", "a_max"],
+  "rows": [
+    [1.0, 0.9, 1.8, 3.0, 1.6],
+    [1.2, 1.0, 2.0, 3.0, 2.5],
+    [1.6, 1.4, 2.8, 3.2, 2.5],
+    [2.0, 1.8, 3.6, 4.0, 2.5],
+    [2.5, 2.3, 4.6, 5.0, 2.5],
+    [3.2, 2.9, 5.8, 6.4, 3.2],
+    [4.0, 3.7, 7.4, 8.0, 4.0],
+    [5.0, 4.6, 9.2, 10.0, 4.0],
+    [6.3, 5.9, 11.8, 12.6, 4.0],
+    [8.0, 7.5, 15.0, 16.0, 4.0],
+    [10.0, 9.5, 19.0, 20.0, 6.3],
+    [13.0, 12.4, 24.8, 26.0, 6.3]
+  ],
+  "standard_lengths": [4, 5, 6, 8, 10, 12, 14, 16, 18, 20, 22, 25, 28, 32, 36, 40, 45, 50, 56, 63, 71, 80, 90, 100, 112, 125, 140, 160, 180, 200]
+}

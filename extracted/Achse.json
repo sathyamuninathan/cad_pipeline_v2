@@ -1,0 +1,265 @@
+{
+  "schema_version": "0.1",
+  "part_id": "Achse",
+  "drawing_file": "Achse.pdf",
+  "units": "mm",
+  "drawing_scale": "2.5:1",
+  "coordinate_system": {
+    "origin": "center of flange face (z=0) on the part axis",
+    "x": "radial",
+    "y": "radial",
+    "z": "along axis, flange at z=0, free end at z=17.1"
+  },
+  "base_body": {
+    "type": "revolved_profile",
+    "profile": {
+      "segments": [
+        {
+          "type": "line",
+          "from": [
+            0,
+            0
+          ],
+          "to": [
+            6.5,
+            0
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            6.5,
+            0
+          ],
+          "to": [
+            6.5,
+            1.1
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            6.5,
+            1.1
+          ],
+          "to": [
+            5,
+            1.1
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            5,
+            1.1
+          ],
+          "to": [
+            5,
+            15.9
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            5,
+            15.9
+          ],
+          "to": [
+            4.8,
+            15.9
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            4.8,
+            15.9
+          ],
+          "to": [
+            4.8,
+            16.4
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            4.8,
+            16.4
+          ],
+          "to": [
+            5,
+            16.4
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            5,
+            16.4
+          ],
+          "to": [
+            5,
+            16.8
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            5,
+            16.8
+          ],
+          "to": [
+            4.7,
+            17.1
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            4.7,
+            17.1
+          ],
+          "to": [
+            0,
+            17.1
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            0,
+            17.1
+          ],
+          "to": [
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "dimensions": [
+    {
+      "id": "overall_length",
+      "value": 17.1,
+      "status": "read",
+      "source": "front view, '17,1'",
+      "confidence": 1.0
+    },
+    {
+      "id": "flange_thickness",
+      "value": 1.1,
+      "status": "derived",
+      "source": "17,1 - 16",
+      "evidence": "17.1-16=1.1",
+      "confidence": 0.9
+    },
+    {
+      "id": "flange_diameter",
+      "value": 13,
+      "status": "read",
+      "source": "front view, 'Ø13'",
+      "confidence": 1.0
+    },
+    {
+      "id": "shank_diameter",
+      "value": 10,
+      "status": "read",
+      "source": "front view, 'Ø10 h6'",
+      "confidence": 1.0
+    },
+    {
+      "id": "groove_diameter",
+      "value": 9.6,
+      "status": "read",
+      "source": "front view, 'Ø9,6 h10'",
+      "confidence": 0.9
+    },
+    {
+      "id": "groove_start_z",
+      "value": 15.9,
+      "status": "assumed",
+      "source": "front view, '15 +0,2/+0,1', '1,1'",
+      "confidence": 0.4,
+      "evidence": "the 15 dimension starts at the flange back face (z=1.1) and ends at the groove edge; the '1,1' dimension at the end gives the groove/end-ring zone width; groove start estimated from drawing proportions as 17.1 - 1.2 = 15.9",
+      "review_flag": "groove position and width unclear from the dimension chain; estimated from the drawing proportions"
+    },
+    {
+      "id": "groove_end_z",
+      "value": 16.4,
+      "status": "assumed",
+      "source": "front view, '1,1'",
+      "confidence": 0.4,
+      "evidence": "groove width estimated as 0.5 mm from the drawing proportions (groove start 15.9 + 0.5 = 16.4), leaving a land of about 0.7 mm including the 0.3 chamfer",
+      "review_flag": "groove width estimated from the drawing proportions"
+    },
+    {
+      "id": "end_chamfer",
+      "value": 0.3,
+      "status": "read",
+      "source": "front view, '0,3 x 45°'",
+      "confidence": 0.8
+    }
+  ],
+  "features": [
+    {
+      "id": "bore_1",
+      "type": "threaded_hole",
+      "through": false,
+      "depth": {
+        "value": 14,
+        "status": "read",
+        "source": "section A-A, '14'",
+        "confidence": 0.8
+      },
+      "thread": {
+        "value": "M6",
+        "status": "read",
+        "source": "section A-A, 'M 6'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          0,
+          0
+        ],
+        "status": "derived",
+        "source": "on the axis",
+        "evidence": "concentric with the part axis",
+        "confidence": 0.9
+      },
+      "axis": "z",
+      "from_side": "min",
+      "modeled_diameter": {
+        "value": 5.0,
+        "status": "derived",
+        "evidence": "ISO coarse thread M6: tap drill 5.0 mm",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "review_flags": [
+    {
+      "field": "groove_start_z",
+      "severity": "blocking_until_confirmed",
+      "reason": "groove position ambiguous on the drawing",
+      "assumed_value": 15.9
+    },
+    {
+      "field": "groove_end_z",
+      "severity": "blocking_until_confirmed",
+      "reason": "groove width ambiguous on the drawing",
+      "assumed_value": 16.4
+    },
+    {
+      "field": "bore_1",
+      "severity": "info",
+      "reason": "the 9 mm line is assumed to be the thread length; the cone tip of the drill (about 118°) is not modelled; the bore is drilled from the flange face (z=0), assumed from section A-A"
+    },
+    {
+      "field": "base_body.profile",
+      "severity": "info",
+      "reason": "the 0.3x45° chamfer is applied to the end edge only; the groove edges are left unchamfered"
+    }
+  ]
+}

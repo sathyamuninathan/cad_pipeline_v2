@@ -1,0 +1,29 @@
+{
+  "standard": "DIN 509 (undercuts for ground shoulders) / DIN 76-1 (thread runouts and undercuts)",
+  "title": "Undercuts and thread runouts (Freistiche, Gewindeauslaeufe)",
+  "units": "mm",
+  "notes": [
+    "DIN 509 callout: 'DIN 509 - E1x0,4' or 'Freistich DIN 509 - F 0,6x0,3' = form, radius r x depth t1.",
+    "Form E: relief into the cylindrical surface only (shaft ground on the diameter). Form F: relief into the cylinder and the shoulder face (both ground).",
+    "Undercuts change the volume very little. Model them only when the drawing dimensions them; otherwise record them in an info review flag.",
+    "Values below are approximate design values; check width f and the recommended diameter range in the Tabellenbuch before relying on them.",
+    "Thread runout (DIN 76-1): for an external thread the incomplete thread x1 is about 2.5 * P; for an internal thread e1 is about 4 * P (normal). Use only when the drawing does not dimension the usable thread length."
+  ],
+  "verify_against": "Tabellenbuch Metall, 'Freistiche'",
+  "verify": true,
+  "columns": ["designation", "radius_r", "depth_t1", "width_f_approx"],
+  "rows": [
+    ["0.4x0.2", 0.4, 0.2, 2.0],
+    ["0.6x0.2", 0.6, 0.2, 2.0],
+    ["0.6x0.3", 0.6, 0.3, 2.5],
+    ["0.8x0.3", 0.8, 0.3, 2.5],
+    ["1x0.2",   1.0, 0.2, 2.5],
+    ["1x0.4",   1.0, 0.4, 4.0],
+    ["1.2x0.2", 1.2, 0.2, 2.5],
+    ["1.2x0.4", 1.2, 0.4, 4.0],
+    ["1.6x0.3", 1.6, 0.3, 4.0],
+    ["2.5x0.4", 2.5, 0.4, 5.0],
+    ["4x0.5",   4.0, 0.5, 7.0]
+  ],
+  "thread_runout_factors": {"external_x1_normal": 2.5, "internal_e1_normal": 4.0}
+}

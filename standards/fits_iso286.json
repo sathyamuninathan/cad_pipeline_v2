@@ -1,0 +1,53 @@
+{
+  "standard": "ISO 286-1 / ISO 286-2",
+  "title": "ISO system of limits and fits (ISO-Passungen)",
+  "units": "micrometres (um) in the tables; the lookup returns mm",
+  "notes": [
+    "A fit callout is letter(s) + IT grade: 'H7' (hole, capital letter), 'g6' (shaft, small letter). '20 H7/g6' is a fit between a 20 H7 bore and a 20 g6 shaft.",
+    "Tolerance band width = IT grade value for the size range.",
+    "Shafts a..h: upper deviation es = fundamental deviation (<= 0), lower ei = es - IT.",
+    "Shafts k..zc: lower deviation ei = fundamental deviation (>= 0), upper es = ei + IT.",
+    "Holes A..H: lower deviation EI = -es of the same small letter (H: EI = 0), upper ES = EI + IT. Valid for F, G, H, E at all grades.",
+    "js / JS: symmetric, +-IT/2.",
+    "k: the fundamental deviation in the table applies for IT4..IT7; for other grades ei = 0.",
+    "Not included: hole letters K, M, N, P and above (they need the delta correction from ISO 286-1) and shafts r, s and above. The lookup reports these as unsupported instead of guessing.",
+    "Size ranges are 'over .. up to and including'. The model is always built at the nominal size; the deviations go into the report."
+  ],
+  "verify_against": "Tabellenbuch Metall, 'ISO-Toleranzen fuer Bohrungen / Wellen'",
+  "size_ranges": [[0, 3], [3, 6], [6, 10], [10, 18], [18, 30], [30, 50], [50, 80], [80, 120], [120, 180], [180, 250], [250, 315], [315, 400], [400, 500]],
+  "it_grades": {
+    "IT5":  [4, 5, 6, 8, 9, 11, 13, 15, 18, 20, 23, 25, 27],
+    "IT6":  [6, 8, 9, 11, 13, 16, 19, 22, 25, 29, 32, 36, 40],
+    "IT7":  [10, 12, 15, 18, 21, 25, 30, 35, 40, 46, 52, 57, 63],
+    "IT8":  [14, 18, 22, 27, 33, 39, 46, 54, 63, 72, 81, 89, 97],
+    "IT9":  [25, 30, 36, 43, 52, 62, 74, 87, 100, 115, 130, 140, 155],
+    "IT10": [40, 48, 58, 70, 84, 100, 120, 140, 160, 185, 210, 230, 250],
+    "IT11": [60, 75, 90, 110, 130, 160, 190, 220, 250, 290, 320, 360, 400],
+    "IT12": [100, 120, 150, 180, 210, 250, 300, 350, 400, 460, 520, 570, 630],
+    "IT13": [140, 180, 220, 270, 330, 390, 460, 540, 630, 720, 810, 890, 970],
+    "IT14": [250, 300, 360, 430, 520, 620, 740, 870, 1000, 1150, 1300, 1400, 1550]
+  },
+  "shaft_upper_deviation_es": {
+    "e": [-14, -20, -25, -32, -40, -50, -60, -72, -85, -100, -110, -125, -135],
+    "f": [-6, -10, -13, -16, -20, -25, -30, -36, -43, -50, -56, -62, -68],
+    "g": [-2, -4, -5, -6, -7, -9, -10, -12, -14, -15, -17, -18, -20],
+    "h": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  },
+  "shaft_lower_deviation_ei": {
+    "k": [0, 1, 1, 1, 2, 2, 2, 3, 3, 4, 4, 4, 5],
+    "m": [2, 4, 6, 7, 8, 9, 11, 13, 15, 17, 20, 21, 23],
+    "n": [4, 8, 10, 12, 15, 17, 20, 23, 27, 31, 34, 37, 40],
+    "p": [6, 12, 15, 18, 22, 26, 32, 37, 43, 50, 56, 62, 68]
+  },
+  "hole_letters_supported": ["E", "F", "G", "H", "JS"],
+  "common_fits": {
+    "H7/g6": "sliding fit (Gleitsitz): parts move, small clearance",
+    "H7/h6": "locational clearance fit (Schiebesitz)",
+    "H7/k6": "transition fit (Uebergangssitz): hub on shaft, easy assembly",
+    "H7/m6": "transition fit, tighter",
+    "H7/n6": "transition to light press fit",
+    "H7/p6": "light press fit (Presssitz)",
+    "H7/f7": "running fit (Laufsitz)",
+    "H8/e8": "loose running fit"
+  }
+}

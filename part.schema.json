@@ -1,0 +1,1713 @@
+{
+  "$defs": {
+    "Arc": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "arc",
+          "title": "Type",
+          "type": "string"
+        },
+        "center": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Center",
+          "type": "array"
+        },
+        "radius": {
+          "exclusiveMinimum": 0,
+          "title": "Radius",
+          "type": "number"
+        },
+        "from": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "From"
+        },
+        "to": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "To"
+        },
+        "clockwise": {
+          "default": false,
+          "title": "Clockwise",
+          "type": "boolean"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        }
+      },
+      "required": [
+        "type",
+        "center",
+        "radius"
+      ],
+      "title": "Arc",
+      "type": "object"
+    },
+    "CircleShape": {
+      "additionalProperties": false,
+      "properties": {
+        "center": {
+          "default": [
+            0,
+            0
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Center",
+          "type": "array"
+        },
+        "radius": {
+          "exclusiveMinimum": 0,
+          "title": "Radius",
+          "type": "number"
+        }
+      },
+      "required": [
+        "radius"
+      ],
+      "title": "CircleShape",
+      "type": "object"
+    },
+    "Counterbore": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "counterbore",
+          "title": "Type",
+          "type": "string"
+        },
+        "screw": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Value"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "series": {
+          "default": "medium",
+          "enum": [
+            "fine",
+            "medium",
+            "coarse"
+          ],
+          "title": "Series",
+          "type": "string"
+        },
+        "position": {
+          "$ref": "#/$defs/Value"
+        },
+        "hole_diameter": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Value"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "counterbore_diameter": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Value"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "counterbore_depth": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Value"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "through": {
+          "default": true,
+          "title": "Through",
+          "type": "boolean"
+        },
+        "depth": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Value"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "axis": {
+          "default": "z",
+          "enum": [
+            "x",
+            "y",
+            "z"
+          ],
+          "title": "Axis",
+          "type": "string"
+        },
+        "from_side": {
+          "default": "max",
+          "enum": [
+            "max",
+            "min"
+          ],
+          "title": "From Side",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "position"
+      ],
+      "title": "Counterbore",
+      "type": "object"
+    },
+    "Countersink": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "countersink",
+          "title": "Type",
+          "type": "string"
+        },
+        "screw": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Value"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "series": {
+          "default": "medium",
+          "enum": [
+            "fine",
+            "medium",
+            "coarse"
+          ],
+          "title": "Series",
+          "type": "string"
+        },
+        "position": {
+          "$ref": "#/$defs/Value"
+        },
+        "hole_diameter": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Value"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "countersink_diameter": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Value"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "angle_deg": {
+          "default": 90,
+          "exclusiveMaximum": 180,
+          "exclusiveMinimum": 0,
+          "title": "Angle Deg",
+          "type": "number"
+        },
+        "through": {
+          "default": true,
+          "title": "Through",
+          "type": "boolean"
+        },
+        "depth": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Value"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "axis": {
+          "default": "z",
+          "enum": [
+            "x",
+            "y",
+            "z"
+          ],
+          "title": "Axis",
+          "type": "string"
+        },
+        "from_side": {
+          "default": "max",
+          "enum": [
+            "max",
+            "min"
+          ],
+          "title": "From Side",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "position"
+      ],
+      "title": "Countersink",
+      "type": "object"
+    },
+    "Dimension": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Status"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "confidence": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confidence"
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence"
+        },
+        "depends_on": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Depends On",
+          "type": "array"
+        },
+        "review_flag": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Review Flag"
+        },
+        "tolerance": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tolerance"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "count": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Count"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "title": "Dimension",
+      "type": "object"
+    },
+    "ExtrudedProfile": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "extruded_profile",
+          "title": "Type",
+          "type": "string"
+        },
+        "profile": {
+          "$ref": "#/$defs/Profile"
+        },
+        "extrude_height": {
+          "exclusiveMinimum": 0,
+          "title": "Extrude Height",
+          "type": "number"
+        }
+      },
+      "required": [
+        "type",
+        "profile",
+        "extrude_height"
+      ],
+      "title": "ExtrudedProfile",
+      "type": "object"
+    },
+    "Extrusion": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "extrusion",
+          "title": "Type",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "add",
+            "cut"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "plane": {
+          "default": "XY",
+          "enum": [
+            "XY",
+            "XZ",
+            "YZ"
+          ],
+          "title": "Plane",
+          "type": "string"
+        },
+        "offset": {
+          "default": 0,
+          "title": "Offset",
+          "type": "number"
+        },
+        "distance": {
+          "title": "Distance",
+          "type": "number"
+        },
+        "profile": {
+          "$ref": "#/$defs/Profile"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "mode",
+        "distance",
+        "profile"
+      ],
+      "title": "Extrusion",
+      "type": "object"
+    },
+    "GroundTruth": {
+      "additionalProperties": false,
+      "properties": {
+        "bbox": {
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Bbox",
+          "type": "array"
+        },
+        "bbox_min": {
+          "anyOf": [
+            {
+              "maxItems": 3,
+              "minItems": 3,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bbox Min"
+        },
+        "volume": {
+          "title": "Volume",
+          "type": "number"
+        },
+        "holes": {
+          "default": [],
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Holes",
+          "type": "array"
+        },
+        "slots": {
+          "default": [],
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Slots",
+          "type": "array"
+        }
+      },
+      "required": [
+        "bbox",
+        "volume"
+      ],
+      "title": "GroundTruth",
+      "type": "object"
+    },
+    "Hole": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "hole",
+          "title": "Type",
+          "type": "string"
+        },
+        "through": {
+          "default": true,
+          "title": "Through",
+          "type": "boolean"
+        },
+        "diameter": {
+          "$ref": "#/$defs/Value"
+        },
+        "position": {
+          "$ref": "#/$defs/Value"
+        },
+        "depth": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Value"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "chamfer": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Value"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "axis": {
+          "default": "z",
+          "enum": [
+            "x",
+            "y",
+            "z"
+          ],
+          "title": "Axis",
+          "type": "string"
+        },
+        "from_side": {
+          "default": "max",
+          "enum": [
+            "max",
+            "min"
+          ],
+          "title": "From Side",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "diameter",
+        "position"
+      ],
+      "title": "Hole",
+      "type": "object"
+    },
+    "Keyway": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "keyway",
+          "title": "Type",
+          "type": "string"
+        },
+        "location": {
+          "default": "shaft",
+          "enum": [
+            "shaft",
+            "hub"
+          ],
+          "title": "Location",
+          "type": "string"
+        },
+        "form": {
+          "default": "A",
+          "enum": [
+            "A",
+            "B"
+          ],
+          "title": "Form",
+          "type": "string"
+        },
+        "shaft_diameter": {
+          "$ref": "#/$defs/Value"
+        },
+        "length": {
+          "$ref": "#/$defs/Value"
+        },
+        "z_start": {
+          "$ref": "#/$defs/Value"
+        },
+        "width": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Value"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "depth": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Value"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "angle_deg": {
+          "default": 0,
+          "title": "Angle Deg",
+          "type": "number"
+        },
+        "axis_position": {
+          "default": [
+            0,
+            0
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Axis Position",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "shaft_diameter",
+        "length",
+        "z_start"
+      ],
+      "title": "Keyway",
+      "type": "object"
+    },
+    "Line": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "line",
+          "title": "Type",
+          "type": "string"
+        },
+        "from": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "From",
+          "type": "array"
+        },
+        "to": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "To",
+          "type": "array"
+        },
+        "angle_deg": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Angle Deg"
+        }
+      },
+      "required": [
+        "type",
+        "from",
+        "to"
+      ],
+      "title": "Line",
+      "type": "object"
+    },
+    "Profile": {
+      "additionalProperties": false,
+      "properties": {
+        "shape": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Shape"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "segments": {
+          "anyOf": [
+            {
+              "items": {
+                "discriminator": {
+                  "mapping": {
+                    "arc": "#/$defs/Arc",
+                    "line": "#/$defs/Line"
+                  },
+                  "propertyName": "type"
+                },
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/Line"
+                  },
+                  {
+                    "$ref": "#/$defs/Arc"
+                  }
+                ]
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Segments"
+        },
+        "circle": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CircleShape"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "rectangle": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RectangleShape"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "slot": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SlotShape"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "title": "Profile",
+      "type": "object"
+    },
+    "RectangleShape": {
+      "additionalProperties": false,
+      "properties": {
+        "center": {
+          "default": [
+            0,
+            0
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Center",
+          "type": "array"
+        },
+        "size": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Size",
+          "type": "array"
+        },
+        "corner_radius": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Corner Radius",
+          "type": "number"
+        }
+      },
+      "required": [
+        "size"
+      ],
+      "title": "RectangleShape",
+      "type": "object"
+    },
+    "RetainingGroove": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "retaining_groove",
+          "title": "Type",
+          "type": "string"
+        },
+        "location": {
+          "default": "shaft",
+          "enum": [
+            "shaft",
+            "bore"
+          ],
+          "title": "Location",
+          "type": "string"
+        },
+        "nominal_diameter": {
+          "$ref": "#/$defs/Value"
+        },
+        "z_start": {
+          "$ref": "#/$defs/Value"
+        },
+        "groove_diameter": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Value"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "width": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Value"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "axis_position": {
+          "default": [
+            0,
+            0
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Axis Position",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "nominal_diameter",
+        "z_start"
+      ],
+      "title": "RetainingGroove",
+      "type": "object"
+    },
+    "ReviewFlag": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "title": "Field",
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "info",
+            "warning",
+            "blocking_until_confirmed"
+          ],
+          "title": "Severity",
+          "type": "string"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        },
+        "assumed_value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Assumed Value"
+        }
+      },
+      "required": [
+        "field",
+        "severity",
+        "reason"
+      ],
+      "title": "ReviewFlag",
+      "type": "object"
+    },
+    "Revolution": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "revolution",
+          "title": "Type",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "add",
+            "cut"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "axis_position": {
+          "default": [
+            0,
+            0
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Axis Position",
+          "type": "array"
+        },
+        "profile": {
+          "$ref": "#/$defs/Profile"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "mode",
+        "profile"
+      ],
+      "title": "Revolution",
+      "type": "object"
+    },
+    "RevolvedProfile": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "revolved_profile",
+          "title": "Type",
+          "type": "string"
+        },
+        "profile": {
+          "$ref": "#/$defs/Profile"
+        },
+        "axis": {
+          "const": "z",
+          "default": "z",
+          "title": "Axis",
+          "type": "string"
+        },
+        "angle_deg": {
+          "default": 360,
+          "exclusiveMinimum": 0,
+          "maximum": 360,
+          "title": "Angle Deg",
+          "type": "number"
+        }
+      },
+      "required": [
+        "type",
+        "profile"
+      ],
+      "title": "RevolvedProfile",
+      "type": "object"
+    },
+    "Script": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "code": {
+          "maxLength": 20000,
+          "minLength": 1,
+          "title": "Code",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "description",
+        "code"
+      ],
+      "title": "Script",
+      "type": "object"
+    },
+    "Slot": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "slot",
+          "title": "Type",
+          "type": "string"
+        },
+        "through": {
+          "default": true,
+          "title": "Through",
+          "type": "boolean"
+        },
+        "width": {
+          "$ref": "#/$defs/Value"
+        },
+        "arc_center_1": {
+          "$ref": "#/$defs/Value"
+        },
+        "arc_center_2": {
+          "$ref": "#/$defs/Value"
+        },
+        "depth": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Value"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "width",
+        "arc_center_1",
+        "arc_center_2"
+      ],
+      "title": "Slot",
+      "type": "object"
+    },
+    "SlotShape": {
+      "additionalProperties": false,
+      "properties": {
+        "center_1": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Center 1",
+          "type": "array"
+        },
+        "center_2": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Center 2",
+          "type": "array"
+        },
+        "width": {
+          "exclusiveMinimum": 0,
+          "title": "Width",
+          "type": "number"
+        }
+      },
+      "required": [
+        "center_1",
+        "center_2",
+        "width"
+      ],
+      "title": "SlotShape",
+      "type": "object"
+    },
+    "Status": {
+      "enum": [
+        "read",
+        "derived",
+        "assumed",
+        "origin"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "ThreadedHole": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "threaded_hole",
+          "title": "Type",
+          "type": "string"
+        },
+        "through": {
+          "default": true,
+          "title": "Through",
+          "type": "boolean"
+        },
+        "thread": {
+          "$ref": "#/$defs/Value"
+        },
+        "modeled_diameter": {
+          "$ref": "#/$defs/Value"
+        },
+        "position": {
+          "$ref": "#/$defs/Value"
+        },
+        "depth": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Value"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "axis": {
+          "default": "z",
+          "enum": [
+            "x",
+            "y",
+            "z"
+          ],
+          "title": "Axis",
+          "type": "string"
+        },
+        "from_side": {
+          "default": "max",
+          "enum": [
+            "max",
+            "min"
+          ],
+          "title": "From Side",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "thread",
+        "modeled_diameter",
+        "position"
+      ],
+      "title": "ThreadedHole",
+      "type": "object"
+    },
+    "Value": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Status"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "confidence": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confidence"
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence"
+        },
+        "depends_on": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Depends On",
+          "type": "array"
+        },
+        "review_flag": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Review Flag"
+        },
+        "tolerance": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tolerance"
+        }
+      },
+      "title": "Value",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "part_id": {
+      "title": "Part Id",
+      "type": "string"
+    },
+    "drawing_file": {
+      "title": "Drawing File",
+      "type": "string"
+    },
+    "reference_step": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Reference Step"
+    },
+    "units": {
+      "const": "mm",
+      "title": "Units",
+      "type": "string"
+    },
+    "drawing_scale": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Drawing Scale"
+    },
+    "general_tolerance": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "General Tolerance"
+    },
+    "coordinate_system": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Coordinate System",
+      "type": "object"
+    },
+    "base_body": {
+      "discriminator": {
+        "mapping": {
+          "extruded_profile": "#/$defs/ExtrudedProfile",
+          "revolved_profile": "#/$defs/RevolvedProfile"
+        },
+        "propertyName": "type"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ExtrudedProfile"
+        },
+        {
+          "$ref": "#/$defs/RevolvedProfile"
+        }
+      ],
+      "title": "Base Body"
+    },
+    "dimensions": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/Dimension"
+      },
+      "title": "Dimensions",
+      "type": "array"
+    },
+    "features": {
+      "default": [],
+      "items": {
+        "discriminator": {
+          "mapping": {
+            "counterbore": "#/$defs/Counterbore",
+            "countersink": "#/$defs/Countersink",
+            "extrusion": "#/$defs/Extrusion",
+            "hole": "#/$defs/Hole",
+            "keyway": "#/$defs/Keyway",
+            "retaining_groove": "#/$defs/RetainingGroove",
+            "revolution": "#/$defs/Revolution",
+            "slot": "#/$defs/Slot",
+            "threaded_hole": "#/$defs/ThreadedHole"
+          },
+          "propertyName": "type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/$defs/Hole"
+          },
+          {
+            "$ref": "#/$defs/ThreadedHole"
+          },
+          {
+            "$ref": "#/$defs/Slot"
+          },
+          {
+            "$ref": "#/$defs/Extrusion"
+          },
+          {
+            "$ref": "#/$defs/Revolution"
+          },
+          {
+            "$ref": "#/$defs/Counterbore"
+          },
+          {
+            "$ref": "#/$defs/Countersink"
+          },
+          {
+            "$ref": "#/$defs/Keyway"
+          },
+          {
+            "$ref": "#/$defs/RetainingGroove"
+          }
+        ]
+      },
+      "title": "Features",
+      "type": "array"
+    },
+    "scripts": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/Script"
+      },
+      "title": "Scripts",
+      "type": "array"
+    },
+    "review_flags": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ReviewFlag"
+      },
+      "title": "Review Flags",
+      "type": "array"
+    },
+    "ground_truth_check": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/GroundTruth"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "schema_version",
+    "part_id",
+    "drawing_file",
+    "units",
+    "coordinate_system",
+    "base_body"
+  ],
+  "title": "Part",
+  "type": "object"
+}

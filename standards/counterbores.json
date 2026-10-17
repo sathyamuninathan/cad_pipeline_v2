@@ -1,0 +1,37 @@
+{
+  "standard": "DIN 974-1 (counterbores) for ISO 4762 / DIN 912 socket head cap screws; ISO 10642 for countersunk heads",
+  "title": "Counterbores and countersinks for screw heads (Senkungen)",
+  "units": "mm",
+  "notes": [
+    "Counterbore callout on a drawing: 'DIN 974 - 11 x 6,4' (diameter x depth) or the symbols 'U+2334 11 ↧ 6,4'. If the drawing gives numbers, use the drawing; the table is the fallback when only the screw is named, e.g. 'Senkung DIN 974 - M6 ISO 4762'.",
+    "Counterbore depth here is for the head flush with or slightly below the surface (row 1, no washer).",
+    "Countersink: 90 degrees for ISO 10642 / DIN 7991. The table gives the head diameter dk; the countersink diameter on the part is usually dk plus a small allowance (about 0.2 to 0.5 mm). Use the drawing value when given and flag the assumption otherwise."
+  ],
+  "verify_against": "Tabellenbuch Metall, 'Senkungen fuer Zylinderschrauben' and 'Senkungen fuer Senkschrauben'",
+  "counterbore_iso4762": {
+    "columns": ["head_diameter_dk", "head_height_k", "counterbore_diameter", "counterbore_depth"],
+    "3":  [5.5, 3.0, 6.5, 3.4],
+    "4":  [7.0, 4.0, 8.0, 4.4],
+    "5":  [8.5, 5.0, 10.0, 5.4],
+    "6":  [10.0, 6.0, 11.0, 6.4],
+    "8":  [13.0, 8.0, 15.0, 8.6],
+    "10": [16.0, 10.0, 18.0, 10.6],
+    "12": [18.0, 12.0, 20.0, 12.6],
+    "16": [24.0, 16.0, 26.0, 16.6],
+    "20": [30.0, 20.0, 33.0, 20.6],
+    "24": [36.0, 24.0, 40.0, 24.8]
+  },
+  "countersunk_head_iso10642": {
+    "columns": ["head_diameter_dk_max", "angle_deg"],
+    "3":  [6.72, 90],
+    "4":  [8.96, 90],
+    "5":  [11.2, 90],
+    "6":  [13.44, 90],
+    "8":  [17.92, 90],
+    "10": [22.4, 90],
+    "12": [26.88, 90],
+    "16": [33.6, 90],
+    "20": [40.32, 90]
+  },
+  "countersink_allowance": 0.3
+}

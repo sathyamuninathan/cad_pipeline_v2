@@ -1,0 +1,217 @@
+{
+  "schema_version": "0.1",
+  "part_id": "Sensoraufnahme",
+  "drawing_file": "Sensoraufnahme.pdf",
+  "units": "mm",
+  "coordinate_system": {
+    "origin": "bottom-left corner of the plate in the top view, bottom face",
+    "x": "to the right in the top view",
+    "y": "upward in the top view",
+    "z": "plate thickness, bottom face at z=0"
+  },
+  "base_body": {
+    "type": "extruded_profile",
+    "extrude_height": 5,
+    "profile": {
+      "description": "Rectangle 49 long with a full semicircular right end, width assumed 20",
+      "segments": [
+        {
+          "type": "line",
+          "from": [
+            0.0,
+            0.0
+          ],
+          "to": [
+            39.0,
+            0.0
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            39.0,
+            10.0
+          ],
+          "radius": 10.0,
+          "from": [
+            39.0,
+            0.0
+          ],
+          "to": [
+            39.0,
+            20.0
+          ],
+          "clockwise": false
+        },
+        {
+          "type": "line",
+          "from": [
+            39.0,
+            20.0
+          ],
+          "to": [
+            0.0,
+            20.0
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            0.0,
+            20.0
+          ],
+          "to": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    }
+  },
+  "dimensions": [
+    {
+      "id": "thickness",
+      "value": 5,
+      "status": "read",
+      "source": "section A-A, '5'",
+      "confidence": 1.0
+    },
+    {
+      "id": "overall_length",
+      "value": 49,
+      "status": "read",
+      "source": "top view, '49'",
+      "confidence": 1.0
+    },
+    {
+      "id": "plate_width",
+      "value": 20,
+      "status": "assumed",
+      "source": "not dimensioned; scaled from top view",
+      "confidence": 0.6,
+      "evidence": "Scaled from the top view: the 49 mm length spans about 517 px (about 10.55 px/mm) and the plate height spans about 211 px, giving 211 / 10.55 = 20.0 mm. The slot width 5.5 mm (about 58 px) is consistent with this scale.",
+      "review_flag": "plate width not dimensioned; value taken from the drawing scale only"
+    },
+    {
+      "id": "end_radius",
+      "value": 10,
+      "status": "derived",
+      "source": "not dimensioned",
+      "confidence": 0.6,
+      "evidence": "full semicircular end, width/2",
+      "depends_on": [
+        "plate_width"
+      ]
+    },
+    {
+      "id": "slot_width",
+      "value": 5.5,
+      "status": "read",
+      "source": "top view, '5,5'",
+      "confidence": 1.0
+    },
+    {
+      "id": "slot_center_1_x",
+      "value": 5,
+      "status": "read",
+      "source": "top view, '5'",
+      "confidence": 0.9
+    },
+    {
+      "id": "slot_center_2_x",
+      "value": 15,
+      "status": "read",
+      "source": "top view, '15'",
+      "confidence": 0.9
+    }
+  ],
+  "features": [
+    {
+      "id": "slot_1",
+      "type": "slot",
+      "through": true,
+      "width": {
+        "value": 5.5,
+        "status": "read",
+        "source": "top view, '5,5'",
+        "confidence": 1.0
+      },
+      "arc_center_1": {
+        "value": [
+          5,
+          10
+        ],
+        "status": "derived",
+        "confidence": 0.7,
+        "evidence": "x from '5' dimension, y on centerline = width/2",
+        "depends_on": [
+          "plate_width"
+        ]
+      },
+      "arc_center_2": {
+        "value": [
+          15,
+          10
+        ],
+        "status": "derived",
+        "confidence": 0.7,
+        "evidence": "x from '15' dimension, y on centerline = width/2",
+        "depends_on": [
+          "plate_width"
+        ]
+      }
+    },
+    {
+      "id": "threaded_hole_M8",
+      "type": "threaded_hole",
+      "thread": {
+        "value": "M8",
+        "status": "read",
+        "source": "section A-A, 'M 8'",
+        "confidence": 1.0
+      },
+      "through": true,
+      "position": {
+        "value": [
+          39,
+          10
+        ],
+        "status": "derived",
+        "confidence": 0.7,
+        "evidence": "concentric with the end arc (center at 49 - R10, on centerline)",
+        "depends_on": [
+          "plate_width"
+        ]
+      },
+      "modeled_diameter": {
+        "value": 6.8,
+        "status": "derived",
+        "evidence": "ISO coarse thread M8: tap drill 6.8 mm",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "review_flags": [
+    {
+      "field": "plate_width",
+      "severity": "blocking_until_confirmed",
+      "assumed_value": 20,
+      "reason": "plate width is not dimensioned; estimated from the drawing scale (211 px height / 10.55 px per mm)"
+    },
+    {
+      "field": "slot_1.arc_centers",
+      "severity": "info",
+      "reason": "'5' and '15' are assumed to be measured from the left edge to the slot arc centers; the 15 reading is consistent with the proportions of the drawing"
+    },
+    {
+      "field": "threaded_hole_M8.position",
+      "severity": "info",
+      "reason": "position not dimensioned; assumed concentric with the end arc"
+    },
+    {
+      "field": "threaded_hole_M8",
+      "severity": "info",
+      "reason": "a thin cosmetic thread circle is drawn around the hole; the hole is modelled as through"
+    }
+  ]
+}

@@ -1,0 +1,545 @@
+{
+  "schema_version": "0.1",
+  "part_id": "Rotation",
+  "drawing_file": "Rotation_dwg.pdf",
+  "units": "mm",
+  "drawing_scale": "1:2",
+  "coordinate_system": {
+    "origin": "on the rotation axis, bottom face of the part (bottom of the Ø216 flange)",
+    "x": "to the right in the top view (along section line A-A)",
+    "y": "up in the top view",
+    "z": "rotation axis, up towards the Ø135 recess; top face of the raised ring at z=84.5"
+  },
+  "base_body": {
+    "type": "revolved_profile",
+    "profile": {
+      "description": "half-section [radius, z] of section A-A; central Ø25 hole added as hole feature",
+      "segments": [
+        {
+          "type": "line",
+          "from": [
+            0,
+            49.5
+          ],
+          "to": [
+            63.5,
+            49.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            63.5,
+            49.5
+          ],
+          "to": [
+            63.5,
+            0
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            63.5,
+            0
+          ],
+          "to": [
+            108,
+            0
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            108,
+            0
+          ],
+          "to": [
+            108,
+            6.3
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            102,
+            6.3
+          ],
+          "radius": 6,
+          "from": [
+            108,
+            6.3
+          ],
+          "to": [
+            102,
+            12.3
+          ],
+          "clockwise": false
+        },
+        {
+          "type": "line",
+          "from": [
+            102,
+            12.3
+          ],
+          "to": [
+            93,
+            12.3
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            93,
+            18.3
+          ],
+          "radius": 6,
+          "from": [
+            93,
+            12.3
+          ],
+          "to": [
+            87,
+            18.3
+          ],
+          "clockwise": true
+        },
+        {
+          "type": "line",
+          "from": [
+            87,
+            18.3
+          ],
+          "to": [
+            87,
+            41.5
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            93,
+            41.5
+          ],
+          "radius": 6,
+          "from": [
+            87,
+            41.5
+          ],
+          "to": [
+            93,
+            47.5
+          ],
+          "clockwise": true
+        },
+        {
+          "type": "line",
+          "from": [
+            93,
+            47.5
+          ],
+          "to": [
+            100,
+            47.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            100,
+            47.5
+          ],
+          "to": [
+            105,
+            52.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            105,
+            52.5
+          ],
+          "to": [
+            105,
+            78.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            105,
+            78.5
+          ],
+          "to": [
+            100,
+            83.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            100,
+            83.5
+          ],
+          "to": [
+            78.1,
+            83.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            78.1,
+            83.5
+          ],
+          "to": [
+            78.1,
+            84.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            78.1,
+            84.5
+          ],
+          "to": [
+            67.5,
+            84.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            67.5,
+            84.5
+          ],
+          "to": [
+            67.5,
+            57.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            67.5,
+            57.5
+          ],
+          "to": [
+            0,
+            57.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            0,
+            57.5
+          ],
+          "to": [
+            0,
+            49.5
+          ]
+        }
+      ]
+    }
+  },
+  "dimensions": [
+    {
+      "id": "overall_height",
+      "value": 84.5,
+      "status": "read",
+      "source": "section A-A, left vertical '84,5'",
+      "confidence": 1.0
+    },
+    {
+      "id": "outer_dia_upper",
+      "value": 210,
+      "status": "read",
+      "source": "section A-A, 'Ø210'",
+      "confidence": 1.0
+    },
+    {
+      "id": "ring_dia",
+      "value": 156.2,
+      "status": "read",
+      "source": "section A-A and detail B, 'Ø156,2'",
+      "confidence": 1.0
+    },
+    {
+      "id": "recess_dia",
+      "value": 135,
+      "status": "read",
+      "source": "section A-A and detail B, 'Ø135'",
+      "confidence": 1.0
+    },
+    {
+      "id": "bore_dia",
+      "value": 127,
+      "status": "read",
+      "source": "section A-A, 'Ø127'",
+      "confidence": 1.0
+    },
+    {
+      "id": "groove_dia",
+      "value": 174,
+      "status": "read",
+      "source": "section A-A, 'Ø174'",
+      "confidence": 1.0
+    },
+    {
+      "id": "outer_dia_lower",
+      "value": 216,
+      "status": "read",
+      "source": "section A-A, 'Ø216'",
+      "confidence": 1.0
+    },
+    {
+      "id": "ring_step",
+      "value": 1,
+      "status": "read",
+      "source": "detail B (2:1), vertical '1'",
+      "confidence": 0.9
+    },
+    {
+      "id": "recess_depth",
+      "value": 27,
+      "status": "read",
+      "source": "section A-A, right vertical '27' from top face",
+      "confidence": 1.0
+    },
+    {
+      "id": "web_thickness",
+      "value": 8,
+      "status": "read",
+      "source": "section A-A, right vertical '8'",
+      "confidence": 1.0
+    },
+    {
+      "id": "bore_depth",
+      "value": 49.5,
+      "status": "read",
+      "source": "section A-A, right vertical '49,5'",
+      "confidence": 1.0
+    },
+    {
+      "id": "upper_flange_height",
+      "value": 36,
+      "status": "read",
+      "source": "section A-A, left vertical '36'",
+      "confidence": 0.9
+    },
+    {
+      "id": "groove_height",
+      "value": 35.2,
+      "status": "read",
+      "source": "section A-A, left vertical '35,2'",
+      "confidence": 1.0
+    },
+    {
+      "id": "lower_flange_height",
+      "value": 12.3,
+      "status": "read",
+      "source": "section A-A, left vertical '12,3'",
+      "confidence": 1.0
+    },
+    {
+      "id": "outer_top_z",
+      "value": 83.5,
+      "status": "derived",
+      "source": "section A-A + detail B",
+      "confidence": 0.9,
+      "evidence": "12,3 + 35,2 + 36 = 83,5 = 84,5 - 1 (detail B step); the 36 is measured from the lowered outer face outside Ø156,2",
+      "depends_on": [
+        "overall_height",
+        "ring_step"
+      ]
+    },
+    {
+      "id": "chamfer_upper",
+      "value": 5,
+      "status": "read",
+      "source": "section A-A, '5x45°' at top outer edge of Ø210",
+      "confidence": 0.95
+    },
+    {
+      "id": "fillet_radius",
+      "value": 6,
+      "status": "read",
+      "source": "section A-A, 'R6' at top outer edge of Ø216 flange",
+      "confidence": 0.95
+    }
+  ],
+  "features": [
+    {
+      "id": "center_hole",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 25,
+        "status": "read",
+        "source": "top view, 'Ø25'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          0,
+          0
+        ],
+        "status": "derived",
+        "source": "top view",
+        "confidence": 1.0,
+        "evidence": "concentric with rotation axis"
+      }
+    },
+    {
+      "id": "bc_hole_1",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 12,
+        "status": "read",
+        "source": "top view, 'Ø12'",
+        "confidence": 1.0
+      },
+      "position": {
+        "value": [
+          25,
+          0
+        ],
+        "status": "derived",
+        "source": "top view, bolt circle 'Ø50'",
+        "confidence": 0.95,
+        "evidence": "6 holes equally spaced on Ø50, one on the horizontal centreline: (25cos0°, 25sin0°)"
+      }
+    },
+    {
+      "id": "bc_hole_2",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 12,
+        "status": "read",
+        "source": "top view, 'Ø12'",
+        "confidence": 1.0
+      },
+      "position": {
+        "value": [
+          12.5,
+          21.651
+        ],
+        "status": "derived",
+        "source": "top view, bolt circle 'Ø50'",
+        "confidence": 0.95,
+        "evidence": "6 holes equally spaced on Ø50: (25cos60°, 25sin60°)"
+      }
+    },
+    {
+      "id": "bc_hole_3",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 12,
+        "status": "read",
+        "source": "top view, 'Ø12'",
+        "confidence": 1.0
+      },
+      "position": {
+        "value": [
+          -12.5,
+          21.651
+        ],
+        "status": "derived",
+        "source": "top view, bolt circle 'Ø50'",
+        "confidence": 0.95,
+        "evidence": "6 holes equally spaced on Ø50: (25cos120°, 25sin120°)"
+      }
+    },
+    {
+      "id": "bc_hole_4",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 12,
+        "status": "read",
+        "source": "top view, 'Ø12'",
+        "confidence": 1.0
+      },
+      "position": {
+        "value": [
+          -25,
+          0
+        ],
+        "status": "derived",
+        "source": "top view, bolt circle 'Ø50'",
+        "confidence": 0.95,
+        "evidence": "6 holes equally spaced on Ø50: (25cos180°, 25sin180°)"
+      }
+    },
+    {
+      "id": "bc_hole_5",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 12,
+        "status": "read",
+        "source": "top view, 'Ø12'",
+        "confidence": 1.0
+      },
+      "position": {
+        "value": [
+          -12.5,
+          -21.651
+        ],
+        "status": "derived",
+        "source": "top view, bolt circle 'Ø50'",
+        "confidence": 0.95,
+        "evidence": "6 holes equally spaced on Ø50: (25cos240°, 25sin240°); lower pair spacing 25 matches drawing"
+      }
+    },
+    {
+      "id": "bc_hole_6",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 12,
+        "status": "read",
+        "source": "top view, 'Ø12'",
+        "confidence": 1.0
+      },
+      "position": {
+        "value": [
+          12.5,
+          -21.651
+        ],
+        "status": "derived",
+        "source": "top view, bolt circle 'Ø50'",
+        "confidence": 0.95,
+        "evidence": "6 holes equally spaced on Ø50: (25cos300°, 25sin300°); lower pair spacing 25 matches drawing"
+      }
+    }
+  ],
+  "review_flags": [
+    {
+      "field": "outer_top_z",
+      "severity": "info",
+      "reason": "left height chain 12,3+35,2+36 = 83,5 ≠ 84,5; resolved by the 1 mm step of detail B (ring Ø135–Ø156,2 stands 1 mm proud). Check that the 36 is measured from the lowered outer face."
+    },
+    {
+      "field": "chamfer_upper",
+      "severity": "info",
+      "reason": "5x45° callout shown only at the top outer edge; the lower outer edge of the Ø210 flange is drawn with a chamfer of the same size and modelled as 5x45° too"
+    },
+    {
+      "field": "fillet_radius",
+      "severity": "info",
+      "reason": "R6 callout shown only at the Ø216 flange top edge; both groove-floor corners at Ø174 are drawn rounded with the same size and modelled as R6"
+    },
+    {
+      "field": "center_hole.diameter",
+      "severity": "info",
+      "reason": "'Ø25' leader is drawn between extension lines of the lower bolt-circle holes; read as the central hole diameter (also matches the 25 mm spacing of those holes and the drawn circle size)"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "standard": "ISO 261 / ISO 262 / ISO 724 / ISO 2306",
+  "title": "ISO metric screw threads: pitch, basic diameters, tap drill",
+  "units": "mm",
+  "notes": [
+    "Coarse thread (Regelgewinde) is written without pitch: 'M8'. Fine thread (Feingewinde) carries the pitch: 'M8x1'.",
+    "Basic minor diameter of the internal thread D1 = d - 1.082532 * P (ISO 724).",
+    "Minor diameter of the external thread d3 = d - 1.226869 * P (ISO 724).",
+    "Pitch diameter d2 = D2 = d - 0.649519 * P (ISO 724).",
+    "Tap drill for coarse threads per ISO 2306 / DIN 336 (table below). For fine threads tap drill = d - P.",
+    "A threaded hole is modelled as its tap-drill core hole. A threaded shaft end is modelled at its nominal diameter d.",
+    "Drawing representation (ISO 6410): thick line = crest, thin line = root; in an end view the root is a 3/4 thin circle."
+  ],
+  "verify_against": "Tabellenbuch Metall, 'Metrisches ISO-Gewinde'",
+  "coarse": [
+    {"d": 1.6, "pitch": 0.35, "tap_drill": 1.25},
+    {"d": 2,   "pitch": 0.4,  "tap_drill": 1.6},
+    {"d": 2.5, "pitch": 0.45, "tap_drill": 2.05},
+    {"d": 3,   "pitch": 0.5,  "tap_drill": 2.5},
+    {"d": 3.5, "pitch": 0.6,  "tap_drill": 2.9},
+    {"d": 4,   "pitch": 0.7,  "tap_drill": 3.3},
+    {"d": 5,   "pitch": 0.8,  "tap_drill": 4.2},
+    {"d": 6,   "pitch": 1.0,  "tap_drill": 5.0},
+    {"d": 8,   "pitch": 1.25, "tap_drill": 6.8},
+    {"d": 10,  "pitch": 1.5,  "tap_drill": 8.5},
+    {"d": 12,  "pitch": 1.75, "tap_drill": 10.2},
+    {"d": 14,  "pitch": 2.0,  "tap_drill": 12.0},
+    {"d": 16,  "pitch": 2.0,  "tap_drill": 14.0},
+    {"d": 18,  "pitch": 2.5,  "tap_drill": 15.5},
+    {"d": 20,  "pitch": 2.5,  "tap_drill": 17.5},
+    {"d": 22,  "pitch": 2.5,  "tap_drill": 19.5},
+    {"d": 24,  "pitch": 3.0,  "tap_drill": 21.0},
+    {"d": 27,  "pitch": 3.0,  "tap_drill": 24.0},
+    {"d": 30,  "pitch": 3.5,  "tap_drill": 26.5},
+    {"d": 33,  "pitch": 3.5,  "tap_drill": 29.5},
+    {"d": 36,  "pitch": 4.0,  "tap_drill": 32.0},
+    {"d": 42,  "pitch": 4.5,  "tap_drill": 37.5},
+    {"d": 48,  "pitch": 5.0,  "tap_drill": 43.0}
+  ],
+  "fine_pitches": {
+    "comment": "Preferred fine pitches (ISO 262). Any pitch is accepted by the lookup; these are used only to warn about unusual combinations.",
+    "8": [1.0, 0.75], "10": [1.25, 1.0, 0.75], "12": [1.5, 1.25, 1.0], "14": [1.5], "16": [1.5], "18": [2.0, 1.5],
+    "20": [2.0, 1.5], "22": [2.0, 1.5], "24": [2.0], "27": [2.0], "30": [2.0], "33": [2.0], "36": [3.0], "42": [3.0], "48": [3.0]
+  },
+  "blind_hole_rule_of_thumb": {
+    "comment": "Not a standard value. Usable thread depth is dimensioned on the drawing; if only the thread depth is given, the drill depth is commonly about thread depth + 3 * pitch (cone tip not included). Always flag such an assumption.",
+    "extra_drill_depth_factor": 3.0,
+    "drill_point_angle_deg": 118
+  }
+}

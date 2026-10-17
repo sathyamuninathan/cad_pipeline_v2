@@ -1,0 +1,7 @@
+out
+__pycache__
+*.step
+*.stp
+.venv
+.git
+extracted/backup

@@ -1,0 +1,1056 @@
+{
+  "schema_version": "0.1",
+  "part_id": "Traegerplatte",
+  "drawing_file": "Traegerplatte.pdf",
+  "units": "mm",
+  "drawing_scale": "1:1",
+  "coordinate_system": {
+    "origin": "bottom-left corner of the 140 x 118 bounding box in the top view (x=0 at the leftmost edge, y=0 at the bottom edge), bottom face z=0",
+    "x": "to the right in the top view",
+    "y": "up in the top view",
+    "z": "plate thickness; z=15 is the visible top-view face carrying the pocket and the countersinks, z=0 the face with the stepped flange",
+    "general_tolerance": "DIN ISO 2768-m"
+  },
+  "base_body": {
+    "type": "extruded_profile",
+    "profile": {
+      "shape": "plate with R20 top-left corner, 30 deg chamfered left side with R20 fillet, R6 right corners",
+      "segments": [
+        {
+          "type": "line",
+          "from": [
+            61.547,
+            0
+          ],
+          "to": [
+            134,
+            0
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            134,
+            6
+          ],
+          "radius": 6,
+          "from": [
+            134,
+            0
+          ],
+          "to": [
+            140,
+            6
+          ],
+          "clockwise": false
+        },
+        {
+          "type": "line",
+          "from": [
+            140,
+            6
+          ],
+          "to": [
+            140,
+            112
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            134,
+            112
+          ],
+          "radius": 6,
+          "from": [
+            140,
+            112
+          ],
+          "to": [
+            134,
+            118
+          ],
+          "clockwise": false
+        },
+        {
+          "type": "line",
+          "from": [
+            134,
+            118
+          ],
+          "to": [
+            20,
+            118
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            20,
+            98
+          ],
+          "radius": 20,
+          "from": [
+            20,
+            118
+          ],
+          "to": [
+            0,
+            98
+          ],
+          "clockwise": false
+        },
+        {
+          "type": "line",
+          "from": [
+            0,
+            98
+          ],
+          "to": [
+            0,
+            86.603
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            0,
+            86.603
+          ],
+          "to": [
+            44.226,
+            10.0
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            61.547,
+            20
+          ],
+          "radius": 20,
+          "from": [
+            44.226,
+            10.0
+          ],
+          "to": [
+            61.547,
+            0
+          ],
+          "clockwise": false
+        }
+      ]
+    },
+    "extrude_height": 15
+  },
+  "dimensions": [
+    {
+      "id": "overall_length",
+      "value": 140,
+      "status": "read",
+      "source": "top view, '140'",
+      "confidence": 1.0
+    },
+    {
+      "id": "overall_height",
+      "value": 118,
+      "status": "read",
+      "source": "top view, '118' (left vertical)",
+      "confidence": 1.0
+    },
+    {
+      "id": "thickness",
+      "value": 15,
+      "status": "read",
+      "source": "section A-A, '15'",
+      "confidence": 1.0
+    },
+    {
+      "id": "corner_radius_top_left",
+      "value": 20,
+      "status": "read",
+      "source": "top view, 'R20' (left)",
+      "confidence": 0.9
+    },
+    {
+      "id": "corner_radii_right",
+      "value": 6,
+      "status": "read",
+      "source": "top view, 'R6' (two)",
+      "confidence": 1.0
+    },
+    {
+      "id": "chamfer_angle",
+      "value": 30,
+      "status": "read",
+      "source": "top view, '30°' measured from the vertical left edge",
+      "confidence": 1.0
+    },
+    {
+      "id": "chamfer_virtual_corner_x",
+      "value": 50,
+      "status": "read",
+      "source": "top view, '50' to the virtual intersection of the slanted edge with the bottom edge",
+      "confidence": 1.0
+    },
+    {
+      "id": "bottom_fillet_radius",
+      "value": 20,
+      "status": "read",
+      "source": "top view, 'R20' (bottom)",
+      "confidence": 1.0
+    },
+    {
+      "id": "slant_start_y",
+      "value": 86.603,
+      "status": "derived",
+      "source": "top view, '50' and '30°'",
+      "confidence": 0.9,
+      "evidence": "slanted line through (50,0) at 30 deg from vertical meets x=0 at y = 50 / tan30 = 86.603",
+      "depends_on": [
+        "chamfer_angle",
+        "chamfer_virtual_corner_x"
+      ]
+    },
+    {
+      "id": "bottom_fillet_tangents",
+      "value": [
+        44.226,
+        10.0,
+        61.547,
+        0
+      ],
+      "status": "derived",
+      "source": "top view, 'R20', '50', '30°'",
+      "confidence": 0.95,
+      "evidence": "120 deg corner at (50,0): tangent length 20/tan60 = 11.547 -> (61.547,0) and (50-5.774, 10.0); center (61.547,20)"
+    },
+    {
+      "id": "web_offset",
+      "value": 9,
+      "status": "read",
+      "source": "section A-A, '9 +0,3/0' (bottom face to underside of the thin web)",
+      "confidence": 0.95
+    },
+    {
+      "id": "web_thickness",
+      "value": 6,
+      "status": "derived",
+      "source": "section A-A, '(6)'",
+      "confidence": 0.95,
+      "evidence": "15 - 9 = 6, matches reference dimension (6)"
+    },
+    {
+      "id": "flange_step_y",
+      "value": 86,
+      "status": "read",
+      "source": "section A-A, '86' from bottom edge to the flange step",
+      "confidence": 0.95
+    },
+    {
+      "id": "pocket_left_x",
+      "value": 40,
+      "status": "derived",
+      "source": "top view, '100 +0,1/0' from right edge",
+      "confidence": 0.95,
+      "evidence": "x = 140 - 100 = 40"
+    },
+    {
+      "id": "pocket_bottom_y",
+      "value": 89,
+      "status": "derived",
+      "source": "section B-B, '29'",
+      "confidence": 0.9,
+      "evidence": "pocket height 29 from top edge: y = 118 - 29 = 89"
+    },
+    {
+      "id": "pocket_depth",
+      "value": 6.5,
+      "status": "read",
+      "source": "section B-B, '6,5' (top face to pocket floor, datum A)",
+      "confidence": 0.85
+    },
+    {
+      "id": "pocket_corner_radius",
+      "value": 8,
+      "status": "read",
+      "source": "top view, 'R8'",
+      "confidence": 1.0
+    },
+    {
+      "id": "countersink_diameter",
+      "value": 10.4,
+      "status": "read",
+      "source": "section B-B, '4x Ø10,4', '90°'",
+      "confidence": 0.95
+    },
+    {
+      "id": "countersink_cone_depth",
+      "value": 2.45,
+      "status": "derived",
+      "source": "section B-B, '4x Ø10,4', '4x Ø5,5', '90°'",
+      "confidence": 0.95,
+      "evidence": "90 deg countersink: depth = (10.4 - 5.5) / 2 = 2.45, cone from r=5.2 at z=15 to r=2.75 at z=12.55",
+      "depends_on": [
+        "countersink_diameter"
+      ]
+    },
+    {
+      "id": "bolt_circle_diameter",
+      "value": 50,
+      "status": "assumed",
+      "source": "top view, dashed pitch circle around Ø22 bore, not dimensioned",
+      "confidence": 0.5,
+      "evidence": "scaled from the 1:1 drawing: circle about 50 mm, holes at 45 deg",
+      "review_flag": "pitch circle diameter of 4x countersinks not dimensioned; assumed Ø50"
+    },
+    {
+      "id": "bore_center",
+      "value": [
+        98,
+        38
+      ],
+      "status": "derived",
+      "source": "top view, '42' from right edge and '38' from bottom",
+      "confidence": 0.85,
+      "evidence": "x = 140 - 42 = 98; y = 38 read"
+    }
+  ],
+  "features": [
+    {
+      "id": "web_step_bottom",
+      "type": "extrusion",
+      "mode": "cut",
+      "plane": "XY",
+      "offset": -1,
+      "distance": 10,
+      "description": "remove material below the thin web (y < 86) from the bottom face up to z=9, leaving the 6 mm web at z 9..15",
+      "profile": {
+        "rectangle": {
+          "center": [
+            70,
+            42.5
+          ],
+          "size": [
+            144,
+            87
+          ],
+          "corner_radius": 0
+        }
+      }
+    },
+    {
+      "id": "pocket_top",
+      "type": "extrusion",
+      "mode": "cut",
+      "plane": "XY",
+      "offset": 15,
+      "distance": -6.5,
+      "description": "pocket open to top and right edges, x 40..140, y 89..118, R8 inner corner, floor at z=8.5",
+      "profile": {
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              48,
+              89
+            ],
+            "to": [
+              142,
+              89
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              142,
+              89
+            ],
+            "to": [
+              142,
+              120
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              142,
+              120
+            ],
+            "to": [
+              40,
+              120
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              40,
+              120
+            ],
+            "to": [
+              40,
+              97
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              48,
+              97
+            ],
+            "radius": 8,
+            "from": [
+              40,
+              97
+            ],
+            "to": [
+              48,
+              89
+            ],
+            "clockwise": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "csk_cone_1",
+      "type": "revolution",
+      "mode": "cut",
+      "axis_position": [
+        80.322,
+        20.322
+      ],
+      "description": "90 deg countersink Ø10.4 on top face",
+      "profile": {
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              0,
+              12.55
+            ],
+            "to": [
+              2.75,
+              12.55
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              2.75,
+              12.55
+            ],
+            "to": [
+              5.7,
+              15.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              5.7,
+              15.5
+            ],
+            "to": [
+              0,
+              15.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              0,
+              15.5
+            ],
+            "to": [
+              0,
+              12.55
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "csk_cone_2",
+      "type": "revolution",
+      "mode": "cut",
+      "axis_position": [
+        115.678,
+        20.322
+      ],
+      "description": "90 deg countersink Ø10.4 on top face",
+      "profile": {
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              0,
+              12.55
+            ],
+            "to": [
+              2.75,
+              12.55
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              2.75,
+              12.55
+            ],
+            "to": [
+              5.7,
+              15.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              5.7,
+              15.5
+            ],
+            "to": [
+              0,
+              15.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              0,
+              15.5
+            ],
+            "to": [
+              0,
+              12.55
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "csk_cone_3",
+      "type": "revolution",
+      "mode": "cut",
+      "axis_position": [
+        115.678,
+        55.678
+      ],
+      "description": "90 deg countersink Ø10.4 on top face",
+      "profile": {
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              0,
+              12.55
+            ],
+            "to": [
+              2.75,
+              12.55
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              2.75,
+              12.55
+            ],
+            "to": [
+              5.7,
+              15.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              5.7,
+              15.5
+            ],
+            "to": [
+              0,
+              15.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              0,
+              15.5
+            ],
+            "to": [
+              0,
+              12.55
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "csk_cone_4",
+      "type": "revolution",
+      "mode": "cut",
+      "axis_position": [
+        80.322,
+        55.678
+      ],
+      "description": "90 deg countersink Ø10.4 on top face",
+      "profile": {
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              0,
+              12.55
+            ],
+            "to": [
+              2.75,
+              12.55
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              2.75,
+              12.55
+            ],
+            "to": [
+              5.7,
+              15.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              5.7,
+              15.5
+            ],
+            "to": [
+              0,
+              15.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              0,
+              15.5
+            ],
+            "to": [
+              0,
+              12.55
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cbore_1_through",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 6.6,
+        "status": "read",
+        "source": "section A-A, 'Ø6,6'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          22,
+          104
+        ],
+        "status": "derived",
+        "source": "top view, '118' from right edge and '14' from top edge",
+        "confidence": 0.95,
+        "evidence": "x = 140 - 118 = 22; y = 118 - 14 = 104"
+      }
+    },
+    {
+      "id": "cbore_1_counterbore",
+      "type": "hole",
+      "through": false,
+      "axis": "z",
+      "from_side": "min",
+      "diameter": {
+        "value": 11,
+        "status": "read",
+        "source": "section A-A, 'Ø11'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          22,
+          104
+        ],
+        "status": "derived",
+        "source": "top view, '118' and '14'",
+        "confidence": 0.95,
+        "evidence": "concentric with cbore_1_through: x = 140 - 118, y = 118 - 14"
+      },
+      "depth": {
+        "value": 6.8,
+        "status": "read",
+        "source": "section A-A, '6,8' from the bottom face",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "pin_hole_1",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 6,
+        "status": "read",
+        "source": "section B-B, '2x Ø6 H8'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          52,
+          99
+        ],
+        "status": "assumed",
+        "source": "top view, '88 ±0,15' from right edge; y not dimensioned",
+        "confidence": 0.6,
+        "evidence": "x = 140 - 88 = 52; y scaled from the 1:1 drawing (about 19 mm below top edge)",
+        "review_flag": "y position of the 2x Ø6 H8 holes is not dimensioned; assumed y = 99 (19 below top edge) from drawing scale"
+      }
+    },
+    {
+      "id": "pin_hole_2",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 6,
+        "status": "read",
+        "source": "section B-B, '2x Ø6 H8'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          130,
+          99
+        ],
+        "status": "assumed",
+        "source": "top view, section line B 10 from right edge; y not dimensioned",
+        "confidence": 0.6,
+        "evidence": "x = 140 - 10 = 130 (same vertical centre line as the '10' dimensioned holes and section B-B); y scaled from drawing",
+        "review_flag": "y position of the 2x Ø6 H8 holes is not dimensioned; assumed y = 99 from drawing scale"
+      }
+    },
+    {
+      "id": "bore_22",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 22,
+        "status": "read",
+        "source": "section A-A, 'Ø22 H7'",
+        "confidence": 1.0
+      },
+      "position": {
+        "value": [
+          98,
+          38
+        ],
+        "status": "derived",
+        "source": "top view, '42' and '38'",
+        "confidence": 0.85,
+        "evidence": "x = 140 - 42 = 98, y = 38 read",
+        "review_flag": "drawing geometry scales to 40 from the right edge, dimension text reads 42; 42 used"
+      }
+    },
+    {
+      "id": "slot_1",
+      "type": "slot",
+      "through": true,
+      "width": {
+        "value": 6.6,
+        "status": "assumed",
+        "source": "top view, slot not width-dimensioned",
+        "confidence": 0.5,
+        "evidence": "scaled about 6.5-6.7 mm on the 1:1 drawing; matches the Ø6,6 clearance size used on the part",
+        "review_flag": "slot width not dimensioned; assumed 6.6 mm"
+      },
+      "arc_center_1": {
+        "value": [
+          58,
+          70
+        ],
+        "status": "derived",
+        "source": "top view, '48' + '34' from right edge, '70 ±0,1' from bottom",
+        "confidence": 0.9,
+        "evidence": "x = 140 - 48 - 34 = 58; y = 70"
+      },
+      "arc_center_2": {
+        "value": [
+          92,
+          70
+        ],
+        "status": "derived",
+        "source": "top view, '48' from right edge, '70 ±0,1' from bottom",
+        "confidence": 0.9,
+        "evidence": "x = 140 - 48 = 92; y = 70"
+      }
+    },
+    {
+      "id": "m5_1",
+      "type": "threaded_hole",
+      "through": true,
+      "thread": {
+        "value": "M5",
+        "status": "read",
+        "source": "section B-B, '4x M 5'",
+        "confidence": 0.95
+      },
+      "modeled_diameter": {
+        "value": 4.2,
+        "status": "derived",
+        "evidence": "ISO metric tap drill for M5 = 4.2 mm"
+      },
+      "position": {
+        "value": [
+          22,
+          75
+        ],
+        "status": "derived",
+        "source": "top view, '118' from right edge, '75' from bottom",
+        "confidence": 0.85,
+        "evidence": "x = 140 - 118 = 22 (same centre line as counterbore); y = 75 (same horizontal as the dimensioned right hole)"
+      }
+    },
+    {
+      "id": "m5_2",
+      "type": "threaded_hole",
+      "through": true,
+      "thread": {
+        "value": "M5",
+        "status": "read",
+        "source": "section B-B, '4x M 5'",
+        "confidence": 0.95
+      },
+      "modeled_diameter": {
+        "value": 4.2,
+        "status": "derived",
+        "evidence": "ISO metric tap drill for M5 = 4.2 mm"
+      },
+      "position": {
+        "value": [
+          130,
+          75
+        ],
+        "status": "derived",
+        "source": "top view, '10' from right edge, '75' from bottom",
+        "confidence": 0.95,
+        "evidence": "x = 140 - 10 = 130; y = 75"
+      }
+    },
+    {
+      "id": "m5_3",
+      "type": "threaded_hole",
+      "through": true,
+      "thread": {
+        "value": "M5",
+        "status": "read",
+        "source": "section B-B, '4x M 5'",
+        "confidence": 0.95
+      },
+      "modeled_diameter": {
+        "value": 4.2,
+        "status": "derived",
+        "evidence": "ISO metric tap drill for M5 = 4.2 mm"
+      },
+      "position": {
+        "value": [
+          60,
+          10
+        ],
+        "status": "derived",
+        "source": "top view, '80' from right edge, '10' from bottom",
+        "confidence": 0.95,
+        "evidence": "x = 140 - 80 = 60; y = 10"
+      }
+    },
+    {
+      "id": "m5_4",
+      "type": "threaded_hole",
+      "through": true,
+      "thread": {
+        "value": "M5",
+        "status": "read",
+        "source": "section B-B, '4x M 5'",
+        "confidence": 0.95
+      },
+      "modeled_diameter": {
+        "value": 4.2,
+        "status": "derived",
+        "evidence": "ISO metric tap drill for M5 = 4.2 mm"
+      },
+      "position": {
+        "value": [
+          130,
+          10
+        ],
+        "status": "derived",
+        "source": "top view, '10' from right edge, '10' from bottom",
+        "confidence": 0.95,
+        "evidence": "x = 140 - 10 = 130; y = 10"
+      }
+    },
+    {
+      "id": "csk_1",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 5.5,
+        "status": "read",
+        "source": "section B-B, '4x Ø5,5'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          80.322,
+          20.322
+        ],
+        "status": "assumed",
+        "source": "top view, 4 holes on dashed pitch circle around Ø22 bore",
+        "confidence": 0.6,
+        "evidence": "pitch circle not dimensioned, scaled Ø50; holes at 45 deg: 98 - 17.678, 38 - 17.678",
+        "depends_on": [
+          "bolt_circle_diameter",
+          "bore_center"
+        ],
+        "review_flag": "pitch circle diameter of the 4x Ø5,5 countersinks not dimensioned; assumed Ø50"
+      }
+    },
+    {
+      "id": "csk_2",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 5.5,
+        "status": "read",
+        "source": "section B-B, '4x Ø5,5'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          115.678,
+          20.322
+        ],
+        "status": "assumed",
+        "source": "top view, pitch circle",
+        "confidence": 0.6,
+        "evidence": "assumed PCD Ø50 at 45 deg: 98 + 17.678, 38 - 17.678",
+        "depends_on": [
+          "bolt_circle_diameter",
+          "bore_center"
+        ],
+        "review_flag": "pitch circle diameter not dimensioned; assumed Ø50"
+      }
+    },
+    {
+      "id": "csk_3",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 5.5,
+        "status": "read",
+        "source": "section B-B, '4x Ø5,5'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          115.678,
+          55.678
+        ],
+        "status": "assumed",
+        "source": "top view, pitch circle",
+        "confidence": 0.6,
+        "evidence": "assumed PCD Ø50 at 45 deg: 98 + 17.678, 38 + 17.678",
+        "depends_on": [
+          "bolt_circle_diameter",
+          "bore_center"
+        ],
+        "review_flag": "pitch circle diameter not dimensioned; assumed Ø50"
+      }
+    },
+    {
+      "id": "csk_4",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 5.5,
+        "status": "read",
+        "source": "section B-B, '4x Ø5,5'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          80.322,
+          55.678
+        ],
+        "status": "assumed",
+        "source": "top view, pitch circle",
+        "confidence": 0.6,
+        "evidence": "assumed PCD Ø50 at 45 deg: 98 - 17.678, 38 + 17.678",
+        "depends_on": [
+          "bolt_circle_diameter",
+          "bore_center"
+        ],
+        "review_flag": "pitch circle diameter not dimensioned; assumed Ø50"
+      }
+    }
+  ],
+  "review_flags": [
+    {
+      "field": "bolt_circle_diameter",
+      "severity": "blocking_until_confirmed",
+      "reason": "pitch circle of the 4x Ø5,5 / Ø10,4 countersinks around the Ø22 bore is drawn but not dimensioned; scaled from the 1:1 drawing",
+      "assumed_value": 50
+    },
+    {
+      "field": "pin_hole_1.position",
+      "severity": "blocking_until_confirmed",
+      "reason": "y position of the 2x Ø6 H8 holes in the pocket is not dimensioned; scaled from drawing (19 below top edge)",
+      "assumed_value": 99
+    },
+    {
+      "field": "slot_1.width",
+      "severity": "blocking_until_confirmed",
+      "reason": "slot width not dimensioned; scaled about 6.6 mm",
+      "assumed_value": 6.6
+    },
+    {
+      "field": "bore_22.position",
+      "severity": "info",
+      "reason": "dimension text '42' (bore centre from right edge) used, although the drawing geometry scales to about 40 mm"
+    },
+    {
+      "field": "web_step_bottom",
+      "severity": "info",
+      "reason": "flange step at y=86 (section A-A) assumed to run straight across the full width; section B-B shows the same step"
+    },
+    {
+      "field": "pocket_top",
+      "severity": "info",
+      "reason": "pocket floor depth 6,5 from top face (z=8.5) vs web underside at z=9 from '9 +0,3'; leaves a 3 mm full-thickness band between y=86 and y=89"
+    },
+    {
+      "field": "m5_1.position",
+      "severity": "info",
+      "reason": "y=75 of the left M5 hole taken from alignment with the dimensioned right hole (no own dimension)"
+    },
+    {
+      "field": "csk_cone_1",
+      "severity": "info",
+      "reason": "countersinks modelled as hole Ø5,5 plus a 90 deg conical revolution cut (Ø10,4 at top face), since the hole chamfer option would also chamfer the underside"
+    },
+    {
+      "field": "edges",
+      "severity": "info",
+      "reason": "tolerances (H7, H8, 9 +0,3, 100 +0,1, 88 ±0,15, 70 ±0,1), GD&T (flatness 0.03, parallelism 0.05 to A), Rz 50 and DIN 6784 edge breaks are not modelled; nominal geometry only"
+    }
+  ]
+}

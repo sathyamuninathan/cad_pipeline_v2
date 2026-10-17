@@ -1,0 +1,503 @@
+{
+  "schema_version": "0.1",
+  "part_id": "Haken",
+  "drawing_file": "Haken_dwg.pdf",
+  "units": "mm",
+  "drawing_scale": null,
+  "general_tolerance": null,
+  "coordinate_system": {
+    "origin": "centre of the dimensioned Ø76 hole (lower right lobe, on section line A-A), bottom face of the plate",
+    "x": "to the right in the top view",
+    "y": "upward in the top view",
+    "z": "plate thickness, plate bottom face at z=0, top face at z=20; boss protrudes 5 mm on both faces (z=-5..25)"
+  },
+  "base_body": {
+    "type": "extruded_profile",
+    "extrude_height": 20,
+    "profile": {
+      "description": "Hook plate outline, counter-clockwise from the top tangent of the hook arc",
+      "segments": [
+        {
+          "type": "line",
+          "from": [
+            159.0,
+            228.0
+          ],
+          "to": [
+            0.0,
+            228.0
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            0.0,
+            152.0
+          ],
+          "radius": 76.0,
+          "from": [
+            0.0,
+            228.0
+          ],
+          "to": [
+            -76.0,
+            152.0
+          ],
+          "clockwise": false,
+          "note": "boss outline Ø152"
+        },
+        {
+          "type": "line",
+          "from": [
+            -76.0,
+            152.0
+          ],
+          "to": [
+            -76.0,
+            111.0
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            -111.0,
+            111.0
+          ],
+          "radius": 35.0,
+          "from": [
+            -76.0,
+            111.0
+          ],
+          "to": [
+            -111.0,
+            76.0
+          ],
+          "clockwise": true,
+          "note": "fillet R35 left"
+        },
+        {
+          "type": "line",
+          "from": [
+            -111.0,
+            76.0
+          ],
+          "to": [
+            -128.0,
+            76.0
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            -128.0,
+            0.0
+          ],
+          "radius": 76.0,
+          "from": [
+            -128.0,
+            76.0
+          ],
+          "to": [
+            -128.0,
+            -76.0
+          ],
+          "clockwise": false,
+          "note": "left lobe Ø152"
+        },
+        {
+          "type": "line",
+          "from": [
+            -128.0,
+            -76.0
+          ],
+          "to": [
+            0.0,
+            -76.0
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius": 76.0,
+          "from": [
+            0.0,
+            -76.0
+          ],
+          "to": [
+            76.0,
+            0.0
+          ],
+          "clockwise": false,
+          "note": "right lobe R76"
+        },
+        {
+          "type": "line",
+          "from": [
+            76.0,
+            0.0
+          ],
+          "to": [
+            76.0,
+            41.0
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            111.0,
+            41.0
+          ],
+          "radius": 35.0,
+          "from": [
+            76.0,
+            41.0
+          ],
+          "to": [
+            111.0,
+            76.0
+          ],
+          "clockwise": true,
+          "note": "fillet R35 right"
+        },
+        {
+          "type": "line",
+          "from": [
+            111.0,
+            76.0
+          ],
+          "to": [
+            127.0,
+            76.0
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            127.0,
+            76.0
+          ],
+          "to": [
+            127.0,
+            152.0
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            159.0,
+            152.0
+          ],
+          "radius": 32.0,
+          "from": [
+            127.0,
+            152.0
+          ],
+          "to": [
+            191.0,
+            152.0
+          ],
+          "clockwise": true,
+          "note": "hook slot end R32"
+        },
+        {
+          "type": "line",
+          "from": [
+            191.0,
+            152.0
+          ],
+          "to": [
+            191.0,
+            116.0
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            207.0,
+            116.0
+          ],
+          "radius": 16.0,
+          "from": [
+            191.0,
+            116.0
+          ],
+          "to": [
+            219.8,
+            106.4
+          ],
+          "clockwise": false,
+          "note": "hook tip R16"
+        },
+        {
+          "type": "arc",
+          "center": [
+            159.0,
+            152.0
+          ],
+          "radius": 76.0,
+          "from": [
+            219.8,
+            106.4
+          ],
+          "to": [
+            159.0,
+            228.0
+          ],
+          "clockwise": false,
+          "note": "hook outer arc R76"
+        }
+      ]
+    }
+  },
+  "dimensions": [
+    {
+      "id": "plate_thickness",
+      "value": 20,
+      "status": "read",
+      "source": "section A-A, '20'",
+      "confidence": 1.0
+    },
+    {
+      "id": "boss_thickness",
+      "value": 30,
+      "status": "read",
+      "source": "section A-A, '30'",
+      "confidence": 1.0
+    },
+    {
+      "id": "boss_offset",
+      "value": -5,
+      "status": "derived",
+      "source": "section A-A",
+      "confidence": 0.9,
+      "evidence": "boss protrudes equally on both plate faces in A-A: (30 - 20) / 2 = 5 mm each side",
+      "review_flag": null
+    },
+    {
+      "id": "boss_diameter",
+      "value": 152,
+      "status": "read",
+      "source": "top view, 'Ø152' (upper)",
+      "confidence": 1.0
+    },
+    {
+      "id": "left_lobe_diameter",
+      "value": 152,
+      "status": "read",
+      "source": "top view, 'Ø152' (lower left)",
+      "confidence": 1.0
+    },
+    {
+      "id": "boss_center_y",
+      "value": 152,
+      "status": "read",
+      "source": "top view, vertical '152'",
+      "confidence": 1.0
+    },
+    {
+      "id": "left_lobe_center_x",
+      "value": -128,
+      "status": "read",
+      "source": "top view, '128'",
+      "confidence": 1.0
+    },
+    {
+      "id": "hook_center_x",
+      "value": 159,
+      "status": "read",
+      "source": "top view, '159' from A-A line to the hook centre line",
+      "confidence": 1.0
+    },
+    {
+      "id": "hook_center_y",
+      "value": 152,
+      "status": "derived",
+      "source": "top view",
+      "confidence": 0.9,
+      "evidence": "top edge is one tangent line over boss (y = 152 + 76 = 228) and hook arc R76 -> centre y = 228 - 76 = 152; slot centre lies on the boss horizontal centre line"
+    },
+    {
+      "id": "hook_outer_radius",
+      "value": 76,
+      "status": "read",
+      "source": "top view, 'R76'",
+      "confidence": 1.0
+    },
+    {
+      "id": "slot_width",
+      "value": 64,
+      "status": "read",
+      "source": "top view, '64'",
+      "confidence": 1.0
+    },
+    {
+      "id": "slot_end_radius",
+      "value": 32,
+      "status": "derived",
+      "source": "top view",
+      "confidence": 0.95,
+      "evidence": "64 / 2, semicircular slot end concentric with hook arc"
+    },
+    {
+      "id": "ledge_y",
+      "value": 76,
+      "status": "derived",
+      "source": "top view, '76' from boss centre line down to the ledge",
+      "confidence": 0.9,
+      "evidence": "y = 152 - 76; also tangent to the top of the left lobe (0 + 76)"
+    },
+    {
+      "id": "right_lobe_radius",
+      "value": 76,
+      "status": "derived",
+      "source": "top view",
+      "confidence": 0.85,
+      "evidence": "lower outline y = -76 is tangent to both lobes; right lobe drawn concentric to the Ø76 hole with the same radius as the left lobe (measured ~76 mm at drawing scale)"
+    },
+    {
+      "id": "fillet_R35",
+      "value": 35,
+      "count": 2,
+      "status": "read",
+      "source": "top view, two 'R35'",
+      "confidence": 1.0
+    },
+    {
+      "id": "hook_tip_radius",
+      "value": 16,
+      "status": "read",
+      "source": "top view, 'R16'",
+      "confidence": 1.0
+    },
+    {
+      "id": "hook_tip_center",
+      "value": [
+        207,
+        116
+      ],
+      "status": "derived",
+      "source": "top view",
+      "confidence": 0.9,
+      "evidence": "R16 tangent to slot flank x = 159 + 32 = 191 -> x = 207; internally tangent to R76: dist 60 -> y = 152 - sqrt(60^2 - 48^2) = 116; tangent point (219.8, 106.4)"
+    }
+  ],
+  "features": [
+    {
+      "id": "boss",
+      "type": "extrusion",
+      "mode": "add",
+      "plane": "XY",
+      "offset": -5,
+      "distance": 30,
+      "profile": {
+        "circle": {
+          "center": [
+            0,
+            152
+          ],
+          "radius": 76
+        }
+      },
+      "description": "Ø152 boss, 30 thick, centred on the 20 mm plate"
+    },
+    {
+      "id": "hole_boss",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 76,
+        "status": "assumed",
+        "source": "top view / section A-A, not dimensioned",
+        "confidence": 0.7,
+        "evidence": "drawn the same size as the dimensioned Ø76 hole (~75 mm measured at drawing scale in top view and A-A)",
+        "review_flag": "Boss hole diameter not dimensioned; assumed Ø76 like the lower hole"
+      },
+      "position": {
+        "value": [
+          0,
+          152
+        ],
+        "status": "read",
+        "source": "top view, '152'",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "hole_right",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 76,
+        "status": "read",
+        "source": "top view, 'Ø76'",
+        "confidence": 1.0
+      },
+      "position": {
+        "value": [
+          0,
+          0
+        ],
+        "status": "origin"
+      }
+    },
+    {
+      "id": "hole_left",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 76,
+        "status": "assumed",
+        "source": "top view, not dimensioned",
+        "confidence": 0.7,
+        "evidence": "drawn the same size as the dimensioned Ø76 hole (~75 mm measured at drawing scale)",
+        "review_flag": "Left hole diameter not dimensioned; assumed Ø76 like the right hole"
+      },
+      "position": {
+        "value": [
+          -128,
+          0
+        ],
+        "status": "read",
+        "source": "top view, '128'",
+        "confidence": 1.0
+      }
+    }
+  ],
+  "review_flags": [
+    {
+      "field": "hole_boss.diameter",
+      "severity": "blocking_until_confirmed",
+      "reason": "Hole in the Ø152 boss has no diameter dimension; assumed equal to the Ø76 hole (same drawn size). Check the drawing / designer.",
+      "assumed_value": 76
+    },
+    {
+      "field": "hole_left.diameter",
+      "severity": "blocking_until_confirmed",
+      "reason": "Hole in the left lobe has no diameter dimension; assumed equal to the Ø76 hole (same drawn size). Check the drawing / designer.",
+      "assumed_value": 76
+    },
+    {
+      "field": "right_lobe_radius",
+      "severity": "info",
+      "reason": "Right lobe radius not dimensioned; taken as R76 concentric to the Ø76 hole, tangent to the common bottom edge y=-76."
+    },
+    {
+      "field": "hook_center_y",
+      "severity": "info",
+      "reason": "Hook arc R76 and slot R32 centre placed on the boss centre line (y=152) from implicit tangency of the top edge; not dimensioned directly."
+    },
+    {
+      "field": "fillet_R35",
+      "severity": "info",
+      "reason": "Fillets R35 assumed tangent to vertical flanks x=±76 (tangent to the Ø152 boss / R76 lobe) and the ledge lines y=76."
+    },
+    {
+      "field": "general_tolerance",
+      "severity": "info",
+      "reason": "Title block field reads only 'Allg.-Toleranz' (placeholder); no general tolerance standard, scale or material given. Projection symbol: method 1."
+    }
+  ]
+}

@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drawing2CAD</title>
+<style>
+:root {
+  --paper: #f3f5f8; --sheet: #ffffff; --ink: #17202b; --muted: #5a6575; --line: #d5dbe3;
+  --accent: #2a55c9; --accent-soft: #e6ecfb; --pass: #1d7a4b; --pass-soft: #e3f3ea;
+  --fail: #b0432b; --fail-soft: #fbe9e4; --warn: #9a6400; --warn-soft: #fbf0d9;
+  --model: #8ea2bd; --edge: #233041; --viewer: #eef1f5;
+  --font-body: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Cascadia Mono", Consolas, ui-monospace, "SFMono-Regular", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0d1116; --sheet: #151b23; --ink: #e5e9ef; --muted: #96a1b1; --line: #29323e;
+    --accent: #84a2f2; --accent-soft: #1c2742; --pass: #57c690; --pass-soft: #15291f;
+    --fail: #f08b6d; --fail-soft: #33201a; --warn: #e2b456; --warn-soft: #2f2615;
+    --model: #6f84a1; --edge: #c9d3e0; --viewer: #10151c; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0d1116; --sheet: #151b23; --ink: #e5e9ef; --muted: #96a1b1; --line: #29323e;
+  --accent: #84a2f2; --accent-soft: #1c2742; --pass: #57c690; --pass-soft: #15291f;
+  --fail: #f08b6d; --fail-soft: #33201a; --warn: #e2b456; --warn-soft: #2f2615;
+  --model: #6f84a1; --edge: #c9d3e0; --viewer: #10151c; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.5 var(--font-body); padding: 24px 16px 40px; }
+.wrap { max-width: 1400px; margin: 0 auto; display: grid; gap: 20px; }
+h1, h2, h3 { margin: 0; line-height: 1.15; }
+h1 { font-size: 26px; font-weight: 650; }
+h2 { font-size: 17px; font-weight: 650; }
+h3 { font-size: 12px; font-weight: 650; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); }
+p { margin: 0; }
+.muted { color: var(--muted); }
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+header { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: end; justify-content: space-between; }
+header p { max-width: 70ch; }
+.layout { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 20px; align-items: start; }
+.card { background: var(--sheet); border: 1px solid var(--line); border-radius: 6px; padding: 16px; display: grid; gap: 12px; min-width: 0; }
+aside { display: grid; gap: 20px; }
+.drop { border: 1.5px dashed var(--line); border-radius: 6px; padding: 22px 14px; text-align: center; cursor: pointer; display: grid; gap: 4px; transition: border-color .15s, background .15s; }
+.drop:hover, .drop.over { border-color: var(--accent); background: var(--accent-soft); }
+.drop b { font-size: 15px; }
+.drop .file { font-family: var(--font-mono); font-size: 13px; word-break: break-all; color: var(--accent); }
+fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 6px; }
+label { display: flex; gap: 8px; align-items: start; font-size: 14px; cursor: pointer; }
+label input { margin-top: 3px; }
+label small { display: block; color: var(--muted); font-size: 12.5px; }
+.cost { display: flex; gap: 8px; align-items: center; font-size: 14px; padding-left: 24px; }
+.cost select { padding: 4px 6px; border: 1px solid var(--line); border-radius: 4px; background: var(--sheet); color: var(--ink); font: inherit; font-size: 13px; }
+.cost[hidden] { display: none; }
+.summary-text { white-space: pre-wrap; font-size: 14px; line-height: 1.55; margin: 0; max-height: 320px; overflow: auto; }
+.cost input { width: 80px; padding: 4px 6px; border: 1px solid var(--line); border-radius: 4px; background: var(--sheet); color: var(--ink); font: 13px var(--font-mono); }
+button { font: inherit; cursor: pointer; border-radius: 5px; }
+.run { background: var(--accent); color: #fff; border: 0; padding: 10px 14px; font-weight: 600; }
+:root[data-theme="dark"] .run { color: #0d1116; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .run { color: #0d1116; } }
+.run:disabled { opacity: .45; cursor: not-allowed; }
+.ghost { background: transparent; border: 1px solid var(--line); color: var(--ink); padding: 4px 10px; font-size: 13px; }
+.ghost:hover { border-color: var(--accent); }
+.history { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; max-height: 360px; overflow: auto; }
+.history button { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 8px; background: transparent; border: 1px solid transparent; padding: 6px 8px; text-align: left; color: var(--ink); }
+.history button:hover { background: var(--paper); }
+.history button[aria-current="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.history .name { font-weight: 550; font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pill { display: inline-flex; align-items: center; font: 500 12px var(--font-mono); padding: 1px 8px; border-radius: 999px; white-space: nowrap; }
+.pill.pass { background: var(--pass-soft); color: var(--pass); }
+.pill.fail { background: var(--fail-soft); color: var(--fail); }
+.pill.warn { background: var(--warn-soft); color: var(--warn); }
+.pill.info { background: var(--accent-soft); color: var(--accent); }
+main { display: grid; gap: 20px; min-width: 0; }
+.status { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
+.status .facts { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 13px; color: var(--muted); }
+.status .facts b { color: var(--ink); font-weight: 550; }
+.views { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.panel { background: var(--sheet); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; min-width: 0; }
+.panel-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 12px; border-bottom: 1px solid var(--line); }
+.panel-head .tools { display: flex; gap: 6px; }
+.drawing { height: 460px; overflow: auto; background: #fff; display: grid; place-items: center; }
+.drawing img { max-width: 100%; max-height: 456px; display: block; cursor: zoom-in; }
+.drawing.zoomed { place-items: start; }
+.drawing.zoomed img { max-width: none; max-height: none; width: 220%; cursor: zoom-out; }
+.viewer { position: relative; height: 460px; background: var(--viewer); }
+.viewer canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+.overlay[hidden] { display: none; }
+.overlay { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 20px; color: var(--muted); font-size: 14px; pointer-events: none; }
+.hint { position: absolute; right: 10px; bottom: 8px; font-size: 12px; color: var(--muted); pointer-events: none; }
+.dims { position: absolute; left: 10px; top: 8px; font: 12px var(--font-mono); color: var(--muted); pointer-events: none; }
+.details { display: grid; grid-template-columns: 1fr 1.4fr 0.8fr; gap: 20px; align-items: start; }
+.checks { display: grid; gap: 8px; font-size: 14px; }
+.check { border-left: 3px solid var(--fail); padding: 4px 10px; background: var(--fail-soft); border-radius: 0 4px 4px 0; display: grid; gap: 2px; }
+.check .k { font-family: var(--font-mono); font-size: 13px; font-weight: 600; }
+.check .hint2 { font-size: 13px; color: var(--muted); }
+.big { font-size: 22px; font-weight: 650; }
+.flags { display: grid; gap: 8px; }
+.flag { display: grid; gap: 3px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 5px; font-size: 14px; }
+.flag .top { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.flag .field { font: 600 13px var(--font-mono); word-break: break-all; }
+.flag .assumed { font-size: 13px; color: var(--muted); }
+.downloads { display: grid; gap: 6px; }
+.downloads a { color: var(--accent); text-decoration: none; font-size: 14px; display: flex; justify-content: space-between; gap: 8px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 5px; }
+.downloads a:hover { border-color: var(--accent); }
+.downloads a span { color: var(--muted); font: 12px var(--font-mono); }
+details.log summary { cursor: pointer; font-weight: 600; font-size: 14px; }
+pre { margin: 10px 0 0; background: var(--paper); border: 1px solid var(--line); border-radius: 5px; padding: 10px 12px; font: 12.5px/1.5 var(--font-mono); max-height: 340px; overflow: auto; white-space: pre-wrap; word-break: break-word; }
+.err { color: var(--fail); font-size: 14px; }
+.empty { color: var(--muted); font-size: 14px; }
+.spin { display: inline-block; width: 12px; height: 12px; border: 2px solid var(--line); border-top-color: var(--accent); border-radius: 50%; animation: spin .8s linear infinite; vertical-align: -1px; margin-right: 6px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (max-width: 1100px) { .details { grid-template-columns: 1fr 1fr; } .details .dl { grid-column: 1 / -1; } }
+@media (max-width: 900px) { .layout, .views, .details { grid-template-columns: 1fr; } .drawing, .viewer { height: 360px; } .drawing img { max-height: 356px; } }
+</style>
+<script type="importmap">{"imports": {"three": "/vendor/three.module.min.js", "three/addons/": "/vendor/addons/"}}</script>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div style="display:grid;gap:6px">
+      <h1>Drawing2CAD</h1>
+      <p class="muted">Upload a 2D technical drawing (PDF). The AI reads it into a part description, the local MCP server builds the 3D model in the Docker sandbox and checks it, and anything unclear on the drawing is flagged for review.</p>
+    </div>
+    <span class="pill info">runs on this computer</span>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <section class="card" aria-labelledby="new-h">
+        <h2 id="new-h">New drawing</h2>
+        <div class="drop" id="drop" tabindex="0" role="button" aria-label="Choose a PDF drawing">
+          <b>Drop a PDF here</b>
+          <span class="muted" style="font-size:13px">or click to choose a file</span>
+          <span class="file" id="file-name"></span>
+        </div>
+        <input type="file" id="file" accept="application/pdf,.pdf" hidden>
+        <fieldset>
+          <h3 style="margin-bottom:2px">Reading the drawing</h3>
+          <label><input type="radio" name="mode" value="claude" id="mode-claude" checked><span>Read with Claude Code<small id="claude-note">Runs in the background on your Claude plan; no API credit</small></span></label>
+          <div class="cost" id="model-row">Model <select id="model"><option value="opus">Opus (most careful)</option><option value="sonnet">Sonnet (uses less of your plan)</option></select></div>
+          <label><input type="radio" name="mode" value="ai" id="mode-ai"><span>Read with OpenRouter<small id="or-note">Uses API credit; a few cents per drawing</small></span></label>
+          <div class="cost" id="cost-row">Cost limit <input type="number" id="max-cost" min="0.01" max="2" step="0.05" value="0.30"> USD</div>
+          <label><input type="radio" name="mode" value="saved"><span>Use saved reading<small>Free; only for drawings read before</small></span></label>
+        </fieldset>
+        <label><input type="checkbox" id="docker" checked><span>Build in the Docker sandbox<small>Untick if Docker Desktop is not running</small></span></label>
+        <button class="run" id="run" disabled>Build 3D model</button>
+        <p class="err" id="run-error" hidden></p>
+      </section>
+
+      <section class="card" aria-labelledby="hist-h">
+        <div style="display:flex;justify-content:space-between;align-items:center"><h2 id="hist-h">Results</h2><button class="ghost" id="refresh">Refresh</button></div>
+        <ul class="history" id="history"></ul>
+      </section>
+    </aside>
+
+    <main>
+      <section class="card">
+        <div class="status" id="status"><span class="empty">Upload a drawing or pick a result on the left.</span></div>
+      </section>
+
+      <section class="views">
+        <div class="panel">
+          <div class="panel-head"><h3>Drawing</h3><div class="tools"><button class="ghost" id="zoom">Zoom</button></div></div>
+          <div class="drawing" id="drawing"><span class="empty">No drawing yet</span></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h3>3D model</h3><div class="tools"><button class="ghost" id="edges" aria-pressed="true">Edges</button><button class="ghost" id="reset">Reset view</button></div></div>
+          <div class="viewer" id="viewer"><div class="dims" id="dims"></div><div class="overlay" id="overlay">No model yet</div><div class="hint">Drag to rotate · right-drag to pan · scroll to zoom</div></div>
+        </div>
+      </section>
+
+      <section class="card" id="claude-card" hidden>
+        <h2>Claude Code's summary</h2>
+        <p class="summary-text" id="claude-summary"></p>
+      </section>
+
+      <section class="details">
+        <div class="card"><h2>Validation</h2><div class="checks" id="checks"><span class="empty">–</span></div></div>
+        <div class="card"><h2>Review flags</h2><div class="flags" id="flags"><span class="empty">–</span></div></div>
+        <div class="card dl"><h2>Downloads</h2><div class="downloads" id="downloads"><span class="empty">–</span></div></div>
+      </section>
+
+      <section class="card">
+        <details class="log" id="log-box"><summary>Run log</summary><pre id="log">No run in this session yet.</pre></details>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script type="module">
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { STLLoader } from "three/addons/loaders/STLLoader.js";
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const STATUS = {
+  valid: ["pass", "valid"], needs_review: ["warn", "needs review"],
+  built_with_failed_checks: ["fail", "checks failed"], not_built: ["fail", "not built"],
+};
+const SEVERITY = { blocking_until_confirmed: ["fail", "blocking"], warning: ["warn", "warning"], info: ["info", "info"] };
+const pill = (cls, text) => `<span class="pill ${cls}">${esc(text)}</span>`;
+const statusPill = (s) => pill(...(STATUS[s] || ["info", s || "unknown"]));
+const fmt = (v) => Array.isArray(v) ? v.map((x) => (typeof x === "number" ? +x.toFixed(3) : x)).join(" × ") : (typeof v === "number" ? +v.toFixed(3) : v);
+
+let file = null, current = null, job = null, logFrom = 0;
+
+const drop = $("drop"), input = $("file");
+const pick = (f) => {
+  if (!f) return;
+  if (!/\.pdf$/i.test(f.name)) { showError("Please choose a PDF file."); return; }
+  file = f; $("file-name").textContent = f.name; $("run").disabled = false; showError("");
+};
+drop.addEventListener("click", () => input.click());
+drop.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); input.click(); } });
+input.addEventListener("change", () => pick(input.files[0]));
+["dragenter", "dragover"].forEach((t) => drop.addEventListener(t, (e) => { e.preventDefault(); drop.classList.add("over"); }));
+["dragleave", "drop"].forEach((t) => drop.addEventListener(t, (e) => { e.preventDefault(); drop.classList.remove("over"); }));
+drop.addEventListener("drop", (e) => pick(e.dataTransfer.files[0]));
+
+function showError(msg) { const el = $("run-error"); el.textContent = msg; el.hidden = !msg; }
+
+$("run").addEventListener("click", async () => {
+  if (!file) return;
+  const mode = document.querySelector('input[name="mode"]:checked').value;
+  const q = new URLSearchParams({ name: file.name, mode, model: $("model").value, max_cost: $("max-cost").value || "0.30", docker: $("docker").checked ? "1" : "0" });
+  $("run").disabled = true; showError("");
+  try {
+    const res = await fetch(`/api/run?${q}`, { method: "POST", body: file, headers: { "Content-Type": "application/pdf" } });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || res.statusText);
+    job = data.id; logFrom = 0;
+    $("log").textContent = ""; $("log-box").open = true;
+    setStatus(`<span class="spin"></span><b>${esc(file.name)}</b><span class="muted">${mode === "claude" ? "Claude Code is reading the drawing… (a few minutes)" : mode === "ai" ? "the AI is reading the drawing…" : "building from the saved reading…"}</span>`);
+    poll();
+  } catch (e) { showError(e.message); $("run").disabled = false; }
+});
+
+async function poll() {
+  const res = await fetch(`/api/job/${job}?from=${logFrom}`);
+  const data = await res.json();
+  if (data.log?.length) {
+    logFrom += data.log.length;
+    const pre = $("log"); pre.textContent += data.log.join("\n") + "\n"; pre.scrollTop = pre.scrollHeight;
+    const stage = [...data.log].reverse().find((l) => l.startsWith("== ") || l.startsWith("  → ") || l.startsWith("Claude: "));
+    const label = stage ? stage.replace(/^(== |  → |Claude: )/, "") : "";
+    if (label && data.state === "running") setStatus(`<span class="spin"></span><b>${esc(data.file)}</b><span class="muted">${esc(label.length > 150 ? label.slice(0, 149) + "…" : label)}</span>`);
+  }
+  if (data.state === "queued") setStatus(`<span class="spin"></span><b>${esc(data.file)}</b><span class="muted">waiting for the previous run to finish…</span>`);
+  if (data.state === "done" || data.state === "failed") {
+    $("run").disabled = !file;
+    await loadHistory();
+    if (data.state === "done") await loadResult(data.part_id);
+    else setStatus(`${pill("fail", "failed")}<b>${esc(data.file)}</b><span class="muted">The run stopped before a report was written. See the run log below.</span>`);
+    return;
+  }
+  setTimeout(poll, 1000);
+}
+
+function setStatus(html) { $("status").innerHTML = html; }
+
+async function loadHistory() {
+  const rows = await (await fetch("/api/results")).json();
+  $("history").innerHTML = rows.length ? rows.map((r) => `<li><button data-part="${esc(r.part_id)}" aria-current="${r.part_id === current}">
+      <span style="display:grid;min-width:0"><span class="name">${esc(r.part_id)}</span><span class="muted mono" style="font-size:11.5px">${esc((r.created || "").replace("T", " "))}</span></span>
+      ${statusPill(r.status)}</button></li>`).join("") : '<li class="empty">No results yet.</li>';
+  $("history").querySelectorAll("button").forEach((b) => b.addEventListener("click", () => loadResult(b.dataset.part)));
+}
+
+async function loadResult(part) {
+  current = part;
+  $("history").querySelectorAll("button").forEach((b) => b.setAttribute("aria-current", String(b.dataset.part === part)));
+  const res = await fetch(`/api/result/${encodeURIComponent(part)}`);
+  if (!res.ok) { setStatus(`${pill("fail", "missing")}<b>${esc(part)}</b>`); return; }
+  const r = await res.json();
+  const base = `/api/result/${encodeURIComponent(part)}`;
+  const facts = [];
+  if (r.volume != null) facts.push(`volume <b class="mono">${fmt(r.volume)} mm³</b>`);
+  if (r.bbox_size) facts.push(`size <b class="mono">${fmt(r.bbox_size)} mm</b>`);
+  facts.push(`drawing <b>${esc(r.drawing || "–")}</b>`);
+  facts.push(`server <b>${esc(r.server)}</b>`);
+  setStatus(`${statusPill(r.status)}<h2>${esc(r.part_id)}</h2><div class="facts">${facts.map((f) => `<span>${f}</span>`).join("")}</div>`);
+  $("claude-card").hidden = !r.claude_summary;
+  $("claude-summary").textContent = r.claude_summary || "";
+
+  const v = r.validation;
+  if (v) {
+    const ok = v.checks_run - v.failed_checks.length;
+    $("checks").innerHTML = `<div><span class="big mono">${ok}/${v.checks_run}</span> <span class="muted">checks passed</span></div>
+      <p class="muted" style="font-size:13px">Closed valid solid, size, holes, slots and STEP re-import, compared with the part description.</p>` +
+      v.failed_checks.map((c) => `<div class="check"><span class="k">${esc(c.check)}${c.target ? " · " + esc(c.target) : ""}</span>
+        <span>expected ${esc(fmt(c.expected))}, measured ${esc(fmt(c.measured))}</span>${c.hint ? `<span class="hint2">${esc(c.hint)}</span>` : ""}</div>`).join("");
+  } else if (r.build_error) {
+    const e = r.build_error;
+    $("checks").innerHTML = `<div class="check"><span class="k">${esc(e.code)}${e.target ? " · " + esc(e.target) : ""}</span><span>${esc(e.message)}</span></div>
+      <p class="muted" style="font-size:13px">The build stopped with this error, so nothing was exported. Reading the drawing again usually fixes it.</p>`;
+  } else $("checks").innerHTML = '<span class="empty">–</span>';
+
+  const flags = r.review_flags || [];
+  $("flags").innerHTML = flags.length ? flags.map((f) => {
+    const [cls, label] = SEVERITY[f.severity] || ["info", f.severity];
+    const assumed = f.assumed_value != null ? `<span class="assumed">assumed value: <span class="mono">${esc(fmt(f.assumed_value))}</span></span>` : "";
+    return `<div class="flag"><div class="top">${pill(cls, label)}<span class="field">${esc(f.field)}</span></div><span>${esc(f.reason)}</span>${assumed}</div>`;
+  }).join("") : '<span class="empty">Nothing flagged.</span>';
+
+  const links = [];
+  if (r.has_model) links.push([`${base}/model.step`, "3D model", "STEP"]);
+  links.push([`${base}/report.json`, "Report", "JSON"]);
+  links.push([`${base}/spec.json`, "Part description", "JSON"]);
+  $("downloads").innerHTML = links.map(([href, t, k]) => `<a href="${href}">${t}<span>${k}</span></a>`).join("");
+
+  const d = $("drawing"); d.classList.remove("zoomed");
+  d.innerHTML = r.has_drawing ? `<img alt="Drawing of ${esc(part)}" src="${base}/drawing.png?t=${Date.now()}">` : '<span class="empty">Drawing file not found</span>';
+  d.querySelector("img")?.addEventListener("click", () => d.classList.toggle("zoomed"));
+
+  if (r.has_model) await showModel(`${base}/model.stl?t=${Date.now()}`, r.bbox_size);
+  else showModel(null, null, r.status === "not_built" ? "No model: the build failed" : "No model");
+}
+
+$("zoom").addEventListener("click", () => $("drawing").classList.toggle("zoomed"));
+$("refresh").addEventListener("click", loadHistory);
+
+const viewer = $("viewer");
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+viewer.prepend(renderer.domElement);
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100000);
+camera.up.set(0, 0, 1);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+scene.add(new THREE.HemisphereLight(0xffffff, 0x8899aa, 1.6));
+const sun = new THREE.DirectionalLight(0xffffff, 1.6); scene.add(sun);
+const fill = new THREE.DirectionalLight(0xffffff, 0.6); fill.position.set(-1, -1, -0.5); scene.add(fill);
+let model = null, edges = null, home = null, loadToken = 0;
+
+function resize() {
+  const { clientWidth: w, clientHeight: h } = viewer;
+  renderer.setSize(w, h, false); camera.aspect = w / Math.max(h, 1); camera.updateProjectionMatrix();
+}
+new ResizeObserver(resize).observe(viewer); resize();
+
+function clearModel() {
+  for (const o of [model, edges]) if (o) { scene.remove(o); o.geometry.dispose(); o.material.dispose(); }
+  model = edges = null;
+}
+
+async function showModel(url, size, message) {
+  const token = ++loadToken;
+  clearModel(); $("dims").textContent = "";
+  const overlay = $("overlay");
+  if (!url) { overlay.textContent = message || "No model"; overlay.hidden = false; return; }
+  overlay.innerHTML = '<span><span class="spin"></span>Preparing 3D preview…</span>'; overlay.hidden = false;
+  try {
+    const geom = await new STLLoader().loadAsync(url);
+    if (token !== loadToken) { geom.dispose(); return; }
+    geom.computeBoundingBox(); const c = new THREE.Vector3(); geom.boundingBox.getCenter(c); geom.translate(-c.x, -c.y, -c.z);
+    geom.computeBoundingSphere();
+    model = new THREE.Mesh(geom, new THREE.MeshStandardMaterial({ color: css("--model"), metalness: 0.15, roughness: 0.55, polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 1 }));
+    edges = new THREE.LineSegments(new THREE.EdgesGeometry(geom, 25), new THREE.LineBasicMaterial({ color: css("--edge") }));
+    edges.visible = $("edges").getAttribute("aria-pressed") === "true";
+    scene.add(model, edges);
+    const r = geom.boundingSphere.radius;
+    home = new THREE.Vector3(1.1, -1.6, 1.0).normalize().multiplyScalar(r * 3.4);
+    resetView();
+    if (size) $("dims").textContent = `${fmt(size)} mm`;
+    overlay.hidden = true;
+  } catch (e) { if (token === loadToken) overlay.textContent = "Could not load the 3D preview"; }
+}
+
+function resetView() {
+  if (!home) return;
+  camera.position.copy(home); controls.target.set(0, 0, 0); sun.position.copy(home).add(new THREE.Vector3(0, 0, home.length()));
+  camera.near = home.length() / 100; camera.far = home.length() * 20; camera.updateProjectionMatrix(); controls.update();
+}
+$("reset").addEventListener("click", resetView);
+$("edges").addEventListener("click", (e) => {
+  const on = e.currentTarget.getAttribute("aria-pressed") !== "true";
+  e.currentTarget.setAttribute("aria-pressed", String(on)); if (edges) edges.visible = on;
+});
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+  if (model) model.material.color.set(css("--model")); if (edges) edges.material.color.set(css("--edge"));
+});
+renderer.setAnimationLoop(() => { controls.update(); renderer.render(scene, camera); });
+
+function syncMode() {
+  const mode = document.querySelector('input[name="mode"]:checked').value;
+  $("model-row").hidden = mode !== "claude";
+  $("cost-row").hidden = mode !== "ai";
+}
+document.querySelectorAll('input[name="mode"]').forEach((r) => r.addEventListener("change", syncMode));
+try {
+  const st = await (await fetch("/api/status")).json();
+  if (!st.claude_code) {
+    $("mode-claude").disabled = true;
+    $("claude-note").textContent = "Claude Code not found on this computer";
+    document.querySelector('input[name="mode"][value="saved"]').checked = true;
+  }
+  if (!st.openrouter_key) { $("mode-ai").disabled = true; $("or-note").textContent = "No OPENROUTER_API_KEY set"; }
+} catch (e) {}
+syncMode();
+
+await loadHistory();
+const first = $("history").querySelector("button");
+if (first) loadResult(first.dataset.part);
+</script>
+</body>
+</html>

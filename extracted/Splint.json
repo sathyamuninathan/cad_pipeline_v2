@@ -1,0 +1,696 @@
+{
+  "schema_version": "0.1",
+  "part_id": "Splint",
+  "drawing_file": "Splint.pdf",
+  "units": "mm",
+  "coordinate_system": {
+    "origin": "centre of the eye (Ø13), bottom face of the flat-laid pin",
+    "x": "to the right in the front view (legs side by side)",
+    "y": "upward in the front view, legs point to -y",
+    "z": "wire thickness (Ø5), bottom at z=0, pin lies flat"
+  },
+  "base_body": {
+    "type": "extruded_profile",
+    "extrude_height": 5,
+    "profile": {
+      "description": "Outline of eye (R6.5) and both legs (2 x 2.5 wide), R1.5 fillets at the eye/leg transition; left leg ends at y=-57, right leg at y=-62",
+      "segments": [
+        {
+          "type": "line",
+          "from": [
+            2.5,
+            -62.0
+          ],
+          "to": [
+            2.5,
+            -6.928
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            4.0,
+            -6.928
+          ],
+          "radius": 1.5,
+          "from": [
+            2.5,
+            -6.928
+          ],
+          "to": [
+            3.25,
+            -5.629
+          ],
+          "clockwise": true,
+          "note": "R1.5 fillet"
+        },
+        {
+          "type": "arc",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius": 6.5,
+          "from": [
+            3.25,
+            -5.629
+          ],
+          "to": [
+            -3.25,
+            -5.629
+          ],
+          "clockwise": false,
+          "note": "eye outer Ø13"
+        },
+        {
+          "type": "arc",
+          "center": [
+            -4.0,
+            -6.928
+          ],
+          "radius": 1.5,
+          "from": [
+            -3.25,
+            -5.629
+          ],
+          "to": [
+            -2.5,
+            -6.928
+          ],
+          "clockwise": true,
+          "note": "R1.5 fillet"
+        },
+        {
+          "type": "line",
+          "from": [
+            -2.5,
+            -6.928
+          ],
+          "to": [
+            -2.5,
+            -57.0
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            -2.5,
+            -57.0
+          ],
+          "to": [
+            0.0,
+            -57.0
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            0.0,
+            -57.0
+          ],
+          "to": [
+            0.0,
+            -62.0
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            0.0,
+            -62.0
+          ],
+          "to": [
+            2.5,
+            -62.0
+          ]
+        }
+      ]
+    }
+  },
+  "dimensions": [
+    {
+      "id": "wire_diameter",
+      "value": 5,
+      "source": "end view, 'Ø5'",
+      "confidence": 0.95,
+      "status": "read",
+      "evidence": "used as body thickness in z (extrude_height) and as total width of both legs in x"
+    },
+    {
+      "id": "eye_outer_diameter",
+      "value": 13,
+      "source": "front view, 'Ø13'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "eye_inner_diameter",
+      "value": 8,
+      "source": "front view, not dimensioned",
+      "confidence": 0.8,
+      "status": "derived",
+      "evidence": "13 - 2 x 2.5: ring width equals the half-round wire thickness 5/2; matches the drawing at scale 1:1"
+    },
+    {
+      "id": "short_leg_length",
+      "value": 57,
+      "source": "front view, '57' from eye centre",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "long_leg_length",
+      "value": 62,
+      "source": "front view, '62' from eye centre",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "transition_fillet",
+      "value": 1.5,
+      "source": "front view, 'R1,5'",
+      "confidence": 0.95,
+      "status": "read"
+    },
+    {
+      "id": "fillet_tangent_points",
+      "value": [
+        2.5,
+        -6.928
+      ],
+      "status": "derived",
+      "confidence": 0.9,
+      "evidence": "fillet centre (4, -sqrt(8^2-4^2)) = (4,-6.928); tangent on circle 6.5*(4,-6.928)/8 = (3.25,-5.629)"
+    },
+    {
+      "id": "edge_round",
+      "value": 0.5,
+      "source": "end view, 'R0,5'",
+      "confidence": 0.9,
+      "status": "read",
+      "evidence": "edge round at the flat faces of the half-round wire; not modelled"
+    },
+    {
+      "id": "leg_cross_section",
+      "value": 2.5,
+      "status": "derived",
+      "confidence": 0.85,
+      "evidence": "end view: two half-rounds forming a Ø5 circle centred at (x=0, z=2.5); corners of the square section cut away with radius 2.5 over the straight legs (y from -62.5 to -6.928)"
+    },
+    {
+      "id": "eye_cross_section",
+      "value": 2.6,
+      "status": "derived",
+      "confidence": 0.7,
+      "evidence": "eye is the bent half-round wire (flat face at r=4, round outer face ~R2.5 centred at r=4, z=2.5); modelled with two revolution cuts of R2.6 so that a 1.43 mm web remains at r=6.5 where the legs join (an exact R2.5 cut would separate the legs from the eye)"
+    }
+  ],
+  "features": [
+    {
+      "id": "eye_bore",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 8,
+        "source": "front view, inner eye circle",
+        "confidence": 0.8,
+        "status": "derived",
+        "evidence": "13 - 2 x 2.5 (half-round wire thickness)"
+      },
+      "position": {
+        "value": [
+          0,
+          0
+        ],
+        "status": "origin"
+      }
+    },
+    {
+      "id": "eye_round_top",
+      "type": "revolution",
+      "mode": "cut",
+      "axis_position": [
+        0,
+        0
+      ],
+      "profile": {
+        "segments": [
+          {
+            "type": "arc",
+            "center": [
+              4.0,
+              2.5
+            ],
+            "radius": 2.6,
+            "from": [
+              4.0,
+              5.1
+            ],
+            "to": [
+              6.5,
+              3.214
+            ],
+            "clockwise": true
+          },
+          {
+            "type": "line",
+            "from": [
+              6.5,
+              3.214
+            ],
+            "to": [
+              7.0,
+              3.214
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              7.0,
+              3.214
+            ],
+            "to": [
+              7.0,
+              5.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              7.0,
+              5.5
+            ],
+            "to": [
+              4.0,
+              5.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              4.0,
+              5.5
+            ],
+            "to": [
+              4.0,
+              5.1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "eye_round_bottom",
+      "type": "revolution",
+      "mode": "cut",
+      "axis_position": [
+        0,
+        0
+      ],
+      "profile": {
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              4.0,
+              -0.1
+            ],
+            "to": [
+              4.0,
+              -0.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              4.0,
+              -0.5
+            ],
+            "to": [
+              7.0,
+              -0.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              7.0,
+              -0.5
+            ],
+            "to": [
+              7.0,
+              1.786
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              7.0,
+              1.786
+            ],
+            "to": [
+              6.5,
+              1.786
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              4.0,
+              2.5
+            ],
+            "radius": 2.6,
+            "from": [
+              6.5,
+              1.786
+            ],
+            "to": [
+              4.0,
+              -0.1
+            ],
+            "clockwise": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "leg_round_top_right",
+      "type": "extrusion",
+      "mode": "cut",
+      "plane": "XZ",
+      "offset": -62.5,
+      "distance": 55.572,
+      "profile": {
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              2.5,
+              2.5
+            ],
+            "to": [
+              3.0,
+              2.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              3.0,
+              2.5
+            ],
+            "to": [
+              3.0,
+              5.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              3.0,
+              5.5
+            ],
+            "to": [
+              0.0,
+              5.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              0.0,
+              5.5
+            ],
+            "to": [
+              0.0,
+              5.0
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              0.0,
+              2.5
+            ],
+            "radius": 2.5,
+            "from": [
+              0.0,
+              5.0
+            ],
+            "to": [
+              2.5,
+              2.5
+            ],
+            "clockwise": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "leg_round_top_left",
+      "type": "extrusion",
+      "mode": "cut",
+      "plane": "XZ",
+      "offset": -62.5,
+      "distance": 55.572,
+      "profile": {
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              0.0,
+              5.0
+            ],
+            "to": [
+              0.0,
+              5.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              0.0,
+              5.5
+            ],
+            "to": [
+              -3.0,
+              5.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              -3.0,
+              5.5
+            ],
+            "to": [
+              -3.0,
+              2.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              -3.0,
+              2.5
+            ],
+            "to": [
+              -2.5,
+              2.5
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              0.0,
+              2.5
+            ],
+            "radius": 2.5,
+            "from": [
+              -2.5,
+              2.5
+            ],
+            "to": [
+              0.0,
+              5.0
+            ],
+            "clockwise": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "leg_round_bottom_left",
+      "type": "extrusion",
+      "mode": "cut",
+      "plane": "XZ",
+      "offset": -62.5,
+      "distance": 55.572,
+      "profile": {
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              -2.5,
+              2.5
+            ],
+            "to": [
+              -3.0,
+              2.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              -3.0,
+              2.5
+            ],
+            "to": [
+              -3.0,
+              -0.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              -3.0,
+              -0.5
+            ],
+            "to": [
+              0.0,
+              -0.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              0.0,
+              -0.5
+            ],
+            "to": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              0.0,
+              2.5
+            ],
+            "radius": 2.5,
+            "from": [
+              0.0,
+              0.0
+            ],
+            "to": [
+              -2.5,
+              2.5
+            ],
+            "clockwise": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "leg_round_bottom_right",
+      "type": "extrusion",
+      "mode": "cut",
+      "plane": "XZ",
+      "offset": -62.5,
+      "distance": 55.572,
+      "profile": {
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              0.0,
+              0.0
+            ],
+            "to": [
+              0.0,
+              -0.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              0.0,
+              -0.5
+            ],
+            "to": [
+              3.0,
+              -0.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              3.0,
+              -0.5
+            ],
+            "to": [
+              3.0,
+              2.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              3.0,
+              2.5
+            ],
+            "to": [
+              2.5,
+              2.5
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              0.0,
+              2.5
+            ],
+            "radius": 2.5,
+            "from": [
+              2.5,
+              2.5
+            ],
+            "to": [
+              0.0,
+              0.0
+            ],
+            "clockwise": true
+          }
+        ]
+      }
+    }
+  ],
+  "review_flags": [
+    {
+      "field": "eye_cross_section",
+      "severity": "warning",
+      "reason": "The eye is a bent half-round wire (torus-like). Modelled as a flat ring rounded on the outside by two R2.6 revolution cuts, leaving narrow flats at the inner edge and a 1.43 mm web at r=6.5 so the legs stay joined to the eye. The transition from the eye to the legs (R1.5 zone, y -4 to -7) keeps an approximate square section."
+    },
+    {
+      "field": "eye_bore",
+      "severity": "info",
+      "reason": "Inner eye taken as a plain Ø8 circle (13 - 2 x 2.5). On the drawing the inner contour narrows to a teardrop point where the two wire halves meet (about y = -6); that cusp is not modelled."
+    },
+    {
+      "field": "leg_slit",
+      "severity": "warning",
+      "reason": "The two legs are modelled as one solid, with no gap at x=0 (on the drawing the halves only touch). Only the different leg lengths (57 / 62) are modelled."
+    },
+    {
+      "field": "edge_round",
+      "severity": "warning",
+      "reason": "The R0.5 edge rounds on the half-round wire (end view) are 3D edge fillets and are not modelled."
+    },
+    {
+      "field": "wire_diameter",
+      "severity": "info",
+      "reason": "Ø5 in the end view taken as the overall wire diameter (two half-rounds of 5 x 2.5); also used as the body thickness and the total leg width."
+    }
+  ]
+}

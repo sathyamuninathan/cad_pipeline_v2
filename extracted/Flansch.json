@@ -1,0 +1,856 @@
+{
+  "schema_version": "0.1",
+  "part_id": "Flansch",
+  "drawing_file": "Flansch_dwg.pdf",
+  "units": "mm",
+  "drawing_scale": "2:1",
+  "general_tolerance": null,
+  "coordinate_system": {
+    "origin": "axis of the left boss (left hole pattern, Ø20 bore) on the bottom face",
+    "x": "to the right in the top view (towards the right boss, 60 mm away)",
+    "y": "up in the top view (towards the upper boss)",
+    "z": "part height, bottom face z=0, top face of the bosses z=25"
+  },
+  "base_body": {
+    "type": "extruded_profile",
+    "profile": {
+      "shape": "circle",
+      "description": "left boss Ø30",
+      "circle": {
+        "center": [
+          0,
+          0
+        ],
+        "radius": 15
+      }
+    },
+    "extrude_height": 25
+  },
+  "dimensions": [
+    {
+      "id": "boss_diameter",
+      "value": 30,
+      "status": "read",
+      "source": "top view, 'Ø30' on the left boss",
+      "confidence": 0.95
+    },
+    {
+      "id": "bore_diameter",
+      "value": 20,
+      "status": "read",
+      "source": "top view, 'Ø20' on the left boss",
+      "confidence": 0.95
+    },
+    {
+      "id": "boss_height",
+      "value": 25,
+      "status": "read",
+      "source": "section A-A, '25'",
+      "confidence": 1.0
+    },
+    {
+      "id": "boss_C_x",
+      "value": 60,
+      "status": "read",
+      "source": "top view, '60'",
+      "confidence": 1.0
+    },
+    {
+      "id": "boss_B_x",
+      "value": 38,
+      "status": "read",
+      "source": "top view, '38'",
+      "confidence": 1.0
+    },
+    {
+      "id": "boss_B_y",
+      "value": 25,
+      "status": "read",
+      "source": "top view, '25' (vertical, right side)",
+      "confidence": 1.0
+    },
+    {
+      "id": "boss_B_C_diameters",
+      "value": 30,
+      "status": "derived",
+      "source": "top view, upper and right boss drawn with the same circles as the left boss",
+      "confidence": 0.85,
+      "evidence": "upper and right bosses (and their Ø20 bores) are drawn the same size as the dimensioned left boss; section A-A shows the right boss as 30 wide with a 20 bore"
+    },
+    {
+      "id": "wall_thickness",
+      "value": 5,
+      "status": "read",
+      "source": "top view, '5' on the upper-left wall",
+      "confidence": 0.9
+    },
+    {
+      "id": "wall_height",
+      "value": 20,
+      "status": "read",
+      "source": "section A-A, '20'; section B-B, '20'",
+      "confidence": 1.0
+    },
+    {
+      "id": "wall_z_start",
+      "value": 2.5,
+      "status": "derived",
+      "source": "section A-A, wall centred on the boss height",
+      "confidence": 0.85,
+      "evidence": "(25 - 20) / 2 = 2.5; in A-A and B-B the wall sticks out the same amount below and above the web"
+    },
+    {
+      "id": "web_thickness",
+      "value": 6,
+      "status": "read",
+      "source": "section A-A, '6'",
+      "confidence": 1.0
+    },
+    {
+      "id": "web_z_start",
+      "value": 9.5,
+      "status": "derived",
+      "source": "section A-A, web centred on the boss height",
+      "confidence": 0.85,
+      "evidence": "(25 - 6) / 2 = 9.5; the web is drawn centred in A-A and B-B (measured 9.5..15.5)"
+    },
+    {
+      "id": "outline_tangent_points",
+      "value": [
+        71.261,
+        9.909,
+        49.261,
+        34.909,
+        29.756,
+        37.531,
+        -8.244,
+        12.531
+      ],
+      "status": "derived",
+      "source": "top view, outer lines tangent to the three Ø30 bosses",
+      "confidence": 0.95,
+      "evidence": "outer lines are tangent to equal R15 circles, so they run parallel to the centre lines, offset by 15: C-B normal (0.75071,0.66062), B-A normal (-0.54962,0.83542), bottom line y=-15"
+    },
+    {
+      "id": "inner_wall_points",
+      "value": [
+        11.18,
+        -10,
+        48.82,
+        -10,
+        60.121,
+        14.999,
+        52.893,
+        23.213,
+        23.164,
+        27.209,
+        3.844,
+        14.499
+      ],
+      "status": "derived",
+      "source": "top view, inner wall lines 5 mm inside the outer lines",
+      "confidence": 0.9,
+      "evidence": "inner lines offset 10 from the centre lines; they meet the R15 boss circles at +-sqrt(15^2-10^2)=11.180 along each line",
+      "depends_on": [
+        "wall_thickness"
+      ]
+    },
+    {
+      "id": "small_hole_pitch_radius",
+      "value": 12.5,
+      "status": "derived",
+      "source": "top view, small holes on the middle of the boss rings (not dimensioned)",
+      "confidence": 0.75,
+      "evidence": "holes sit centred in the ring between Ø20 and Ø30: (10 + 15) / 2 = 12.5; measured about 12.5-12.6 on the drawing (scale 2:1)",
+      "review_flag": "pitch circle of the 4+4 small holes is not dimensioned; taken as Ø25 (middle of the ring)"
+    }
+  ],
+  "features": [
+    {
+      "id": "boss_B",
+      "type": "extrusion",
+      "mode": "add",
+      "plane": "XY",
+      "offset": 0,
+      "distance": 25,
+      "description": "upper boss Ø30 x 25 at (38, 25)",
+      "profile": {
+        "circle": {
+          "center": [
+            38,
+            25
+          ],
+          "radius": 15
+        }
+      }
+    },
+    {
+      "id": "boss_C",
+      "type": "extrusion",
+      "mode": "add",
+      "plane": "XY",
+      "offset": 0,
+      "distance": 25,
+      "description": "right boss Ø30 x 25 at (60, 0)",
+      "profile": {
+        "circle": {
+          "center": [
+            60,
+            0
+          ],
+          "radius": 15
+        }
+      }
+    },
+    {
+      "id": "frame",
+      "type": "extrusion",
+      "mode": "add",
+      "plane": "XY",
+      "offset": 2.5,
+      "distance": 20,
+      "description": "outer tangent outline of the three bosses, z 2.5..22.5 (walls height 20, centred)",
+      "profile": {
+        "shape": "tangent_hull",
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              0,
+              -15
+            ],
+            "to": [
+              60,
+              -15
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              60,
+              0
+            ],
+            "radius": 15,
+            "from": [
+              60,
+              -15
+            ],
+            "to": [
+              71.261,
+              9.909
+            ],
+            "clockwise": false
+          },
+          {
+            "type": "line",
+            "from": [
+              71.261,
+              9.909
+            ],
+            "to": [
+              49.261,
+              34.909
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              38,
+              25
+            ],
+            "radius": 15,
+            "from": [
+              49.261,
+              34.909
+            ],
+            "to": [
+              29.756,
+              37.531
+            ],
+            "clockwise": false
+          },
+          {
+            "type": "line",
+            "from": [
+              29.756,
+              37.531
+            ],
+            "to": [
+              -8.244,
+              12.531
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              0,
+              0
+            ],
+            "radius": 15,
+            "from": [
+              -8.244,
+              12.531
+            ],
+            "to": [
+              0,
+              -15
+            ],
+            "clockwise": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "pocket_top",
+      "type": "extrusion",
+      "mode": "cut",
+      "plane": "XY",
+      "offset": 15.5,
+      "distance": 7,
+      "description": "upper pocket inside the walls, above the 6 mm web (z 15.5..22.5)",
+      "profile": {
+        "shape": "inner_region",
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              11.18,
+              -10
+            ],
+            "to": [
+              48.82,
+              -10
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              60,
+              0
+            ],
+            "radius": 15,
+            "from": [
+              48.82,
+              -10
+            ],
+            "to": [
+              60.121,
+              14.999
+            ],
+            "clockwise": true
+          },
+          {
+            "type": "line",
+            "from": [
+              60.121,
+              14.999
+            ],
+            "to": [
+              52.893,
+              23.213
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              38,
+              25
+            ],
+            "radius": 15,
+            "from": [
+              52.893,
+              23.213
+            ],
+            "to": [
+              23.164,
+              27.209
+            ],
+            "clockwise": true
+          },
+          {
+            "type": "line",
+            "from": [
+              23.164,
+              27.209
+            ],
+            "to": [
+              3.844,
+              14.499
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              0,
+              0
+            ],
+            "radius": 15,
+            "from": [
+              3.844,
+              14.499
+            ],
+            "to": [
+              11.18,
+              -10
+            ],
+            "clockwise": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "pocket_bottom",
+      "type": "extrusion",
+      "mode": "cut",
+      "plane": "XY",
+      "offset": 2.5,
+      "distance": 7,
+      "description": "lower pocket inside the walls, below the 6 mm web (z 2.5..9.5)",
+      "profile": {
+        "shape": "inner_region",
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              11.18,
+              -10
+            ],
+            "to": [
+              48.82,
+              -10
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              60,
+              0
+            ],
+            "radius": 15,
+            "from": [
+              48.82,
+              -10
+            ],
+            "to": [
+              60.121,
+              14.999
+            ],
+            "clockwise": true
+          },
+          {
+            "type": "line",
+            "from": [
+              60.121,
+              14.999
+            ],
+            "to": [
+              52.893,
+              23.213
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              38,
+              25
+            ],
+            "radius": 15,
+            "from": [
+              52.893,
+              23.213
+            ],
+            "to": [
+              23.164,
+              27.209
+            ],
+            "clockwise": true
+          },
+          {
+            "type": "line",
+            "from": [
+              23.164,
+              27.209
+            ],
+            "to": [
+              3.844,
+              14.499
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              0,
+              0
+            ],
+            "radius": 15,
+            "from": [
+              3.844,
+              14.499
+            ],
+            "to": [
+              11.18,
+              -10
+            ],
+            "clockwise": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "bore_A",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 20,
+        "status": "read",
+        "source": "top view, 'Ø20'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          0,
+          0
+        ],
+        "status": "origin",
+        "source": "origin, left boss axis",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "bore_B",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 20,
+        "status": "derived",
+        "source": "top view, same circle as 'Ø20'; section B-B",
+        "confidence": 0.85,
+        "evidence": "upper bore drawn identical to the dimensioned Ø20 bore; B-B shows a 20 wide bore with 5 mm walls"
+      },
+      "position": {
+        "value": [
+          38,
+          25
+        ],
+        "status": "read",
+        "source": "top view, '38' and '25'",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "bore_C",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 20,
+        "status": "derived",
+        "source": "top view, same circle as 'Ø20'; section A-A",
+        "confidence": 0.85,
+        "evidence": "right bore drawn identical to the dimensioned Ø20 bore; A-A shows a 20 wide bore with 5 mm walls"
+      },
+      "position": {
+        "value": [
+          60,
+          0
+        ],
+        "status": "read",
+        "source": "top view, '60'",
+        "confidence": 1.0
+      }
+    },
+    {
+      "id": "hole_A1",
+      "type": "hole",
+      "through": false,
+      "diameter": {
+        "value": 3.5,
+        "status": "read",
+        "source": "top view, 'Ø3,5'",
+        "confidence": 0.9
+      },
+      "depth": {
+        "value": 10,
+        "status": "read",
+        "source": "section A-A, '10'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          12.5,
+          0
+        ],
+        "status": "derived",
+        "source": "top view, hole on the ring of the left boss",
+        "confidence": 0.75,
+        "evidence": "x = 12.5 (middle of the ring Ø20..Ø30), y = 0 on the horizontal centre line",
+        "depends_on": [
+          "small_hole_pitch_radius"
+        ],
+        "review_flag": "pitch circle not dimensioned, Ø25 assumed from the ring middle"
+      }
+    },
+    {
+      "id": "hole_A2",
+      "type": "hole",
+      "through": false,
+      "diameter": {
+        "value": 3.5,
+        "status": "derived",
+        "source": "top view, same circle as 'Ø3,5'",
+        "confidence": 0.85,
+        "evidence": "all four holes on the left boss are drawn the same size as the dimensioned Ø3,5 hole"
+      },
+      "depth": {
+        "value": 10,
+        "status": "read",
+        "source": "section A-A, '10'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          0,
+          12.5
+        ],
+        "status": "derived",
+        "source": "top view, hole on the ring of the left boss",
+        "confidence": 0.75,
+        "evidence": "x = 0 on the vertical centre line, y = 12.5 (middle of the ring)",
+        "depends_on": [
+          "small_hole_pitch_radius"
+        ],
+        "review_flag": "pitch circle not dimensioned, Ø25 assumed from the ring middle"
+      }
+    },
+    {
+      "id": "hole_A3",
+      "type": "hole",
+      "through": false,
+      "diameter": {
+        "value": 3.5,
+        "status": "derived",
+        "source": "top view, same circle as 'Ø3,5'",
+        "confidence": 0.85,
+        "evidence": "all four holes on the left boss are drawn the same size as the dimensioned Ø3,5 hole"
+      },
+      "depth": {
+        "value": 10,
+        "status": "read",
+        "source": "section A-A, '10'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          -12.5,
+          0
+        ],
+        "status": "derived",
+        "source": "top view, hole on the ring of the left boss",
+        "confidence": 0.75,
+        "evidence": "x = -12.5 (middle of the ring), y = 0",
+        "depends_on": [
+          "small_hole_pitch_radius"
+        ],
+        "review_flag": "pitch circle not dimensioned, Ø25 assumed from the ring middle"
+      }
+    },
+    {
+      "id": "hole_A4",
+      "type": "hole",
+      "through": false,
+      "diameter": {
+        "value": 3.5,
+        "status": "derived",
+        "source": "top view, same circle as 'Ø3,5'",
+        "confidence": 0.85,
+        "evidence": "all four holes on the left boss are drawn the same size as the dimensioned Ø3,5 hole"
+      },
+      "depth": {
+        "value": 10,
+        "status": "derived",
+        "source": "section A-A, '10' (shown on the two cut holes)",
+        "confidence": 0.85,
+        "evidence": "same depth as the holes cut in A-A, symmetric pattern"
+      },
+      "position": {
+        "value": [
+          0,
+          -12.5
+        ],
+        "status": "derived",
+        "source": "top view, hole on the ring of the left boss",
+        "confidence": 0.75,
+        "evidence": "x = 0, y = -12.5 (middle of the ring)",
+        "depends_on": [
+          "small_hole_pitch_radius"
+        ],
+        "review_flag": "pitch circle not dimensioned, Ø25 assumed from the ring middle"
+      }
+    },
+    {
+      "id": "hole_B1",
+      "type": "hole",
+      "through": false,
+      "diameter": {
+        "value": 2.5,
+        "status": "read",
+        "source": "top view, 'Ø2,5'",
+        "confidence": 0.9
+      },
+      "depth": {
+        "value": 10,
+        "status": "read",
+        "source": "section B-B, '10'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          38,
+          12.5
+        ],
+        "status": "derived",
+        "source": "top view, hole on the ring of the upper boss",
+        "confidence": 0.75,
+        "evidence": "x = 38, y = 25 - 12.5 (middle of the ring)",
+        "depends_on": [
+          "small_hole_pitch_radius"
+        ],
+        "review_flag": "pitch circle not dimensioned, Ø25 assumed from the ring middle"
+      }
+    },
+    {
+      "id": "hole_B2",
+      "type": "hole",
+      "through": false,
+      "diameter": {
+        "value": 2.5,
+        "status": "derived",
+        "source": "top view, same circle as 'Ø2,5'",
+        "confidence": 0.85,
+        "evidence": "all four holes on the upper boss are drawn the same size as the dimensioned Ø2,5 hole"
+      },
+      "depth": {
+        "value": 10,
+        "status": "read",
+        "source": "section B-B, '10'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          50.5,
+          25
+        ],
+        "status": "derived",
+        "source": "top view, hole on the ring of the upper boss",
+        "confidence": 0.75,
+        "evidence": "x = 38 + 12.5, y = 25",
+        "depends_on": [
+          "small_hole_pitch_radius"
+        ],
+        "review_flag": "pitch circle not dimensioned, Ø25 assumed from the ring middle"
+      }
+    },
+    {
+      "id": "hole_B3",
+      "type": "hole",
+      "through": false,
+      "diameter": {
+        "value": 2.5,
+        "status": "derived",
+        "source": "top view, same circle as 'Ø2,5'",
+        "confidence": 0.85,
+        "evidence": "all four holes on the upper boss are drawn the same size as the dimensioned Ø2,5 hole"
+      },
+      "depth": {
+        "value": 10,
+        "status": "read",
+        "source": "section B-B, '10'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          38,
+          37.5
+        ],
+        "status": "derived",
+        "source": "top view, hole on the ring of the upper boss",
+        "confidence": 0.75,
+        "evidence": "x = 38, y = 25 + 12.5",
+        "depends_on": [
+          "small_hole_pitch_radius"
+        ],
+        "review_flag": "pitch circle not dimensioned, Ø25 assumed from the ring middle"
+      }
+    },
+    {
+      "id": "hole_B4",
+      "type": "hole",
+      "through": false,
+      "diameter": {
+        "value": 2.5,
+        "status": "derived",
+        "source": "top view, same circle as 'Ø2,5'",
+        "confidence": 0.85,
+        "evidence": "all four holes on the upper boss are drawn the same size as the dimensioned Ø2,5 hole"
+      },
+      "depth": {
+        "value": 10,
+        "status": "derived",
+        "source": "section B-B, '10' (shown on the two cut holes)",
+        "confidence": 0.85,
+        "evidence": "same depth as the holes cut in B-B, symmetric pattern"
+      },
+      "position": {
+        "value": [
+          25.5,
+          25
+        ],
+        "status": "derived",
+        "source": "top view, hole on the ring of the upper boss",
+        "confidence": 0.75,
+        "evidence": "x = 38 - 12.5, y = 25",
+        "depends_on": [
+          "small_hole_pitch_radius"
+        ],
+        "review_flag": "pitch circle not dimensioned, Ø25 assumed from the ring middle"
+      }
+    }
+  ],
+  "review_flags": [
+    {
+      "field": "small_hole_pitch_radius",
+      "severity": "info",
+      "reason": "the pitch circle of the 4x Ø3,5 (left boss) and 4x Ø2,5 (upper boss) holes is not dimensioned; Ø25 (middle of the Ø20/Ø30 ring) used, which matches the drawn positions",
+      "assumed_value": 12.5
+    },
+    {
+      "field": "hole_A*/hole_B*",
+      "severity": "info",
+      "reason": "the drawing shows plain drilled blind holes (no thread lines), modelled as such. Ø2,5 is the M3 tap drill and Ø3,5 is close to the M3 clearance hole (3.4), so check whether threads (e.g. M3) are meant on the upper boss"
+    },
+    {
+      "field": "hole_A*/hole_B*",
+      "severity": "info",
+      "reason": "'Ø3,5' and 'Ø2,5' are dimensioned on one hole each and applied to all four holes of that boss; the drill-point cone at the hole bottom is not modelled"
+    },
+    {
+      "field": "wall_thickness",
+      "severity": "info",
+      "reason": "wall thickness '5' is dimensioned only on the upper-left wall; applied to the bottom and right walls, which are drawn the same (B-B confirms 5 for the bottom wall)"
+    },
+    {
+      "field": "wall_z_start/web_z_start",
+      "severity": "info",
+      "reason": "the heights of the walls (20) and the web (6) are not positioned by a dimension; both are taken as centred on the 25 mm bosses, as drawn in A-A and B-B"
+    },
+    {
+      "field": "boss_B_C_diameters",
+      "severity": "info",
+      "reason": "Ø30/Ø20 are dimensioned only on the left boss; the upper and right bosses are drawn identically and use the same sizes"
+    },
+    {
+      "field": "general_tolerance",
+      "severity": "info",
+      "reason": "the title-block field 'Allgemeintoleranz' is empty and no material is given; no general tolerance recorded. Projection symbol: method 1"
+    }
+  ]
+}

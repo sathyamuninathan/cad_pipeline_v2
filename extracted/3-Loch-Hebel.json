@@ -1,0 +1,395 @@
+{
+  "schema_version": "0.1",
+  "part_id": "3-Loch-Hebel",
+  "drawing_file": "3-Loch-Hebel.pdf",
+  "units": "mm",
+  "drawing_scale": "1:1",
+  "coordinate_system": {
+    "origin": "center of the middle (bottom) hole, bottom face",
+    "x": "to the right in the top view",
+    "y": "up in the top view",
+    "z": "plate thickness, bottom face at z=0"
+  },
+  "base_body": {
+    "type": "extruded_profile",
+    "profile": {
+      "shape": "three_lobe_lever_with_R14.5_right_lobe_R9_left_and_middle_lobes_and_R10_fillets",
+      "segments": [
+        {
+          "type": "arc",
+          "center": [
+            51.8,
+            40.1
+          ],
+          "radius": 14.5,
+          "from": [
+            51.8,
+            25.6
+          ],
+          "to": [
+            42.48,
+            51.208
+          ],
+          "clockwise": false
+        },
+        {
+          "type": "line",
+          "from": [
+            42.48,
+            51.208
+          ],
+          "to": [
+            3.834,
+            18.781
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            -2.594,
+            26.441
+          ],
+          "radius": 10,
+          "from": [
+            3.834,
+            18.781
+          ],
+          "to": [
+            -8.852,
+            18.642
+          ],
+          "clockwise": true
+        },
+        {
+          "type": "line",
+          "from": [
+            -8.852,
+            18.642
+          ],
+          "to": [
+            -52.567,
+            53.72
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            -58.2,
+            46.7
+          ],
+          "radius": 9,
+          "from": [
+            -52.567,
+            53.72
+          ],
+          "to": [
+            -63.833,
+            39.68
+          ],
+          "clockwise": false
+        },
+        {
+          "type": "line",
+          "from": [
+            -63.833,
+            39.68
+          ],
+          "to": [
+            -5.633,
+            -7.02
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            0,
+            0
+          ],
+          "radius": 9,
+          "from": [
+            -5.633,
+            -7.02
+          ],
+          "to": [
+            8.997,
+            -0.228
+          ],
+          "clockwise": false
+        },
+        {
+          "type": "arc",
+          "center": [
+            18.994,
+            -0.482
+          ],
+          "radius": 10,
+          "from": [
+            8.997,
+            -0.228
+          ],
+          "to": [
+            12.566,
+            7.178
+          ],
+          "clockwise": true
+        },
+        {
+          "type": "line",
+          "from": [
+            12.566,
+            7.178
+          ],
+          "to": [
+            31.732,
+            23.26
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            38.16,
+            15.6
+          ],
+          "radius": 10,
+          "from": [
+            31.732,
+            23.26
+          ],
+          "to": [
+            38.16,
+            25.6
+          ],
+          "clockwise": true
+        },
+        {
+          "type": "line",
+          "from": [
+            38.16,
+            25.6
+          ],
+          "to": [
+            51.8,
+            25.6
+          ]
+        }
+      ]
+    },
+    "extrude_height": 8
+  },
+  "dimensions": [
+    {
+      "id": "left_to_right_hole_dx",
+      "value": 110,
+      "status": "read",
+      "source": "top view, horizontal dimension '110'",
+      "confidence": 1.0
+    },
+    {
+      "id": "middle_to_right_hole_dx",
+      "value": 51.8,
+      "status": "read",
+      "source": "top view, horizontal dimension '51,8'",
+      "confidence": 1.0
+    },
+    {
+      "id": "left_hole_above_right_hole_dy",
+      "value": 6.6,
+      "status": "read",
+      "source": "top view, vertical dimension '6,6'",
+      "confidence": 1.0
+    },
+    {
+      "id": "right_hole_above_middle_hole_dy",
+      "value": 40.1,
+      "status": "read",
+      "source": "top view, vertical dimension '40,1'",
+      "confidence": 1.0
+    },
+    {
+      "id": "left_arm_width",
+      "value": 18,
+      "status": "read",
+      "source": "top view, dimension '18' perpendicular to the left arm",
+      "confidence": 1.0
+    },
+    {
+      "id": "right_lobe_radius",
+      "value": 14.5,
+      "status": "read",
+      "source": "top view, 'R14,5'",
+      "confidence": 1.0
+    },
+    {
+      "id": "middle_lobe_radius",
+      "value": 9,
+      "status": "read",
+      "source": "top view, 'R9'",
+      "confidence": 1.0
+    },
+    {
+      "id": "left_lobe_radius",
+      "value": 9,
+      "status": "derived",
+      "source": "not labelled; left arm width '18'",
+      "confidence": 0.85,
+      "evidence": "full round end tangent to the 18 wide arm: R = 18/2 = 9 (also equals the labelled middle R9)",
+      "depends_on": [
+        "left_arm_width"
+      ]
+    },
+    {
+      "id": "fillet_radii",
+      "value": 10,
+      "status": "read",
+      "source": "top view, three 'R10' callouts (notch and two fillets at the right arm lower edge)",
+      "confidence": 0.95
+    },
+    {
+      "id": "right_arm_lower_edge_angle",
+      "value": 40,
+      "status": "derived",
+      "source": "top view, '50°' between the vertical through the right hole and the extended lower edge",
+      "confidence": 0.85,
+      "evidence": "the 50° arc is centered on the right hole center and measured from the vertical; the lower edge line therefore passes through the right hole center at 90-50 = 40° to the horizontal"
+    },
+    {
+      "id": "right_arm_upper_edge_angle",
+      "value": 40,
+      "status": "assumed",
+      "source": "not dimensioned",
+      "confidence": 0.7,
+      "evidence": "the upper edge appears parallel to the lower edge and tangent to the R14.5 lobe (tangent point at 130° on the circle)",
+      "review_flag": "upper edge parallelism and 40° assumed from the drawing proportions"
+    },
+    {
+      "id": "left_hole_position",
+      "value": [
+        -58.2,
+        46.7
+      ],
+      "status": "derived",
+      "source": "top view",
+      "confidence": 1.0,
+      "evidence": "x = 51.8 - 110 = -58.2; y = 40.1 + 6.6 = 46.7"
+    },
+    {
+      "id": "right_hole_position",
+      "value": [
+        51.8,
+        40.1
+      ],
+      "status": "read",
+      "source": "top view, '51,8' and '40,1'",
+      "confidence": 1.0
+    }
+  ],
+  "features": [
+    {
+      "id": "hole_left",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 10,
+        "status": "read",
+        "source": "section A-A, 'Ø10'",
+        "confidence": 1.0
+      },
+      "position": {
+        "value": [
+          -58.2,
+          46.7
+        ],
+        "status": "derived",
+        "source": "top view, '110' and '6,6' from the right hole; '51,8' and '40,1' from the middle hole",
+        "confidence": 1.0,
+        "evidence": "x = 51.8 - 110, y = 40.1 + 6.6"
+      },
+      "chamfer": {
+        "value": 1,
+        "status": "read",
+        "source": "section A-A, '1 x 45°'",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "hole_middle",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 12,
+        "status": "read",
+        "source": "section A-A, 'Ø12'",
+        "confidence": 1.0
+      },
+      "position": {
+        "value": [
+          0,
+          0
+        ],
+        "status": "read",
+        "source": "chosen origin",
+        "confidence": 1.0
+      },
+      "chamfer": {
+        "value": 1,
+        "status": "read",
+        "source": "section A-A, '1 x 45°'",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "hole_right",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 22,
+        "status": "read",
+        "source": "section A-A, 'Ø22'",
+        "confidence": 1.0
+      },
+      "position": {
+        "value": [
+          51.8,
+          40.1
+        ],
+        "status": "read",
+        "source": "top view, '51,8' and '40,1'",
+        "confidence": 1.0
+      },
+      "chamfer": {
+        "value": 1,
+        "status": "read",
+        "source": "section A-A, '1 x 45°'",
+        "confidence": 0.9
+      }
+    }
+  ],
+  "review_flags": [
+    {
+      "field": "right_arm_upper_edge_angle",
+      "severity": "blocking_until_confirmed",
+      "reason": "upper edge of the right arm is not dimensioned; assumed parallel to the lower edge (40°) and tangent to the R14.5 lobe",
+      "assumed_value": 40
+    },
+    {
+      "field": "left_lobe_radius",
+      "severity": "info",
+      "reason": "left lobe radius not labelled; derived as half of the 18 mm arm width (R9)"
+    },
+    {
+      "field": "hole_chamfers",
+      "severity": "info",
+      "reason": "the '1 x 45°' callout is assumed to apply to all three holes; the section shows chamfers on both top and bottom, but only top-face chamfers can be modeled"
+    },
+    {
+      "field": "right_arm_lower_edge_angle",
+      "severity": "info",
+      "reason": "the 50° angle is interpreted as measured at the right hole center from the vertical to the lower edge line, which then passes through the right hole center; the R10 fillets are assumed tangent to the R9 middle lobe, the lower edge and the horizontal bottom tangent of the R14.5 lobe"
+    },
+    {
+      "field": "profile_tangency",
+      "severity": "info",
+      "reason": "all arc/line junctions are implicit tangent connections; the tangent points were computed from the R9, R10 and R14.5 radii and the edge directions"
+    }
+  ]
+}

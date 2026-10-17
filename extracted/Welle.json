@@ -1,0 +1,318 @@
+{
+  "schema_version": "0.1",
+  "part_id": "Welle",
+  "drawing_file": "Welle_dwg.pdf",
+  "units": "mm",
+  "drawing_scale": "1:1",
+  "coordinate_system": {
+    "origin": "center of left end face on shaft axis",
+    "x": "radial, right in section view",
+    "y": "radial",
+    "z": "along shaft axis, left end z=0"
+  },
+  "base_body": {
+    "type": "revolved_profile",
+    "profile": {
+      "segments": [
+        {
+          "type": "line",
+          "from": [
+            0,
+            0
+          ],
+          "to": [
+            16.5,
+            0
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            16.5,
+            0
+          ],
+          "to": [
+            17.5,
+            1
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            17.5,
+            1
+          ],
+          "to": [
+            17.5,
+            35
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            17.5,
+            35
+          ],
+          "to": [
+            22.5,
+            35
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            22.5,
+            35
+          ],
+          "to": [
+            22.5,
+            100
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            22.5,
+            100
+          ],
+          "to": [
+            20,
+            100
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            20,
+            100
+          ],
+          "to": [
+            20,
+            250
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            20,
+            250
+          ],
+          "to": [
+            15,
+            250
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            15,
+            250
+          ],
+          "to": [
+            15,
+            277.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            15,
+            277.5
+          ],
+          "to": [
+            14,
+            277.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            14,
+            277.5
+          ],
+          "to": [
+            14,
+            280
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            14,
+            280
+          ],
+          "to": [
+            15,
+            280
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            15,
+            280
+          ],
+          "to": [
+            15,
+            299.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            15,
+            299.5
+          ],
+          "to": [
+            14.5,
+            300
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            14.5,
+            300
+          ],
+          "to": [
+            0,
+            300
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            0,
+            300
+          ],
+          "to": [
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "dimensions": [
+    {
+      "id": "overall_length",
+      "value": 300,
+      "status": "read",
+      "source": "top view '300'",
+      "confidence": 1.0
+    },
+    {
+      "id": "d35",
+      "value": 35,
+      "status": "read",
+      "source": "'Ø35'",
+      "confidence": 1.0
+    },
+    {
+      "id": "d45",
+      "value": 45,
+      "status": "read",
+      "source": "'Ø45'",
+      "confidence": 1.0
+    },
+    {
+      "id": "d40",
+      "value": 40,
+      "status": "read",
+      "source": "'Ø40'",
+      "confidence": 1.0
+    },
+    {
+      "id": "d30",
+      "value": 30,
+      "status": "read",
+      "source": "'Ø30'",
+      "confidence": 1.0
+    },
+    {
+      "id": "d28",
+      "value": 28,
+      "status": "read",
+      "source": "'Ø28'",
+      "confidence": 1.0
+    },
+    {
+      "id": "slot_width",
+      "value": 12,
+      "status": "read",
+      "source": "top view '12'",
+      "confidence": 1.0
+    },
+    {
+      "id": "slot_z_range",
+      "value": [
+        135,
+        215
+      ],
+      "status": "derived",
+      "source": "'80' and '35' from shoulder at z=250",
+      "evidence": "250-35=215; 215-80=135",
+      "confidence": 0.9
+    },
+    {
+      "id": "keyway_floor",
+      "value": 16.5,
+      "status": "assumed",
+      "source": "section A-A, keyway depth not dimensioned",
+      "confidence": 0.4,
+      "evidence": "measured from section A-A at 1:1: the Ø40 circle has radius 20; the pocket floor lies about 3.5 mm below the outer surface, so floor at 20-3.5=16.5. The chord of the 6 mm wide pocket at r=20 is sqrt(400-9)=19.8, consistent with the pocket edge near the circle",
+      "review_flag": "keyway depth not dimensioned; estimated from section A-A proportions"
+    }
+  ],
+  "features": [
+    {
+      "id": "keyway",
+      "type": "extrusion",
+      "mode": "cut",
+      "plane": "XZ",
+      "offset": 16.5,
+      "distance": 10,
+      "profile": {
+        "slot": {
+          "center_1": [
+            0,
+            141
+          ],
+          "center_2": [
+            0,
+            209
+          ],
+          "width": 12
+        }
+      }
+    }
+  ],
+  "review_flags": [
+    {
+      "field": "keyway_floor",
+      "severity": "blocking_until_confirmed",
+      "reason": "keyway depth not dimensioned",
+      "assumed_value": 16.5
+    },
+    {
+      "field": "keyway orientation/width",
+      "severity": "warning",
+      "reason": "the section shows width 6 while the top view shows 12; the top view dimension was used. The cut is also simplified, as it is not exactly flat-bottomed on the cylinder"
+    },
+    {
+      "field": "R2 and shoulder fillets",
+      "severity": "warning",
+      "reason": "R2 undercut at z=100 and the small fillets at z=35 were simplified or left out"
+    },
+    {
+      "field": "end chamfer at z=300",
+      "severity": "info",
+      "reason": "0.5 chamfer assumed from the drawing"
+    },
+    {
+      "field": "groove_28",
+      "severity": "info",
+      "reason": "groove position derived as 20 mm from the right end, 2.5 wide"
+    }
+  ]
+}

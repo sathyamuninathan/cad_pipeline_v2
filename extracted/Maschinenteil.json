@@ -1,0 +1,1347 @@
+{
+  "schema_version": "0.1",
+  "part_id": "Maschinenteil",
+  "drawing_file": "Maschinenteil_dwg.pdf",
+  "units": "mm",
+  "drawing_scale": "1:1",
+  "general_tolerance": null,
+  "coordinate_system": {
+    "origin": "centre of the flange back face (face opposite the hub), on the hub axis",
+    "x": "to the right in the front view (axial view onto the hub end)",
+    "y": "up in the front view",
+    "z": "part axis, from the flange (z=0..4) towards the hub, block and M10 pin (z=49)"
+  },
+  "base_body": {
+    "type": "extruded_profile",
+    "profile": {
+      "shape": "circle_with_two_flats",
+      "segments": [
+        {
+          "type": "line",
+          "from": [
+            45,
+            -21.794
+          ],
+          "to": [
+            45,
+            21.794
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            0,
+            0
+          ],
+          "radius": 50,
+          "from": [
+            45,
+            21.794
+          ],
+          "to": [
+            -45,
+            21.794
+          ],
+          "clockwise": false
+        },
+        {
+          "type": "line",
+          "from": [
+            -45,
+            21.794
+          ],
+          "to": [
+            -45,
+            -21.794
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            0,
+            0
+          ],
+          "radius": 50,
+          "from": [
+            -45,
+            -21.794
+          ],
+          "to": [
+            45,
+            -21.794
+          ],
+          "clockwise": false
+        }
+      ]
+    },
+    "extrude_height": 4
+  },
+  "dimensions": [
+    {
+      "id": "flange_diameter",
+      "value": 100,
+      "status": "read",
+      "source": "front view, 'Ø100'",
+      "confidence": 0.95
+    },
+    {
+      "id": "flange_flat_half_width",
+      "value": 45,
+      "status": "read",
+      "source": "front view, '45' from centre line to the left flat",
+      "confidence": 0.9,
+      "review_flag": null
+    },
+    {
+      "id": "flange_flat_end_y",
+      "value": 21.794,
+      "status": "derived",
+      "source": "computed",
+      "confidence": 0.9,
+      "evidence": "sqrt(50^2 - 45^2) = 21.794; matches the flat edge lines in the side view",
+      "depends_on": [
+        "flange_diameter",
+        "flange_flat_half_width"
+      ]
+    },
+    {
+      "id": "flange_thickness",
+      "value": 4,
+      "status": "read",
+      "source": "side view, '4'",
+      "confidence": 0.95
+    },
+    {
+      "id": "hub_diameter",
+      "value": 50,
+      "status": "read",
+      "source": "top view (below front view), 'Ø50'",
+      "confidence": 0.95
+    },
+    {
+      "id": "hub_length",
+      "value": 15,
+      "status": "read",
+      "source": "side view, first '15' after the flange (z 4..19)",
+      "confidence": 0.95
+    },
+    {
+      "id": "hub_round_radius",
+      "value": 2,
+      "status": "read",
+      "source": "top view, 'R2' (two leaders on the Ø50 disc edges)",
+      "confidence": 0.85
+    },
+    {
+      "id": "hub_base_fillet_radius",
+      "value": 1,
+      "status": "read",
+      "source": "note 'nicht bemaßte Radien R=1'",
+      "confidence": 0.7,
+      "review_flag": "fillet between hub and flange taken from the general R=1 note; the front view circle around the hub measures about R27, which would suggest R2"
+    },
+    {
+      "id": "hub_core_half_width",
+      "value": 18,
+      "status": "assumed",
+      "source": "top view, measured from the vertical edges under the Ø50 disc",
+      "confidence": 0.55,
+      "evidence": "the top view shows edges at x = ±18 (measured, scale 1:1) between the flange and the underside of the Ø50 disc; the side view shows the hub Ø50 full down to the flange, so the material between z 4 and 11 is the Ø50 cylinder trimmed to |x| <= 18",
+      "review_flag": "not dimensioned; width of the hub core under the disc measured from the drawing"
+    },
+    {
+      "id": "hub_disc_underside_z",
+      "value": 11,
+      "status": "assumed",
+      "source": "top view and side view, measured",
+      "confidence": 0.55,
+      "evidence": "top view: disc underside 11 mm above the flange back face (measured); side view: horizontal edge at z = 11 between y = ±17.5",
+      "review_flag": "not dimensioned; z of the Ø50 disc underside (gap above the bar) measured from the drawing"
+    },
+    {
+      "id": "bar_length",
+      "value": 84,
+      "status": "derived",
+      "source": "front view, '42' (centre to left bar end)",
+      "confidence": 0.85,
+      "evidence": "2 x 42; right end at x = 42 (notch '12' ends at the bar end, hole '36' at the notch centre: 36 + 12/2 = 42)"
+    },
+    {
+      "id": "bar_width",
+      "value": 35,
+      "status": "read",
+      "source": "front view, '35'",
+      "confidence": 0.95
+    },
+    {
+      "id": "bar_thickness",
+      "value": 5,
+      "status": "assumed",
+      "source": "top view, measured",
+      "confidence": 0.6,
+      "evidence": "top view: bar 5 mm high above the 4 mm flange (measured at 1:1, ratio to the 4 mm flange)",
+      "review_flag": "bar thickness not dimensioned; measured 5 mm"
+    },
+    {
+      "id": "notch_width",
+      "value": 15,
+      "status": "read",
+      "source": "front view, '15'",
+      "confidence": 0.95
+    },
+    {
+      "id": "notch_length",
+      "value": 12,
+      "status": "read",
+      "source": "front view, '12' (right notch)",
+      "confidence": 0.9
+    },
+    {
+      "id": "notch_corner_radius",
+      "value": 1,
+      "status": "read",
+      "source": "note 'nicht bemaßte Radien R=1'",
+      "confidence": 0.8
+    },
+    {
+      "id": "block_length",
+      "value": 15,
+      "status": "read",
+      "source": "side view, second '15' (z 19..34)",
+      "confidence": 0.95
+    },
+    {
+      "id": "block_width",
+      "value": 30,
+      "status": "read",
+      "source": "front view '30' and view A (2:1) '30'",
+      "confidence": 0.95
+    },
+    {
+      "id": "block_base_height",
+      "value": 7.5,
+      "status": "read",
+      "source": "view A (2:1), '7,5'",
+      "confidence": 0.9
+    },
+    {
+      "id": "boss_width",
+      "value": 14,
+      "status": "read",
+      "source": "view A (2:1), '14'",
+      "confidence": 0.95
+    },
+    {
+      "id": "boss_centre_height",
+      "value": 9,
+      "status": "read",
+      "source": "front view '9' and view A '9'",
+      "confidence": 0.95
+    },
+    {
+      "id": "boss_round_radius",
+      "value": 7,
+      "status": "derived",
+      "source": "view A",
+      "confidence": 0.85,
+      "evidence": "full round top of the 14 wide boss: R = 14 / 2",
+      "depends_on": [
+        "boss_width"
+      ]
+    },
+    {
+      "id": "pin_length",
+      "value": 15,
+      "status": "read",
+      "source": "side view, third '15' (z 34..49)",
+      "confidence": 0.95
+    },
+    {
+      "id": "pin_thread",
+      "value": "M10",
+      "status": "read",
+      "source": "top view, 'M10'",
+      "confidence": 0.95
+    },
+    {
+      "id": "pin_chamfer",
+      "value": 1,
+      "status": "assumed",
+      "source": "side view, chamfer drawn but not dimensioned",
+      "confidence": 0.5,
+      "evidence": "chamfer at the thread end measured about 1 mm; close to the M10 thread depth (d - d3 = (10 - 8.16)/2 = 0.92, lookup M10)",
+      "review_flag": "pin end chamfer not dimensioned; 1x45 assumed"
+    }
+  ],
+  "features": [
+    {
+      "id": "hub",
+      "type": "revolution",
+      "mode": "add",
+      "axis_position": [
+        0,
+        0
+      ],
+      "description": "Ø50 hub z 4..19, R1 fillet to the flange, R2 round at the end face",
+      "profile": {
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              0,
+              4
+            ],
+            "to": [
+              26,
+              4
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              26,
+              5
+            ],
+            "radius": 1,
+            "from": [
+              26,
+              4
+            ],
+            "to": [
+              25,
+              5
+            ],
+            "clockwise": true
+          },
+          {
+            "type": "line",
+            "from": [
+              25,
+              5
+            ],
+            "to": [
+              25,
+              17
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              23,
+              17
+            ],
+            "radius": 2,
+            "from": [
+              25,
+              17
+            ],
+            "to": [
+              23,
+              19
+            ],
+            "clockwise": false
+          },
+          {
+            "type": "line",
+            "from": [
+              23,
+              19
+            ],
+            "to": [
+              0,
+              19
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              0,
+              19
+            ],
+            "to": [
+              0,
+              4
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "bar",
+      "type": "extrusion",
+      "mode": "add",
+      "plane": "XY",
+      "offset": 4,
+      "distance": 5,
+      "description": "cross bar 84 x 35 x 5 on the flange",
+      "profile": {
+        "rectangle": {
+          "center": [
+            0,
+            0
+          ],
+          "size": [
+            84,
+            35
+          ],
+          "corner_radius": 0
+        }
+      }
+    },
+    {
+      "id": "block",
+      "type": "extrusion",
+      "mode": "add",
+      "plane": "XY",
+      "offset": 19,
+      "distance": 15,
+      "description": "block 30 x 7.5 with 14 wide boss rounded R7 around (0, 9), z 19..34",
+      "profile": {
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              -15,
+              -7.5
+            ],
+            "to": [
+              15,
+              -7.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              15,
+              -7.5
+            ],
+            "to": [
+              15,
+              0
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              15,
+              0
+            ],
+            "to": [
+              7,
+              0
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              7,
+              0
+            ],
+            "to": [
+              7,
+              9
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              0,
+              9
+            ],
+            "radius": 7,
+            "from": [
+              7,
+              9
+            ],
+            "to": [
+              -7,
+              9
+            ],
+            "clockwise": false
+          },
+          {
+            "type": "line",
+            "from": [
+              -7,
+              9
+            ],
+            "to": [
+              -7,
+              0
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              -7,
+              0
+            ],
+            "to": [
+              -15,
+              0
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              -15,
+              0
+            ],
+            "to": [
+              -15,
+              -7.5
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "pin_m10",
+      "type": "revolution",
+      "mode": "add",
+      "axis_position": [
+        0,
+        9
+      ],
+      "description": "M10 threaded pin z 34..49 at nominal diameter, 1x45 end chamfer",
+      "profile": {
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              0,
+              34
+            ],
+            "to": [
+              5,
+              34
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              5,
+              34
+            ],
+            "to": [
+              5,
+              48
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              5,
+              48
+            ],
+            "to": [
+              4,
+              49
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              4,
+              49
+            ],
+            "to": [
+              0,
+              49
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              0,
+              49
+            ],
+            "to": [
+              0,
+              34
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "hub_side_cut_right",
+      "type": "extrusion",
+      "mode": "cut",
+      "plane": "YZ",
+      "offset": 18,
+      "distance": 10,
+      "description": "removes the hub below the Ø50 disc for x > 18 (z 4..11), keeps the bar",
+      "profile": {
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              -28,
+              4
+            ],
+            "to": [
+              -17.5,
+              4
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              -17.5,
+              4
+            ],
+            "to": [
+              -17.5,
+              9
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              -17.5,
+              9
+            ],
+            "to": [
+              17.5,
+              9
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              17.5,
+              9
+            ],
+            "to": [
+              17.5,
+              4
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              17.5,
+              4
+            ],
+            "to": [
+              28,
+              4
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              28,
+              4
+            ],
+            "to": [
+              28,
+              11
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              28,
+              11
+            ],
+            "to": [
+              -28,
+              11
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              -28,
+              11
+            ],
+            "to": [
+              -28,
+              4
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "hub_side_cut_left",
+      "type": "extrusion",
+      "mode": "cut",
+      "plane": "YZ",
+      "offset": -18,
+      "distance": -10,
+      "description": "removes the hub below the Ø50 disc for x < -18 (z 4..11), keeps the bar",
+      "profile": {
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              -28,
+              4
+            ],
+            "to": [
+              -17.5,
+              4
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              -17.5,
+              4
+            ],
+            "to": [
+              -17.5,
+              9
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              -17.5,
+              9
+            ],
+            "to": [
+              17.5,
+              9
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              17.5,
+              9
+            ],
+            "to": [
+              17.5,
+              4
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              17.5,
+              4
+            ],
+            "to": [
+              28,
+              4
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              28,
+              4
+            ],
+            "to": [
+              28,
+              11
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              28,
+              11
+            ],
+            "to": [
+              -28,
+              11
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              -28,
+              11
+            ],
+            "to": [
+              -28,
+              4
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "notch_right",
+      "type": "extrusion",
+      "mode": "cut",
+      "plane": "XY",
+      "offset": 4,
+      "distance": 5,
+      "description": "15 wide notch in the bar, x 30..42, R1 inner corners",
+      "profile": {
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              43,
+              -7.5
+            ],
+            "to": [
+              43,
+              7.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              43,
+              7.5
+            ],
+            "to": [
+              31,
+              7.5
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              31,
+              6.5
+            ],
+            "radius": 1,
+            "from": [
+              31,
+              7.5
+            ],
+            "to": [
+              30,
+              6.5
+            ],
+            "clockwise": false
+          },
+          {
+            "type": "line",
+            "from": [
+              30,
+              6.5
+            ],
+            "to": [
+              30,
+              -6.5
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              31,
+              -6.5
+            ],
+            "radius": 1,
+            "from": [
+              30,
+              -6.5
+            ],
+            "to": [
+              31,
+              -7.5
+            ],
+            "clockwise": false
+          },
+          {
+            "type": "line",
+            "from": [
+              31,
+              -7.5
+            ],
+            "to": [
+              43,
+              -7.5
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "notch_left",
+      "type": "extrusion",
+      "mode": "cut",
+      "plane": "XY",
+      "offset": 4,
+      "distance": 5,
+      "description": "15 wide notch in the bar, x -42..-30, R1 inner corners (mirror of the right notch)",
+      "profile": {
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              -43,
+              7.5
+            ],
+            "to": [
+              -43,
+              -7.5
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              -43,
+              -7.5
+            ],
+            "to": [
+              -31,
+              -7.5
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              -31,
+              -6.5
+            ],
+            "radius": 1,
+            "from": [
+              -31,
+              -7.5
+            ],
+            "to": [
+              -30,
+              -6.5
+            ],
+            "clockwise": false
+          },
+          {
+            "type": "line",
+            "from": [
+              -30,
+              -6.5
+            ],
+            "to": [
+              -30,
+              6.5
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              -31,
+              6.5
+            ],
+            "radius": 1,
+            "from": [
+              -30,
+              6.5
+            ],
+            "to": [
+              -31,
+              7.5
+            ],
+            "clockwise": false
+          },
+          {
+            "type": "line",
+            "from": [
+              -31,
+              7.5
+            ],
+            "to": [
+              -43,
+              7.5
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "flange_hole_90",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 10,
+        "status": "read",
+        "source": "front view, 'Ø10'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          0,
+          38
+        ],
+        "status": "derived",
+        "source": "front view, 'Ø76' pitch circle",
+        "confidence": 0.9,
+        "evidence": "r = 76/2 = 38 at 90 deg (on the vertical centre line)"
+      }
+    },
+    {
+      "id": "flange_hole_64_5",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 10,
+        "status": "read",
+        "source": "front view, 'Ø10'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          16.359,
+          34.299
+        ],
+        "status": "derived",
+        "source": "front view, 'Ø76', '25,5°'",
+        "confidence": 0.9,
+        "evidence": "38 * (cos 64.5, sin 64.5); 90 - 25.5 = 64.5 deg, pattern symmetric to the vertical centre line"
+      }
+    },
+    {
+      "id": "flange_hole_115_5",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 10,
+        "status": "read",
+        "source": "front view, 'Ø10'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          -16.359,
+          34.299
+        ],
+        "status": "derived",
+        "source": "front view, 'Ø76', '25,5°'",
+        "confidence": 0.9,
+        "evidence": "38 * (cos 115.5, sin 115.5); 90 + 25.5 deg"
+      }
+    },
+    {
+      "id": "flange_hole_39",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 10,
+        "status": "read",
+        "source": "front view, 'Ø10'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          29.532,
+          23.914
+        ],
+        "status": "derived",
+        "source": "front view, 'Ø76', '25,5°'",
+        "confidence": 0.85,
+        "evidence": "38 * (cos 39, sin 39); 90 - 2 x 25.5 = 39 deg, mirrored from the dimensioned left side"
+      }
+    },
+    {
+      "id": "flange_hole_141",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 10,
+        "status": "read",
+        "source": "front view, 'Ø10'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          -29.532,
+          23.914
+        ],
+        "status": "derived",
+        "source": "front view, 'Ø76', '25,5°' twice",
+        "confidence": 0.9,
+        "evidence": "38 * (cos 141, sin 141); 90 + 2 x 25.5 = 141 deg"
+      }
+    },
+    {
+      "id": "flange_hole_270",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 10,
+        "status": "read",
+        "source": "front view, 'Ø10'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          0,
+          -38
+        ],
+        "status": "derived",
+        "source": "front view, 'Ø76'",
+        "confidence": 0.85,
+        "evidence": "lower holes mirror the upper ones about the horizontal centre line: r = 38 at 270 deg"
+      }
+    },
+    {
+      "id": "flange_hole_244_5",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 10,
+        "status": "read",
+        "source": "front view, 'Ø10'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          -16.359,
+          -34.299
+        ],
+        "status": "derived",
+        "source": "front view, 'Ø76'",
+        "confidence": 0.85,
+        "evidence": "mirror of the 115.5 deg hole about the horizontal centre line (244.5 deg)"
+      }
+    },
+    {
+      "id": "flange_hole_295_5",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 10,
+        "status": "read",
+        "source": "front view, 'Ø10'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          16.359,
+          -34.299
+        ],
+        "status": "derived",
+        "source": "front view, 'Ø76'",
+        "confidence": 0.85,
+        "evidence": "mirror of the 64.5 deg hole about the horizontal centre line (295.5 deg)"
+      }
+    },
+    {
+      "id": "flange_hole_219",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 10,
+        "status": "read",
+        "source": "front view, 'Ø10'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          -29.532,
+          -23.914
+        ],
+        "status": "derived",
+        "source": "front view, 'Ø76'",
+        "confidence": 0.85,
+        "evidence": "mirror of the 141 deg hole about the horizontal centre line (219 deg)"
+      }
+    },
+    {
+      "id": "flange_hole_321",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 10,
+        "status": "read",
+        "source": "front view, 'Ø10'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          29.532,
+          -23.914
+        ],
+        "status": "derived",
+        "source": "front view, 'Ø76'",
+        "confidence": 0.85,
+        "evidence": "mirror of the 39 deg hole about the horizontal centre line (321 deg)"
+      }
+    },
+    {
+      "id": "notch_hole_right",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 5,
+        "status": "read",
+        "source": "front view, 'Ø5'",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          36,
+          0
+        ],
+        "status": "read",
+        "source": "front view, '36'",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "notch_hole_left",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 5,
+        "status": "read",
+        "source": "front view, 'Ø5' (left notch)",
+        "confidence": 0.95
+      },
+      "position": {
+        "value": [
+          -36,
+          0
+        ],
+        "status": "derived",
+        "source": "front view",
+        "confidence": 0.85,
+        "evidence": "x = -36, symmetric to the dimensioned right hole (bar and notches symmetric, '42' on the left)"
+      }
+    },
+    {
+      "id": "block_hole_1",
+      "type": "hole",
+      "through": true,
+      "axis": "x",
+      "diameter": {
+        "value": 2.5,
+        "status": "assumed",
+        "source": "side view / view A, not dimensioned",
+        "confidence": 0.5,
+        "evidence": "hidden lines in view A (2:1) 5 mm apart on paper = 2.5 mm",
+        "review_flag": "diameter of the three small cross holes not given; 2.5 mm measured"
+      },
+      "position": {
+        "value": [
+          -3.5,
+          21.5
+        ],
+        "status": "derived",
+        "source": "side view, '4' and chain '2,5'",
+        "confidence": 0.85,
+        "evidence": "y = -7.5 + 4 = -3.5 (4 above the block underside); z = 19 + 2.5 = 21.5"
+      }
+    },
+    {
+      "id": "block_hole_2",
+      "type": "hole",
+      "through": true,
+      "axis": "x",
+      "diameter": {
+        "value": 2.5,
+        "status": "assumed",
+        "source": "side view / view A, not dimensioned",
+        "confidence": 0.5,
+        "evidence": "same as block_hole_1",
+        "review_flag": "diameter of the three small cross holes not given; 2.5 mm measured"
+      },
+      "position": {
+        "value": [
+          -3.5,
+          26.5
+        ],
+        "status": "derived",
+        "source": "side view, '4' and chain '2,5 / 5'",
+        "confidence": 0.85,
+        "evidence": "y = -7.5 + 4 = -3.5; z = 19 + 2.5 + 5 = 26.5"
+      }
+    },
+    {
+      "id": "block_hole_3",
+      "type": "hole",
+      "through": true,
+      "axis": "x",
+      "diameter": {
+        "value": 2.5,
+        "status": "assumed",
+        "source": "side view / view A, not dimensioned",
+        "confidence": 0.5,
+        "evidence": "same as block_hole_1",
+        "review_flag": "diameter of the three small cross holes not given; 2.5 mm measured"
+      },
+      "position": {
+        "value": [
+          -3.5,
+          31.5
+        ],
+        "status": "derived",
+        "source": "side view, '4' and chain '2,5 / 5 / 5'",
+        "confidence": 0.85,
+        "evidence": "y = -7.5 + 4 = -3.5; z = 19 + 2.5 + 5 + 5 = 31.5"
+      }
+    }
+  ],
+  "review_flags": [
+    {
+      "field": "dimensions.bar_thickness",
+      "severity": "blocking_until_confirmed",
+      "reason": "bar thickness (height above the flange) is not dimensioned; measured from the top view",
+      "assumed_value": 5
+    },
+    {
+      "field": "dimensions.hub_core_half_width",
+      "severity": "blocking_until_confirmed",
+      "reason": "hub below the Ø50 disc is trimmed to |x| <= 18 (edges in the top view); value not dimensioned, measured",
+      "assumed_value": 18
+    },
+    {
+      "field": "dimensions.hub_disc_underside_z",
+      "severity": "blocking_until_confirmed",
+      "reason": "underside of the Ø50 disc (2 mm gap above the bar) not dimensioned; measured z = 11 (7 mm above the flange)",
+      "assumed_value": 11
+    },
+    {
+      "field": "block_hole_1.diameter",
+      "severity": "blocking_until_confirmed",
+      "reason": "three cross holes in the block have no diameter callout; 2.5 mm measured (applies to block_hole_1..3)",
+      "assumed_value": 2.5
+    },
+    {
+      "field": "dimensions.pin_chamfer",
+      "severity": "blocking_until_confirmed",
+      "reason": "chamfer at the M10 pin end drawn but not dimensioned",
+      "assumed_value": "1x45"
+    },
+    {
+      "field": "hub_side_cut_right",
+      "severity": "warning",
+      "reason": "interpretation of the hub region between flange and Ø50 disc: modelled as the Ø50 hub trimmed to |x| <= 18 for z 4..11 with the bar passing under the disc. An alternative reading (bar cut by a circle around the disc) is possible; compare with the isometric view"
+    },
+    {
+      "field": "dimensions.hub_round_radius",
+      "severity": "warning",
+      "reason": "R2 round on the underside edge of the Ø50 disc (at z = 11, |x| > 18) is not modelled (sharp edge); only the R2 round at the hub end face is modelled"
+    },
+    {
+      "field": "dimensions.hub_base_fillet_radius",
+      "severity": "info",
+      "reason": "hub-to-flange fillet taken as R1 from the note 'nicht bemaßte Radien R=1'; the front view circle at about R27 may indicate R2"
+    },
+    {
+      "field": "pin_m10",
+      "severity": "info",
+      "reason": "M10 external thread (pitch 1.5, lookup M10) modelled as a plain Ø10 cylinder at nominal size"
+    },
+    {
+      "field": "general",
+      "severity": "info",
+      "reason": "other undimensioned edges (note 'nicht bemaßte Radien R=1'), e.g. bar/block edges, not modelled except the notch inner corners and hub base fillet"
+    },
+    {
+      "field": "general_tolerance",
+      "severity": "info",
+      "reason": "title block field 'Allgemeintoleranz' is empty and no material is given; no general tolerance recorded"
+    },
+    {
+      "field": "coordinate_system",
+      "severity": "info",
+      "reason": "projection symbol shows method 1 (first angle); side view placed right = view from the left, top view placed below = view from above; consistent with the pin at y = +9 and the cross holes below the axis"
+    },
+    {
+      "field": "flange_hole_39",
+      "severity": "info",
+      "reason": "the 25,5° angles are dimensioned on the upper left only; the 10-hole pattern is assumed symmetric about both centre lines (5 holes on top, 5 at the bottom, none in the bar region)"
+    }
+  ]
+}

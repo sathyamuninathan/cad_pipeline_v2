@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+out/
+extracted/backup/
+*.stp
+*.step
+*.prt
+*.pdf
+.claude/settings.local.json

@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(py main.py render *)",
+      "Bash(py main.py render *)",
+      "PowerShell(py main.py crop *)",
+      "Bash(py main.py crop *)",
+      "PowerShell(py main.py check *)",
+      "Bash(py main.py check *)",
+      "PowerShell(py main.py lookup *)",
+      "Bash(py main.py lookup *)",
+      "PowerShell(py main.py run --spec * --docker)",
+      "Bash(py main.py run --spec * --docker)"
+    ],
+    "ask": [
+      "PowerShell(py main.py run *.pdf*)",
+      "Bash(py main.py run *.pdf*)"
+    ]
+  }
+}

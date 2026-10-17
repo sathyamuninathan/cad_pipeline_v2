@@ -1,0 +1,584 @@
+{
+  "schema_version": "0.1",
+  "part_id": "Getriebedeckel",
+  "drawing_file": "Getriebedeckel.pdf",
+  "units": "mm",
+  "drawing_scale": "2:1",
+  "coordinate_system": {
+    "origin": "on the rotation axis, bottom face of the Ø28 spigot",
+    "x": "horizontal in the plan view (along section line A-A, 45 mm direction of the groove)",
+    "y": "vertical in the plan view (37 mm direction of the groove)",
+    "z": "rotation axis, from spigot bottom (z=0) up to the dome top (z=23)"
+  },
+  "base_body": {
+    "type": "revolved_profile",
+    "profile": {
+      "description": "solid half-section [radius, z]; inner cavity cut later as revolution",
+      "segments": [
+        {
+          "type": "line",
+          "from": [
+            0,
+            0
+          ],
+          "to": [
+            13.866,
+            0
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            13.866,
+            0
+          ],
+          "to": [
+            14,
+            0.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            14,
+            0.5
+          ],
+          "to": [
+            14,
+            16
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            14,
+            16
+          ],
+          "to": [
+            33.5,
+            16
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            33.5,
+            16
+          ],
+          "to": [
+            34,
+            16.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            34,
+            16.5
+          ],
+          "to": [
+            34,
+            18.5
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            34,
+            18.5
+          ],
+          "to": [
+            33.5,
+            19
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            33.5,
+            19
+          ],
+          "to": [
+            22.577,
+            19
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            22.577,
+            20
+          ],
+          "radius": 1,
+          "from": [
+            22.577,
+            19
+          ],
+          "to": [
+            21.711,
+            19.5
+          ],
+          "clockwise": true
+        },
+        {
+          "type": "line",
+          "from": [
+            21.711,
+            19.5
+          ],
+          "to": [
+            19.98,
+            22.5
+          ]
+        },
+        {
+          "type": "arc",
+          "center": [
+            19.114,
+            22
+          ],
+          "radius": 1,
+          "from": [
+            19.98,
+            22.5
+          ],
+          "to": [
+            19.114,
+            23
+          ],
+          "clockwise": false
+        },
+        {
+          "type": "line",
+          "from": [
+            19.114,
+            23
+          ],
+          "to": [
+            0,
+            23
+          ]
+        },
+        {
+          "type": "line",
+          "from": [
+            0,
+            23
+          ],
+          "to": [
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "dimensions": [
+    {
+      "id": "overall_height",
+      "value": 23,
+      "status": "read",
+      "source": "section A-A, left vertical '23'",
+      "confidence": 1.0
+    },
+    {
+      "id": "spigot_height",
+      "value": 16,
+      "status": "read",
+      "source": "section A-A, '16 0/-0,1' (nominal used)",
+      "confidence": 1.0
+    },
+    {
+      "id": "dome_height",
+      "value": 4,
+      "status": "read",
+      "source": "section A-A, '4' from flange top to dome top",
+      "confidence": 0.95
+    },
+    {
+      "id": "flange_thickness",
+      "value": 3,
+      "status": "derived",
+      "source": "section A-A",
+      "confidence": 0.95,
+      "evidence": "23 - 16 - 4 = 3",
+      "depends_on": [
+        "overall_height",
+        "spigot_height",
+        "dome_height"
+      ]
+    },
+    {
+      "id": "flange_dia",
+      "value": 68,
+      "status": "read",
+      "source": "section A-A, 'Ø68 +0,2/0' (nominal used)",
+      "confidence": 1.0
+    },
+    {
+      "id": "dome_base_dia",
+      "value": 44,
+      "status": "read",
+      "source": "section A-A, 'Ø44' at the foot of the dome flank",
+      "confidence": 0.9
+    },
+    {
+      "id": "dome_flank_angle",
+      "value": 120,
+      "status": "read",
+      "source": "section A-A, '120°' between flank and flange top",
+      "confidence": 0.95
+    },
+    {
+      "id": "dome_top_edge_r",
+      "value": 19.691,
+      "status": "derived",
+      "source": "section A-A",
+      "confidence": 0.9,
+      "evidence": "22 - 4 / tan(60°) = 19.691 (flank 180-120 = 60° to horizontal)",
+      "depends_on": [
+        "dome_base_dia",
+        "dome_flank_angle",
+        "dome_height"
+      ]
+    },
+    {
+      "id": "dome_fillets",
+      "value": 1,
+      "status": "read",
+      "source": "section A-A, 'R1' leader with two arrows (top edge and foot of flank)",
+      "confidence": 0.9
+    },
+    {
+      "id": "spigot_dia",
+      "value": 28,
+      "status": "read",
+      "source": "section A-A, 'Ø28 0/-0,05' (nominal used)",
+      "confidence": 1.0
+    },
+    {
+      "id": "spigot_chamfer",
+      "value": "0.5 x 15°",
+      "status": "read",
+      "source": "section A-A, '0,5' and '15°' at bottom outer edge of spigot",
+      "confidence": 0.7,
+      "review_flag": "read as 0.5 mm high chamfer at 15° to the spigot axis on the outer bottom edge; check"
+    },
+    {
+      "id": "bore_dia",
+      "value": 22,
+      "status": "read",
+      "source": "section A-A, 'Ø22' at the open end",
+      "confidence": 0.95
+    },
+    {
+      "id": "bore_draft",
+      "value": 3,
+      "status": "read",
+      "source": "section A-A, '3°' at the bore wall",
+      "confidence": 0.85
+    },
+    {
+      "id": "cavity_depth",
+      "value": 20,
+      "status": "read",
+      "source": "section A-A, '20'",
+      "confidence": 1.0
+    },
+    {
+      "id": "cavity_fillet",
+      "value": 6,
+      "status": "read",
+      "source": "section A-A, 'R6'",
+      "confidence": 1.0
+    },
+    {
+      "id": "flange_chamfer",
+      "value": 0.5,
+      "status": "read",
+      "source": "section A-A, '0,5 x 45°' at flange outer edge",
+      "confidence": 0.85
+    },
+    {
+      "id": "groove_outer",
+      "value": [
+        45,
+        37
+      ],
+      "status": "read",
+      "source": "plan view, '45' and '37'",
+      "confidence": 1.0
+    },
+    {
+      "id": "groove_corner_r",
+      "value": 7,
+      "status": "read",
+      "source": "plan view, 'R7'",
+      "confidence": 0.95
+    },
+    {
+      "id": "groove_width",
+      "value": 1.2,
+      "status": "read",
+      "source": "plan view, '1,2'",
+      "confidence": 0.95
+    },
+    {
+      "id": "groove_depth",
+      "value": 1,
+      "status": "read",
+      "source": "section A-A, '1' at flange underside",
+      "confidence": 0.9
+    },
+    {
+      "id": "groove_inner",
+      "value": [
+        42.6,
+        34.6
+      ],
+      "status": "derived",
+      "source": "plan view",
+      "confidence": 0.9,
+      "evidence": "45 - 2*1,2 and 37 - 2*1,2; inner corner radius 7 - 1,2 = 5,8",
+      "depends_on": [
+        "groove_outer",
+        "groove_width",
+        "groove_corner_r"
+      ]
+    },
+    {
+      "id": "bolt_circle",
+      "value": 55,
+      "status": "read",
+      "source": "plan view, 'Ø55'",
+      "confidence": 1.0
+    }
+  ],
+  "features": [
+    {
+      "id": "groove_outer_cut",
+      "type": "extrusion",
+      "mode": "cut",
+      "plane": "XY",
+      "offset": 16,
+      "distance": 1,
+      "description": "seal groove: remove outer rounded rectangle 1 mm deep into flange underside",
+      "profile": {
+        "rectangle": {
+          "center": [
+            0,
+            0
+          ],
+          "size": [
+            45,
+            37
+          ],
+          "corner_radius": 7
+        }
+      }
+    },
+    {
+      "id": "groove_island",
+      "type": "extrusion",
+      "mode": "add",
+      "plane": "XY",
+      "offset": 16,
+      "distance": 1,
+      "description": "seal groove: restore inner rounded rectangle so only a 1.2 mm wide groove remains",
+      "profile": {
+        "rectangle": {
+          "center": [
+            0,
+            0
+          ],
+          "size": [
+            42.6,
+            34.6
+          ],
+          "corner_radius": 5.8
+        }
+      }
+    },
+    {
+      "id": "cavity",
+      "type": "revolution",
+      "mode": "cut",
+      "axis_position": [
+        0,
+        0
+      ],
+      "description": "Ø22 bore with 3° draft, 20 deep, R6 to flat top",
+      "profile": {
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              0,
+              -1
+            ],
+            "to": [
+              11.052,
+              -1
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              11.052,
+              -1
+            ],
+            "to": [
+              10.25,
+              14.314
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              4.258,
+              14
+            ],
+            "radius": 6,
+            "from": [
+              10.25,
+              14.314
+            ],
+            "to": [
+              4.258,
+              20
+            ],
+            "clockwise": false
+          },
+          {
+            "type": "line",
+            "from": [
+              4.258,
+              20
+            ],
+            "to": [
+              0,
+              20
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              0,
+              20
+            ],
+            "to": [
+              0,
+              -1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "bolt_hole_1",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 6.6,
+        "status": "read",
+        "source": "plan view, 'Ø6,6 H7'",
+        "confidence": 1.0
+      },
+      "position": {
+        "value": [
+          27.5,
+          0
+        ],
+        "status": "derived",
+        "source": "plan view, 'Ø55'",
+        "confidence": 0.95,
+        "evidence": "4 holes on Ø55 at 0°/90°/180°/270° (on the centre lines): r = 55/2"
+      }
+    },
+    {
+      "id": "bolt_hole_2",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 6.6,
+        "status": "read",
+        "source": "plan view, 'Ø6,6 H7'",
+        "confidence": 1.0
+      },
+      "position": {
+        "value": [
+          0,
+          27.5
+        ],
+        "status": "derived",
+        "source": "plan view, 'Ø55'",
+        "confidence": 0.95,
+        "evidence": "4 holes on Ø55 on the centre lines: r = 55/2"
+      }
+    },
+    {
+      "id": "bolt_hole_3",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 6.6,
+        "status": "read",
+        "source": "plan view, 'Ø6,6 H7'",
+        "confidence": 1.0
+      },
+      "position": {
+        "value": [
+          -27.5,
+          0
+        ],
+        "status": "derived",
+        "source": "plan view, 'Ø55'",
+        "confidence": 0.95,
+        "evidence": "4 holes on Ø55 on the centre lines: r = 55/2"
+      }
+    },
+    {
+      "id": "bolt_hole_4",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 6.6,
+        "status": "read",
+        "source": "plan view, 'Ø6,6 H7'",
+        "confidence": 1.0
+      },
+      "position": {
+        "value": [
+          0,
+          -27.5
+        ],
+        "status": "derived",
+        "source": "plan view, 'Ø55'",
+        "confidence": 0.95,
+        "evidence": "4 holes on Ø55 on the centre lines: r = 55/2"
+      }
+    }
+  ],
+  "review_flags": [
+    {
+      "field": "spigot_chamfer",
+      "severity": "info",
+      "reason": "'0,5' and '15°' at the spigot bottom read as a 0.5 mm high chamfer at 15° to the axis on the outer edge (horizontal leg 0.134 mm); check that it is not on the bore edge"
+    },
+    {
+      "field": "flange_chamfer",
+      "severity": "info",
+      "reason": "'0,5 x 45°' callout drawn at one flange edge; both outer edges of the Ø68 flange are drawn chamfered and modelled 0.5x45°"
+    },
+    {
+      "field": "dome_base_dia",
+      "severity": "info",
+      "reason": "Ø44 taken at the theoretical sharp foot of the 60° flank (before the R1 fillet)"
+    },
+    {
+      "field": "bore_dia",
+      "severity": "info",
+      "reason": "Ø22 taken at the open end (z=0); 3° draft per side narrows the bore towards the top"
+    }
+  ]
+}

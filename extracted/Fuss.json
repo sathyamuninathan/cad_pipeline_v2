@@ -1,0 +1,327 @@
+{
+  "schema_version": "0.1",
+  "part_id": "Fuss",
+  "drawing_file": "Fuss_dwg.pdf",
+  "units": "mm",
+  "general_tolerance": null,
+  "coordinate_system": {
+    "origin": "centre of the central bore, bottom face of the square flange",
+    "x": "to the right in the top view",
+    "y": "upward in the top view",
+    "z": "boss axis, bottom face at z=0, boss top at z=76.2"
+  },
+  "base_body": {
+    "type": "extruded_profile",
+    "extrude_height": 19,
+    "profile": {
+      "rectangle": {
+        "center": [
+          0,
+          0
+        ],
+        "size": [
+          115,
+          115
+        ],
+        "corner_radius": 22
+      }
+    }
+  },
+  "dimensions": [
+    {
+      "id": "flange_size",
+      "value": 115,
+      "source": "top view, '115'",
+      "confidence": 0.95,
+      "status": "read",
+      "evidence": "only the vertical size is dimensioned; square flange assumed (front view width matches 115)"
+    },
+    {
+      "id": "flange_corner_radius",
+      "value": 22,
+      "source": "top view, 'R22'",
+      "confidence": 0.95,
+      "status": "read"
+    },
+    {
+      "id": "flange_thickness",
+      "value": 19,
+      "source": "front view, '19'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "overall_height",
+      "value": 76.2,
+      "source": "front view, '76,2'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "boss_diameter",
+      "value": 57,
+      "source": "top view, 'Ø57'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "boss_fillet_radius",
+      "value": 9.5,
+      "source": "front view, 'R9,5'",
+      "confidence": 1.0,
+      "status": "read"
+    },
+    {
+      "id": "boss_fillet_center",
+      "value": [
+        38,
+        28.5
+      ],
+      "source": "derived",
+      "confidence": 0.95,
+      "status": "derived",
+      "evidence": "r = 57/2 + 9.5 = 38, z = 19 + 9.5 = 28.5; thin circle in top view ≈ Ø76 = 57 + 2*9.5 confirms"
+    },
+    {
+      "id": "boss_height_above_flange",
+      "value": 57.2,
+      "source": "derived",
+      "confidence": 1.0,
+      "status": "derived",
+      "evidence": "76.2 - 19"
+    }
+  ],
+  "features": [
+    {
+      "id": "boss",
+      "type": "revolution",
+      "mode": "add",
+      "axis_position": [
+        0,
+        0
+      ],
+      "profile": {
+        "segments": [
+          {
+            "type": "line",
+            "from": [
+              0,
+              19
+            ],
+            "to": [
+              38,
+              19
+            ]
+          },
+          {
+            "type": "arc",
+            "center": [
+              38,
+              28.5
+            ],
+            "radius": 9.5,
+            "from": [
+              38,
+              19
+            ],
+            "to": [
+              28.5,
+              28.5
+            ],
+            "clockwise": true,
+            "note": "R9.5 fillet at boss base"
+          },
+          {
+            "type": "line",
+            "from": [
+              28.5,
+              28.5
+            ],
+            "to": [
+              28.5,
+              76.2
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              28.5,
+              76.2
+            ],
+            "to": [
+              0,
+              76.2
+            ]
+          },
+          {
+            "type": "line",
+            "from": [
+              0,
+              76.2
+            ],
+            "to": [
+              0,
+              19
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "center_bore_19",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 19,
+        "source": "top view, '19' across the inner circle; front view hidden lines in the flange",
+        "confidence": 0.9,
+        "status": "read",
+        "evidence": "linear dimension '19' spans the innermost circle (no Ø sign); hidden lines in the flange are 19 apart"
+      },
+      "position": {
+        "value": [
+          0,
+          0
+        ],
+        "status": "origin"
+      }
+    },
+    {
+      "id": "boss_bore_33",
+      "type": "hole",
+      "through": false,
+      "diameter": {
+        "value": 33,
+        "source": "top view, 'Ø33'",
+        "confidence": 1.0,
+        "status": "read"
+      },
+      "depth": {
+        "value": 57.2,
+        "source": "front view, hidden lines of the Ø33 bore end at the flange top",
+        "confidence": 0.85,
+        "status": "derived",
+        "evidence": "Ø33 hidden lines run from the boss top down to the flange top face (z=19): 76.2 - 19 = 57.2; title block mass 2.4901 kg matches this stepped bore in steel"
+      },
+      "position": {
+        "value": [
+          0,
+          0
+        ],
+        "status": "origin"
+      }
+    },
+    {
+      "id": "hole_1",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 19,
+        "source": "top view, 'Ø19'",
+        "confidence": 1.0,
+        "status": "read"
+      },
+      "position": {
+        "value": [
+          35.5,
+          35.5
+        ],
+        "status": "derived",
+        "confidence": 0.9,
+        "evidence": "71 / 2 = 35.5, square pattern; x pitch not dimensioned, taken equal to y pitch 71 (coincides with R22 tangent lines at 57.5 - 22)"
+      }
+    },
+    {
+      "id": "hole_2",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 19,
+        "source": "top view, 'Ø19'",
+        "confidence": 1.0,
+        "status": "read"
+      },
+      "position": {
+        "value": [
+          -35.5,
+          35.5
+        ],
+        "status": "derived",
+        "confidence": 0.9,
+        "evidence": "71 / 2 = 35.5, square pattern; x pitch taken equal to y pitch 71"
+      }
+    },
+    {
+      "id": "hole_3",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 19,
+        "source": "top view, 'Ø19'",
+        "confidence": 1.0,
+        "status": "read"
+      },
+      "position": {
+        "value": [
+          -35.5,
+          -35.5
+        ],
+        "status": "derived",
+        "confidence": 0.9,
+        "evidence": "71 / 2 = 35.5, square pattern; x pitch taken equal to y pitch 71"
+      }
+    },
+    {
+      "id": "hole_4",
+      "type": "hole",
+      "through": true,
+      "diameter": {
+        "value": 19,
+        "source": "top view, 'Ø19'",
+        "confidence": 1.0,
+        "status": "read"
+      },
+      "position": {
+        "value": [
+          35.5,
+          -35.5
+        ],
+        "status": "derived",
+        "confidence": 0.9,
+        "evidence": "71 / 2 = 35.5, square pattern; x pitch taken equal to y pitch 71"
+      }
+    }
+  ],
+  "review_flags": [
+    {
+      "field": "hole_1..hole_4.position",
+      "severity": "info",
+      "reason": "only the vertical hole pitch 71 is dimensioned; horizontal pitch taken as 71 too (symmetric square flange, front view shows holes at the R22 tangent lines)"
+    },
+    {
+      "field": "flange_size",
+      "severity": "info",
+      "reason": "only one 115 dimension given; flange assumed square 115 x 115 (front view width matches)"
+    },
+    {
+      "field": "boss_bore_33.depth",
+      "severity": "info",
+      "reason": "Ø33 bore depth not dimensioned; hidden lines end at the flange top (z=19), so depth 57.2 from the boss top with Ø19 through the flange. Mass 2.4901 kg in the title block is consistent with this"
+    },
+    {
+      "field": "center_bore_19.diameter",
+      "severity": "info",
+      "reason": "central bore dimensioned as linear '19' without Ø sign; read as Ø19"
+    },
+    {
+      "field": "general_tolerance",
+      "severity": "info",
+      "reason": "title block general tolerance field shows only the placeholder 'Allg.-Toleranz'; no ISO 2768 class given. Material field empty, scale field empty"
+    },
+    {
+      "field": "projection",
+      "severity": "info",
+      "reason": "projection symbol in the title block is method 1 (first angle); part is symmetric so the views are unaffected"
+    }
+  ]
+}
